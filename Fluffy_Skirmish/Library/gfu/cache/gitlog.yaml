@@ -1,0 +1,2629 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 61
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -530159753, guid: 68c7e4565cde54155bb78d8e935f1dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cacheType: 3
+  lastUpdatedAtString: 2018-09-22T22:31:53.115-03:00
+  initializedAtString: 2018-09-22T22:14:53.305-03:00
+  log:
+  - commitID: fdc9c5a5065b1293c51be9fc6459145dabf7ace0
+    mergeA: 
+    mergeB: 
+    authorName: myllasasaki
+    authorEmail: myllasasaki@gmail.com
+    commitEmail: myllasasaki@gmail.com
+    commitName: myllasasaki
+    summary: Revert "Camera seguindo e pa"
+    description: "Revert \"Camera seguindo e pa\"\r\n\r\nThis reverts commit ee3ac7082958afd4bb8cc1e1e4a921930e8fa3c7."
+    timeString: 2018-09-22T22:09:27.000-03:00
+    commitTimeString: 2018-09-22T22:09:27.000-03:00
+    changes:
+    - path: Assets\Resources\Prefabs\NewPlayer.prefab
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Resources\Prefabs\NewPlayer.prefab
+      projectPath: Assets\Resources\Prefabs\NewPlayer.prefab
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets\_Scripts\Camera\CameraFollow.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Camera\CameraFollow.cs
+      projectPath: Assets\_Scripts\Camera\CameraFollow.cs
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets\_Scripts\Network\PlayerNetwork.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Network\PlayerNetwork.cs
+      projectPath: Assets\_Scripts\Network\PlayerNetwork.cs
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets\_Scripts\Player\Player.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Player\Player.cs
+      projectPath: Assets\_Scripts\Player\Player.cs
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Assets\_Scripts\Player\Player.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Player\Player.cs.meta
+      projectPath: Assets\_Scripts\Player\Player.cs.meta
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: Assets\_Scripts\Player\PlayerCamera.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Player\PlayerCamera.cs
+      projectPath: Assets\_Scripts\Player\PlayerCamera.cs
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets\_Scripts\Player\PlayerMovement.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Player\PlayerMovement.cs
+      projectPath: Assets\_Scripts\Player\PlayerMovement.cs
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets\_Scripts\ToxicArea.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\ToxicArea.cs
+      projectPath: Assets\_Scripts\ToxicArea.cs
+      originalPath: 
+      status: 3
+      staged: 0
+  - commitID: ee3ac7082958afd4bb8cc1e1e4a921930e8fa3c7
+    mergeA: 
+    mergeB: 
+    authorName: myllasasaki
+    authorEmail: myllasasaki@gmail.com
+    commitEmail: myllasasaki@gmail.com
+    commitName: myllasasaki
+    summary: Camera seguindo e pa
+    description: "Camera seguindo e pa\r\n\r\nProx passo: Aim"
+    timeString: 2018-09-22T22:07:16.000-03:00
+    commitTimeString: 2018-09-22T22:07:16.000-03:00
+    changes:
+    - path: Assets\Resources\Prefabs\NewPlayer.prefab
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Resources\Prefabs\NewPlayer.prefab
+      projectPath: Assets\Resources\Prefabs\NewPlayer.prefab
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets\_Scripts\Camera\CameraFollow.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Camera\CameraFollow.cs
+      projectPath: Assets\_Scripts\Camera\CameraFollow.cs
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets\_Scripts\Network\PlayerNetwork.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Network\PlayerNetwork.cs
+      projectPath: Assets\_Scripts\Network\PlayerNetwork.cs
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets\_Scripts\Player\Player.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Player\Player.cs
+      projectPath: Assets\_Scripts\Player\Player.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Player\Player.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Player\Player.cs.meta
+      projectPath: Assets\_Scripts\Player\Player.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Player\PlayerCamera.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Player\PlayerCamera.cs
+      projectPath: Assets\_Scripts\Player\PlayerCamera.cs
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets\_Scripts\Player\PlayerMovement.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Player\PlayerMovement.cs
+      projectPath: Assets\_Scripts\Player\PlayerMovement.cs
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: Assets\_Scripts\ToxicArea.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\ToxicArea.cs
+      projectPath: Assets\_Scripts\ToxicArea.cs
+      originalPath: 
+      status: 3
+      staged: 0
+  - commitID: 8a4292bdbf075d39f52fe8fa5569ebe80966cb2d
+    mergeA: 
+    mergeB: 
+    authorName: myllasasaki
+    authorEmail: myllasasaki@gmail.com
+    commitEmail: myllasasaki@gmail.com
+    commitName: myllasasaki
+    summary: Camera funcionando
+    description: Camera funcionando
+    timeString: 2018-09-22T17:56:07.000-03:00
+    commitTimeString: 2018-09-22T17:56:07.000-03:00
+    changes:
+    - path: Assets\Materials.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Materials.meta
+      projectPath: Assets\Materials.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Materials\New Material.mat
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Materials\New Material.mat
+      projectPath: Assets\Materials\New Material.mat
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Materials\New Material.mat.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Materials\New Material.mat.meta
+      projectPath: Assets\Materials\New Material.mat.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins.meta
+      projectPath: Assets\Plugins.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub.meta
+      projectPath: Assets\Plugins\GitHub.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor.meta
+      projectPath: Assets\Plugins\GitHub\Editor.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll
+      projectPath: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Api.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\GitHub.Api.dll
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.mdb
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\GitHub.Api.dll.mdb
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.mdb
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.mdb.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\GitHub.Api.dll.mdb.meta
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.mdb.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\GitHub.Logging.dll
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.mdb
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.mdb
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.mdb
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.mdb.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.mdb.meta
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.mdb.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\GitHub.Unity.dll
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.mdb
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.mdb
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.mdb
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.mdb.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.mdb.meta
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.mdb.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\ICSharpCode.SharpZipLib.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\ICSharpCode.SharpZipLib.dll
+      projectPath: Assets\Plugins\GitHub\Editor\ICSharpCode.SharpZipLib.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\ICSharpCode.SharpZipLib.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\ICSharpCode.SharpZipLib.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\ICSharpCode.SharpZipLib.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\Mono.Posix.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\Mono.Posix.dll
+      projectPath: Assets\Plugins\GitHub\Editor\Mono.Posix.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\QuickGuide.pdf
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\QuickGuide.pdf
+      projectPath: Assets\Plugins\GitHub\Editor\QuickGuide.pdf
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
+      projectPath: Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll
+      projectPath: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\System.Threading.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\System.Threading.dll
+      projectPath: Assets\Plugins\GitHub\Editor\System.Threading.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\big-logo@2x.png
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\big-logo@2x.png
+      projectPath: Assets\Plugins\GitHub\Editor\big-logo@2x.png
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
+      projectPath: Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\credits.txt
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\credits.txt
+      projectPath: Assets\Plugins\GitHub\Editor\credits.txt
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\credits.txt.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\credits.txt.meta
+      projectPath: Assets\Plugins\GitHub\Editor\credits.txt.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\eula.txt
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\eula.txt
+      projectPath: Assets\Plugins\GitHub\Editor\eula.txt
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\eula.txt.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\eula.txt.meta
+      projectPath: Assets\Plugins\GitHub\Editor\eula.txt.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\libsfw.bundle
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\libsfw.bundle
+      projectPath: Assets\Plugins\GitHub\Editor\libsfw.bundle
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
+      projectPath: Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\libsfw.so
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\libsfw.so
+      projectPath: Assets\Plugins\GitHub\Editor\libsfw.so
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\libsfw.so.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\libsfw.so.meta
+      projectPath: Assets\Plugins\GitHub\Editor\libsfw.so.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\sfw.net.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\sfw.net.dll
+      projectPath: Assets\Plugins\GitHub\Editor\sfw.net.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\x64.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\x64.meta
+      projectPath: Assets\Plugins\GitHub\Editor\x64.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll
+      projectPath: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll
+      projectPath: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\x86.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\x86.meta
+      projectPath: Assets\Plugins\GitHub\Editor\x86.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll
+      projectPath: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll
+      projectPath: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Prefabs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Prefabs.meta
+      projectPath: Assets\Prefabs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Prefabs\PlayerListing.prefab
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Prefabs\PlayerListing.prefab
+      projectPath: Assets\Prefabs\PlayerListing.prefab
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Prefabs\PlayerListing.prefab.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Prefabs\PlayerListing.prefab.meta
+      projectPath: Assets\Prefabs\PlayerListing.prefab.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Prefabs\RoomListing.prefab
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Prefabs\RoomListing.prefab
+      projectPath: Assets\Prefabs\RoomListing.prefab
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Prefabs\RoomListing.prefab.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Prefabs\RoomListing.prefab.meta
+      projectPath: Assets\Prefabs\RoomListing.prefab.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Resources.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Resources.meta
+      projectPath: Assets\Resources.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Resources\Prefabs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Resources\Prefabs.meta
+      projectPath: Assets\Resources\Prefabs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Resources\Prefabs\NewPlayer.prefab
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Resources\Prefabs\NewPlayer.prefab
+      projectPath: Assets\Resources\Prefabs\NewPlayer.prefab
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Resources\Prefabs\NewPlayer.prefab.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Resources\Prefabs\NewPlayer.prefab.meta
+      projectPath: Assets\Resources\Prefabs\NewPlayer.prefab.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Terrain.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Terrain.meta
+      projectPath: Assets\Terrain.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Terrain\Terrain0.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Terrain\Terrain0.asset
+      projectPath: Assets\Terrain\Terrain0.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Terrain\Terrain0.asset.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Terrain\Terrain0.asset.meta
+      projectPath: Assets\Terrain\Terrain0.asset.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture.meta
+      projectPath: Assets\Texture.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\background.jpg
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\background.jpg
+      projectPath: Assets\Texture\background.jpg
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\background.jpg.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\background.jpg.meta
+      projectPath: Assets\Texture\background.jpg.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\dirttexture0.jpg
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\dirttexture0.jpg
+      projectPath: Assets\Texture\dirttexture0.jpg
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\dirttexture0.jpg.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\dirttexture0.jpg.meta
+      projectPath: Assets\Texture\dirttexture0.jpg.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\dirttexture1.png
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\dirttexture1.png
+      projectPath: Assets\Texture\dirttexture1.png
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\dirttexture1.png.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\dirttexture1.png.meta
+      projectPath: Assets\Texture\dirttexture1.png.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\grasstexture0.png
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\grasstexture0.png
+      projectPath: Assets\Texture\grasstexture0.png
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\grasstexture0.png.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\grasstexture0.png.meta
+      projectPath: Assets\Texture\grasstexture0.png.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\grasstexture1.jpg
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\grasstexture1.jpg
+      projectPath: Assets\Texture\grasstexture1.jpg
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\grasstexture1.jpg.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\grasstexture1.jpg.meta
+      projectPath: Assets\Texture\grasstexture1.jpg.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\grasstexture2.png
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\grasstexture2.png
+      projectPath: Assets\Texture\grasstexture2.png
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\grasstexture2.png.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\grasstexture2.png.meta
+      projectPath: Assets\Texture\grasstexture2.png.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\grasstexture3.png
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\grasstexture3.png
+      projectPath: Assets\Texture\grasstexture3.png
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\Texture\grasstexture3.png.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\Texture\grasstexture3.png.meta
+      projectPath: Assets\Texture\grasstexture3.png.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon.meta
+      projectPath: Assets\_Photon.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking.meta
+      projectPath: Assets\_Photon\Photon Unity Networking.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\AccountService.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\AccountService.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\AccountService.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\AccountService.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\AccountService.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\AccountService.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\CullAreaEditor.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\CullAreaEditor.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\CullAreaEditor.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\CullAreaEditor.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\CullAreaEditor.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\CullAreaEditor.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Newtonsoft.Json.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\Newtonsoft.Json.dll
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Newtonsoft.Json.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Newtonsoft.Json.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\Newtonsoft.Json.dll.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Newtonsoft.Json.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonConverter.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PhotonConverter.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonConverter.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonConverter.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PhotonConverter.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonConverter.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonEditor.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PhotonEditor.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonEditor.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonEditor.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PhotonEditor.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonEditor.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonEditorUtils.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PhotonEditorUtils.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonEditorUtils.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonEditorUtils.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PhotonEditorUtils.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonEditorUtils.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonGUI.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PhotonGUI.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonGUI.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonGUI.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PhotonGUI.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonGUI.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonViewHandler.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PhotonViewHandler.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonViewHandler.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonViewHandler.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PhotonViewHandler.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonViewHandler.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonViewInspector.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PhotonViewInspector.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonViewInspector.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonViewInspector.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PhotonViewInspector.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PhotonViewInspector.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PunSceneSettings.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PunSceneSettings.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PunSceneSettings.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PunSceneSettings.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PunSceneSettings.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PunSceneSettings.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PunSceneSettingsFile.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PunSceneSettingsFile.asset
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PunSceneSettingsFile.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PunSceneSettingsFile.asset.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\PunSceneSettingsFile.asset.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\PunSceneSettingsFile.asset.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\ReorderableListResources.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\ReorderableListResources.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\ReorderableListResources.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\ReorderableListResources.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\ReorderableListResources.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\ReorderableListResources.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\ServerSettingsInspector.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\ServerSettingsInspector.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\ServerSettingsInspector.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\ServerSettingsInspector.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\ServerSettingsInspector.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\ServerSettingsInspector.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\Views.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonAnimatorViewEditor.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\Views\PhotonAnimatorViewEditor.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonAnimatorViewEditor.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonAnimatorViewEditor.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\Views\PhotonAnimatorViewEditor.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonAnimatorViewEditor.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonRigidbody2DViewEditor.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\Views\PhotonRigidbody2DViewEditor.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonRigidbody2DViewEditor.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonRigidbody2DViewEditor.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\Views\PhotonRigidbody2DViewEditor.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonRigidbody2DViewEditor.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonRigidbodyViewEditor.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\Views\PhotonRigidbodyViewEditor.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonRigidbodyViewEditor.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonRigidbodyViewEditor.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\Views\PhotonRigidbodyViewEditor.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonRigidbodyViewEditor.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonTransformViewEditor.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\Views\PhotonTransformViewEditor.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonTransformViewEditor.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonTransformViewEditor.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\Views\PhotonTransformViewEditor.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonTransformViewEditor.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\background.jpg
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\background.jpg
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\background.jpg
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\background.jpg.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\background.jpg.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\background.jpg.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\help.png
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\help.png
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\help.png
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\help.png.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Editor\PhotonNetwork\help.png.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Editor\PhotonNetwork\help.png.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\PhotonCloud-icon.png
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\PhotonCloud-icon.png
+      projectPath: Assets\_Photon\Photon Unity Networking\PhotonCloud-icon.png
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\PhotonCloud-icon.png.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\PhotonCloud-icon.png.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\PhotonCloud-icon.png.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\PhotonNetwork-Documentation.chm
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\PhotonNetwork-Documentation.chm
+      projectPath: Assets\_Photon\Photon Unity Networking\PhotonNetwork-Documentation.chm
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\PhotonNetwork-Documentation.chm.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\PhotonNetwork-Documentation.chm.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\PhotonNetwork-Documentation.chm.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\PhotonNetwork-Documentation.pdf
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\PhotonNetwork-Documentation.pdf
+      projectPath: Assets\_Photon\Photon Unity Networking\PhotonNetwork-Documentation.pdf
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\PhotonNetwork-Documentation.pdf.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\PhotonNetwork-Documentation.pdf.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\PhotonNetwork-Documentation.pdf.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\CustomTypes.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\CustomTypes.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Enums.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Enums.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Extensions.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Extensions.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\FriendInfo.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\FriendInfo.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\FriendInfo.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\FriendInfo.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\FriendInfo.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\FriendInfo.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\GizmoType.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\GizmoType.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\GizmoType.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\GizmoType.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\GizmoType.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\GizmoType.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\LoadbalancingPeer.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\LoadbalancingPeer.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\LoadbalancingPeer.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\LoadbalancingPeer.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\LoadbalancingPeer.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\LoadbalancingPeer.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\NetworkingPeer.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\NetworkingPeer.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonClasses.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonClasses.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonClasses.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonClasses.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonClasses.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonClasses.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonHandler.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonHandler.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonLagSimulationGui.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonLagSimulationGui.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonLagSimulationGui.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonLagSimulationGui.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonLagSimulationGui.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonLagSimulationGui.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonNetwork.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonNetwork.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonPlayer.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonPlayer.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonPlayer.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonPlayer.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonPlayer.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonPlayer.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStatsGui.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonStatsGui.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStatsGui.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStatsGui.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonStatsGui.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStatsGui.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStreamQueue.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonStreamQueue.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStreamQueue.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStreamQueue.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonStreamQueue.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStreamQueue.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonView.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PhotonView.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PingCloudRegions.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PingCloudRegions.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PingCloudRegions.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PingCloudRegions.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\PingCloudRegions.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\PingCloudRegions.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\RPC.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\RPC.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\RPC.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\RPC.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\RPC.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\RPC.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Room.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Room.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Room.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Room.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Room.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Room.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\RoomInfo.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\RoomInfo.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\RoomInfo.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\RoomInfo.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\RoomInfo.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\RoomInfo.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\ServerSettings.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\ServerSettings.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\ServerSettings.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\ServerSettings.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\ServerSettings.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\ServerSettings.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\SocketUdp.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\SocketUdp.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\SocketUdp.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\SocketUdp.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\SocketUdp.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\SocketUdp.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\SocketWebTcp.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\SocketWebTcp.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\SocketWebTcp.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\SocketWebTcp.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\SocketWebTcp.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\SocketWebTcp.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonAnimatorView.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonAnimatorView.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonAnimatorView.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonAnimatorView.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonAnimatorView.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonAnimatorView.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonRigidbody2DView.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonRigidbody2DView.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonRigidbody2DView.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonRigidbody2DView.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonRigidbody2DView.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonRigidbody2DView.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonRigidbodyView.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonRigidbodyView.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonRigidbodyView.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonRigidbodyView.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonRigidbodyView.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonRigidbodyView.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformView.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformView.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformView.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformView.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformView.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformView.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionControl.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionControl.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionControl.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionControl.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionControl.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionControl.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionModel.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionModel.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionModel.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionModel.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionModel.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionModel.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationControl.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationControl.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationControl.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationControl.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationControl.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationControl.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationModel.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationModel.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationModel.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationModel.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationModel.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationModel.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleControl.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleControl.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleControl.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleControl.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleControl.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleControl.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleModel.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleModel.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleModel.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleModel.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleModel.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleModel.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\PunIcon-White-128.png
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\PunIcon-White-128.png
+      projectPath: Assets\_Photon\Photon Unity Networking\PunIcon-White-128.png
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\PunIcon-White-128.png.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\PunIcon-White-128.png.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\PunIcon-White-128.png.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Resources.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Resources.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Resources.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Resources\PhotonServerSettings.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Resources\PhotonServerSettings.asset
+      projectPath: Assets\_Photon\Photon Unity Networking\Resources\PhotonServerSettings.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\Resources\PhotonServerSettings.asset.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\Resources\PhotonServerSettings.asset.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\Resources\PhotonServerSettings.asset.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\ConnectAndJoinRandom.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\ConnectAndJoinRandom.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\ConnectAndJoinRandom.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\ConnectAndJoinRandom.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\ConnectAndJoinRandom.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\ConnectAndJoinRandom.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\CullArea.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\CullArea.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\CullArea.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\CullArea.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\CullArea.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\CullArea.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\InRoomChat.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\InRoomChat.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\InRoomChat.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\InRoomChat.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\InRoomChat.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\InRoomChat.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\InputToEvent.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\InputToEvent.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\InputToEvent.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\InputToEvent.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\InputToEvent.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\InputToEvent.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\ManualPhotonViewAllocator.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\ManualPhotonViewAllocator.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\ManualPhotonViewAllocator.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\ManualPhotonViewAllocator.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\ManualPhotonViewAllocator.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\ManualPhotonViewAllocator.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\MoveByKeys.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\MoveByKeys.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\MoveByKeys.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\MoveByKeys.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\MoveByKeys.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\MoveByKeys.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\NetworkCullingHandler.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\NetworkCullingHandler.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\NetworkCullingHandler.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\NetworkCullingHandler.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\NetworkCullingHandler.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\NetworkCullingHandler.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnClickDestroy.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\OnClickDestroy.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnClickDestroy.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnClickDestroy.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\OnClickDestroy.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnClickDestroy.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnClickInstantiate.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\OnClickInstantiate.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnClickInstantiate.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnClickInstantiate.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\OnClickInstantiate.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnClickInstantiate.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnJoinedInstantiate.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\OnJoinedInstantiate.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnJoinedInstantiate.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnJoinedInstantiate.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\OnJoinedInstantiate.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnJoinedInstantiate.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnStartDelete.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\OnStartDelete.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnStartDelete.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnStartDelete.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\OnStartDelete.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\OnStartDelete.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PhotonPlayer.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PhotonPlayer\Editor.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PlayerRoomIndexingInspector.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PhotonPlayer\Editor\PlayerRoomIndexingInspector.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PlayerRoomIndexingInspector.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PlayerRoomIndexingInspector.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PhotonPlayer\Editor\PlayerRoomIndexingInspector.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PlayerRoomIndexingInspector.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PunTeamsInspector.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PhotonPlayer\Editor\PunTeamsInspector.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PunTeamsInspector.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PunTeamsInspector.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PhotonPlayer\Editor\PunTeamsInspector.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PunTeamsInspector.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\PlayerRoomIndexing.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PhotonPlayer\PlayerRoomIndexing.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\PlayerRoomIndexing.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\PlayerRoomIndexing.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PhotonPlayer\PlayerRoomIndexing.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\PlayerRoomIndexing.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PickupItem.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PickupItem.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PickupItem.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PickupItem.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PickupItem.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PickupItem.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PickupItemSimple.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PickupItemSimple.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PickupItemSimple.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PickupItemSimple.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PickupItemSimple.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PickupItemSimple.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PickupItemSyncer.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PickupItemSyncer.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PickupItemSyncer.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PickupItemSyncer.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PickupItemSyncer.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PickupItemSyncer.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PointedAtGameObjectInfo.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PointedAtGameObjectInfo.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PointedAtGameObjectInfo.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PointedAtGameObjectInfo.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PointedAtGameObjectInfo.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PointedAtGameObjectInfo.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PunPlayerScores.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PunPlayerScores.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PunPlayerScores.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PunPlayerScores.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PunPlayerScores.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PunPlayerScores.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PunTeams.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PunTeams.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PunTeams.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PunTeams.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PunTeams.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PunTeams.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PunTurnManager.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PunTurnManager.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PunTurnManager.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\PunTurnManager.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\PunTurnManager.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\PunTurnManager.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\QuitOnEscapeOrBack.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\QuitOnEscapeOrBack.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\QuitOnEscapeOrBack.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\QuitOnEscapeOrBack.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\QuitOnEscapeOrBack.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\QuitOnEscapeOrBack.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\ShowStatusWhenConnecting.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\ShowStatusWhenConnecting.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\ShowStatusWhenConnecting.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\ShowStatusWhenConnecting.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\ShowStatusWhenConnecting.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\ShowStatusWhenConnecting.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\SmoothSyncMovement.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\SmoothSyncMovement.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\SmoothSyncMovement.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\SmoothSyncMovement.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\SmoothSyncMovement.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\SmoothSyncMovement.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\SupportLogger.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\SupportLogger.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\SupportLogger.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\SupportLogger.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\SupportLogger.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\SupportLogger.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\TimeKeeper.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\TimeKeeper.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\TimeKeeper.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\TimeKeeper.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\TimeKeeper.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\TimeKeeper.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\UI.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI\ButtonInsideScrollList.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\UI\ButtonInsideScrollList.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI\ButtonInsideScrollList.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI\ButtonInsideScrollList.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\UI\ButtonInsideScrollList.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI\ButtonInsideScrollList.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\UI\TextButtonTransition.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\UI\TextButtonTransition.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\changelog.txt
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\changelog.txt
+      projectPath: Assets\_Photon\Photon Unity Networking\changelog.txt
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\changelog.txt.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\changelog.txt.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\changelog.txt.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\link.xml
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\link.xml
+      projectPath: Assets\_Photon\Photon Unity Networking\link.xml
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\link.xml.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\link.xml.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\link.xml.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\readme.txt
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\readme.txt
+      projectPath: Assets\_Photon\Photon Unity Networking\readme.txt
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Photon Unity Networking\readme.txt.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Photon Unity
+        Networking\readme.txt.meta
+      projectPath: Assets\_Photon\Photon Unity Networking\readme.txt.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi.meta
+      projectPath: Assets\_Photon\PhotonChatApi.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatChannel.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatChannel.cs
+      projectPath: Assets\_Photon\PhotonChatApi\ChatChannel.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatChannel.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatChannel.cs.meta
+      projectPath: Assets\_Photon\PhotonChatApi\ChatChannel.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatClient.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatClient.cs
+      projectPath: Assets\_Photon\PhotonChatApi\ChatClient.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatClient.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatClient.cs.meta
+      projectPath: Assets\_Photon\PhotonChatApi\ChatClient.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatDisconnectCause.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatDisconnectCause.cs
+      projectPath: Assets\_Photon\PhotonChatApi\ChatDisconnectCause.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatDisconnectCause.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatDisconnectCause.cs.meta
+      projectPath: Assets\_Photon\PhotonChatApi\ChatDisconnectCause.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatEventCode.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatEventCode.cs
+      projectPath: Assets\_Photon\PhotonChatApi\ChatEventCode.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatEventCode.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatEventCode.cs.meta
+      projectPath: Assets\_Photon\PhotonChatApi\ChatEventCode.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatOperationCode.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatOperationCode.cs
+      projectPath: Assets\_Photon\PhotonChatApi\ChatOperationCode.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatOperationCode.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatOperationCode.cs.meta
+      projectPath: Assets\_Photon\PhotonChatApi\ChatOperationCode.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatParameterCode.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatParameterCode.cs
+      projectPath: Assets\_Photon\PhotonChatApi\ChatParameterCode.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatParameterCode.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatParameterCode.cs.meta
+      projectPath: Assets\_Photon\PhotonChatApi\ChatParameterCode.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatPeer.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatPeer.cs
+      projectPath: Assets\_Photon\PhotonChatApi\ChatPeer.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatPeer.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatPeer.cs.meta
+      projectPath: Assets\_Photon\PhotonChatApi\ChatPeer.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatState.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatState.cs
+      projectPath: Assets\_Photon\PhotonChatApi\ChatState.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatState.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatState.cs.meta
+      projectPath: Assets\_Photon\PhotonChatApi\ChatState.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatUserStatus.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatUserStatus.cs
+      projectPath: Assets\_Photon\PhotonChatApi\ChatUserStatus.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\ChatUserStatus.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\ChatUserStatus.cs.meta
+      projectPath: Assets\_Photon\PhotonChatApi\ChatUserStatus.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\IChatClientListener.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\IChatClientListener.cs
+      projectPath: Assets\_Photon\PhotonChatApi\IChatClientListener.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\PhotonChatApi\IChatClientListener.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\PhotonChatApi\IChatClientListener.cs.meta
+      projectPath: Assets\_Photon\PhotonChatApi\IChatClientListener.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins.meta
+      projectPath: Assets\_Photon\Plugins.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\Metro.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\Metro.meta
+      projectPath: Assets\_Photon\Plugins\Metro.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\Metro\Photon3Unity3D.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\Metro\Photon3Unity3D.dll
+      projectPath: Assets\_Photon\Plugins\Metro\Photon3Unity3D.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\Metro\Photon3Unity3D.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\Metro\Photon3Unity3D.dll.meta
+      projectPath: Assets\_Photon\Plugins\Metro\Photon3Unity3D.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\Metro\Photon3Unity3D.pri
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\Metro\Photon3Unity3D.pri
+      projectPath: Assets\_Photon\Plugins\Metro\Photon3Unity3D.pri
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\Metro\Photon3Unity3D.pri.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\Metro\Photon3Unity3D.pri.meta
+      projectPath: Assets\_Photon\Plugins\Metro\Photon3Unity3D.pri.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\Photon3Unity3D.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\Photon3Unity3D.dll
+      projectPath: Assets\_Photon\Plugins\Photon3Unity3D.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\Photon3Unity3D.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\Photon3Unity3D.dll.meta
+      projectPath: Assets\_Photon\Plugins\Photon3Unity3D.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\Photon3Unity3D.xml
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\Photon3Unity3D.xml
+      projectPath: Assets\_Photon\Plugins\Photon3Unity3D.xml
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\Photon3Unity3D.xml.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\Photon3Unity3D.xml.meta
+      projectPath: Assets\_Photon\Plugins\Photon3Unity3D.xml.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\WebSocket.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\WebSocket.meta
+      projectPath: Assets\_Photon\Plugins\WebSocket.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\WebSocket\WebSocket.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\WebSocket\WebSocket.cs
+      projectPath: Assets\_Photon\Plugins\WebSocket\WebSocket.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\WebSocket\WebSocket.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\WebSocket\WebSocket.cs.meta
+      projectPath: Assets\_Photon\Plugins\WebSocket\WebSocket.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\WebSocket\WebSocket.jslib
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\WebSocket\WebSocket.jslib
+      projectPath: Assets\_Photon\Plugins\WebSocket\WebSocket.jslib
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\WebSocket\WebSocket.jslib.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\WebSocket\WebSocket.jslib.meta
+      projectPath: Assets\_Photon\Plugins\WebSocket\WebSocket.jslib.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\WebSocket\websocket-sharp.README
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\WebSocket\websocket-sharp.README
+      projectPath: Assets\_Photon\Plugins\WebSocket\websocket-sharp.README
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\WebSocket\websocket-sharp.README.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\WebSocket\websocket-sharp.README.meta
+      projectPath: Assets\_Photon\Plugins\WebSocket\websocket-sharp.README.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\WebSocket\websocket-sharp.dll
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\WebSocket\websocket-sharp.dll
+      projectPath: Assets\_Photon\Plugins\WebSocket\websocket-sharp.dll
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\WebSocket\websocket-sharp.dll.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\WebSocket\websocket-sharp.dll.meta
+      projectPath: Assets\_Photon\Plugins\WebSocket\websocket-sharp.dll.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\release_history.txt
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\release_history.txt
+      projectPath: Assets\_Photon\Plugins\release_history.txt
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Photon\Plugins\release_history.txt.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Photon\Plugins\release_history.txt.meta
+      projectPath: Assets\_Photon\Plugins\release_history.txt.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scenes.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scenes.meta
+      projectPath: Assets\_Scenes.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scenes\Game.unity
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scenes\Game.unity
+      projectPath: Assets\_Scenes\Game.unity
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scenes\Game.unity.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scenes\Game.unity.meta
+      projectPath: Assets\_Scenes\Game.unity.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scenes\Menu.unity
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scenes\Menu.unity
+      projectPath: Assets\_Scenes\Menu.unity
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scenes\Menu.unity.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scenes\Menu.unity.meta
+      projectPath: Assets\_Scenes\Menu.unity.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts.meta
+      projectPath: Assets\_Scripts.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Camera.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Camera.meta
+      projectPath: Assets\_Scripts\Camera.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Camera\CameraFollow.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Camera\CameraFollow.cs
+      projectPath: Assets\_Scripts\Camera\CameraFollow.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Camera\CameraFollow.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Camera\CameraFollow.cs.meta
+      projectPath: Assets\_Scripts\Camera\CameraFollow.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu.meta
+      projectPath: Assets\_Scripts\Menu.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\CreateRoom.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\CreateRoom.meta
+      projectPath: Assets\_Scripts\Menu\CreateRoom.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\CreateRoom\CreateRoom.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\CreateRoom\CreateRoom.cs
+      projectPath: Assets\_Scripts\Menu\CreateRoom\CreateRoom.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\CreateRoom\CreateRoom.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\CreateRoom\CreateRoom.cs.meta
+      projectPath: Assets\_Scripts\Menu\CreateRoom\CreateRoom.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\CurrentRoom.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\CurrentRoom.meta
+      projectPath: Assets\_Scripts\Menu\CurrentRoom.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\CurrentRoom\CurrentRoomCanvas.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\CurrentRoom\CurrentRoomCanvas.cs
+      projectPath: Assets\_Scripts\Menu\CurrentRoom\CurrentRoomCanvas.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\CurrentRoom\CurrentRoomCanvas.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\CurrentRoom\CurrentRoomCanvas.cs.meta
+      projectPath: Assets\_Scripts\Menu\CurrentRoom\CurrentRoomCanvas.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\CurrentRoom\PlayerLayoutGroup.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\CurrentRoom\PlayerLayoutGroup.cs
+      projectPath: Assets\_Scripts\Menu\CurrentRoom\PlayerLayoutGroup.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\CurrentRoom\PlayerLayoutGroup.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\CurrentRoom\PlayerLayoutGroup.cs.meta
+      projectPath: Assets\_Scripts\Menu\CurrentRoom\PlayerLayoutGroup.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\CurrentRoom\PlayerListing.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\CurrentRoom\PlayerListing.cs
+      projectPath: Assets\_Scripts\Menu\CurrentRoom\PlayerListing.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\CurrentRoom\PlayerListing.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\CurrentRoom\PlayerListing.cs.meta
+      projectPath: Assets\_Scripts\Menu\CurrentRoom\PlayerListing.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\Generic.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\Generic.meta
+      projectPath: Assets\_Scripts\Menu\Generic.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\Generic\DDOL.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\Generic\DDOL.cs
+      projectPath: Assets\_Scripts\Menu\Generic\DDOL.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\Generic\DDOL.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\Generic\DDOL.cs.meta
+      projectPath: Assets\_Scripts\Menu\Generic\DDOL.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\Lobby.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\Lobby.meta
+      projectPath: Assets\_Scripts\Menu\Lobby.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\Lobby\LobbyCanvas.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\Lobby\LobbyCanvas.cs
+      projectPath: Assets\_Scripts\Menu\Lobby\LobbyCanvas.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\Lobby\LobbyCanvas.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\Lobby\LobbyCanvas.cs.meta
+      projectPath: Assets\_Scripts\Menu\Lobby\LobbyCanvas.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\Lobby\RoomLayoutGroup.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\Lobby\RoomLayoutGroup.cs
+      projectPath: Assets\_Scripts\Menu\Lobby\RoomLayoutGroup.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\Lobby\RoomLayoutGroup.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\Lobby\RoomLayoutGroup.cs.meta
+      projectPath: Assets\_Scripts\Menu\Lobby\RoomLayoutGroup.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\Lobby\RoomListing.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\Lobby\RoomListing.cs
+      projectPath: Assets\_Scripts\Menu\Lobby\RoomListing.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Menu\Lobby\RoomListing.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Menu\Lobby\RoomListing.cs.meta
+      projectPath: Assets\_Scripts\Menu\Lobby\RoomListing.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Network.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Network.meta
+      projectPath: Assets\_Scripts\Network.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Network\LobbyNetwork.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Network\LobbyNetwork.cs
+      projectPath: Assets\_Scripts\Network\LobbyNetwork.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Network\LobbyNetwork.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Network\LobbyNetwork.cs.meta
+      projectPath: Assets\_Scripts\Network\LobbyNetwork.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Network\PlayerNetwork.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Network\PlayerNetwork.cs
+      projectPath: Assets\_Scripts\Network\PlayerNetwork.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Network\PlayerNetwork.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Network\PlayerNetwork.cs.meta
+      projectPath: Assets\_Scripts\Network\PlayerNetwork.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Player.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Player.meta
+      projectPath: Assets\_Scripts\Player.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Player\PlayerCamera.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Player\PlayerCamera.cs
+      projectPath: Assets\_Scripts\Player\PlayerCamera.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Player\PlayerCamera.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Player\PlayerCamera.cs.meta
+      projectPath: Assets\_Scripts\Player\PlayerCamera.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Player\PlayerMovement.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Player\PlayerMovement.cs
+      projectPath: Assets\_Scripts\Player\PlayerMovement.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Player\PlayerMovement.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Player\PlayerMovement.cs.meta
+      projectPath: Assets\_Scripts\Player\PlayerMovement.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\ToxicArea.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\ToxicArea.cs
+      projectPath: Assets\_Scripts\ToxicArea.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\ToxicArea.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\ToxicArea.cs.meta
+      projectPath: Assets\_Scripts\ToxicArea.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Utils.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Utils.meta
+      projectPath: Assets\_Scripts\Utils.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Utils\LeaveCurrentMatch.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Utils\LeaveCurrentMatch.cs
+      projectPath: Assets\_Scripts\Utils\LeaveCurrentMatch.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Utils\LeaveCurrentMatch.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Utils\LeaveCurrentMatch.cs.meta
+      projectPath: Assets\_Scripts\Utils\LeaveCurrentMatch.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Utils\MainCanvasManager.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Utils\MainCanvasManager.cs
+      projectPath: Assets\_Scripts\Utils\MainCanvasManager.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Utils\MainCanvasManager.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Utils\MainCanvasManager.cs.meta
+      projectPath: Assets\_Scripts\Utils\MainCanvasManager.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Utils\PlayerManagement.cs
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Utils\PlayerManagement.cs
+      projectPath: Assets\_Scripts\Utils\PlayerManagement.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\_Scripts\Utils\PlayerManagement.cs.meta
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\_Scripts\Utils\PlayerManagement.cs.meta
+      projectPath: Assets\_Scripts\Utils\PlayerManagement.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Packages\manifest.json
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Packages\manifest.json
+      projectPath: Packages\manifest.json
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\AudioManager.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\AudioManager.asset
+      projectPath: ProjectSettings\AudioManager.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\ClusterInputManager.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\ClusterInputManager.asset
+      projectPath: ProjectSettings\ClusterInputManager.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\DynamicsManager.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\DynamicsManager.asset
+      projectPath: ProjectSettings\DynamicsManager.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\EditorBuildSettings.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\EditorBuildSettings.asset
+      projectPath: ProjectSettings\EditorBuildSettings.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\EditorSettings.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\EditorSettings.asset
+      projectPath: ProjectSettings\EditorSettings.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\GraphicsSettings.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\GraphicsSettings.asset
+      projectPath: ProjectSettings\GraphicsSettings.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\InputManager.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\InputManager.asset
+      projectPath: ProjectSettings\InputManager.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\NavMeshAreas.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\NavMeshAreas.asset
+      projectPath: ProjectSettings\NavMeshAreas.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\NetworkManager.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\NetworkManager.asset
+      projectPath: ProjectSettings\NetworkManager.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\Physics2DSettings.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\Physics2DSettings.asset
+      projectPath: ProjectSettings\Physics2DSettings.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\PresetManager.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\PresetManager.asset
+      projectPath: ProjectSettings\PresetManager.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\ProjectSettings.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\ProjectSettings.asset
+      projectPath: ProjectSettings\ProjectSettings.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\ProjectVersion.txt
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\ProjectVersion.txt
+      projectPath: ProjectSettings\ProjectVersion.txt
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\QualitySettings.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\QualitySettings.asset
+      projectPath: ProjectSettings\QualitySettings.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\TagManager.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\TagManager.asset
+      projectPath: ProjectSettings\TagManager.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\TimeManager.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\TimeManager.asset
+      projectPath: ProjectSettings\TimeManager.asset
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: ProjectSettings\UnityConnectSettings.asset
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\ProjectSettings\UnityConnectSettings.asset
+      projectPath: ProjectSettings\UnityConnectSettings.asset
+      originalPath: 
+      status: 4
+      staged: 0
+  - commitID: d067ca8e67f3f7a684520d59abafb448cd23a54f
+    mergeA: 
+    mergeB: 
+    authorName: myllasasaki
+    authorEmail: myllasasaki@gmail.com
+    commitEmail: myllasasaki@gmail.com
+    commitName: myllasasaki
+    summary: Initial commit
+    description: Initial commit
+    timeString: 2018-09-22T17:52:16.000-03:00
+    commitTimeString: 2018-09-22T17:52:16.000-03:00
+    changes:
+    - path: .gitattributes
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\.gitattributes
+      projectPath: .gitattributes
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: .gitignore
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\.gitignore
+      projectPath: .gitignore
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: Assets\.gitignore
+      fullPath: D:\Mylla\Documents\Unity\Fluffy_Skirmish\Assets\.gitignore
+      projectPath: Assets\.gitignore
+      originalPath: 
+      status: 4
+      staged: 0
