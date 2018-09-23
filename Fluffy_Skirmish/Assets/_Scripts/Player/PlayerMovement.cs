@@ -42,13 +42,14 @@ public class PlayerMovement : Photon.MonoBehaviour {
     }
 
     private void CheckInput() { //Handle player movement
-        float moveSpeed = 100;
-        float rotateSpeed = 500f;
-
+        float moveSpeed = 15;
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
 
-        transform.position += transform.forward * (vertical * moveSpeed * Time.deltaTime);
-        transform.Rotate(new Vector3(0, horizontal * rotateSpeed * Time.deltaTime, 0));
+        Vector3 moveVertical = transform.forward * vertical;
+        Vector3 moveHorizontal = transform.right * horizontal;
+
+        transform.position += (moveHorizontal + moveVertical) * (moveSpeed * Time.deltaTime);
+
     }
 }

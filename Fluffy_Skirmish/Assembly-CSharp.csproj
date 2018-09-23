@@ -154,16 +154,16 @@
     <None Include="Assets\_Photon\Photon Unity Networking\readme.txt" />
     <None Include="Assets\_Photon\Photon Unity Networking\changelog.txt" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/Mylla/Desktop/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>D:/Mylla/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/Mylla/Desktop/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Mylla/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/Mylla/Desktop/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/Mylla/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Mylla/Desktop/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Mylla/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Program Files/Unity/2018.2.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -364,10 +364,10 @@
       <HintPath>D:/Program Files/Unity/2018.2.8f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Photon3Unity3D">
-      <HintPath>C:/Users/Mylla/Desktop/Fluffy_Skirmish/Fluffy_Skirmish/Assets/_Photon/Plugins/Photon3Unity3D.dll</HintPath>
+      <HintPath>D:/Mylla/Fluffy_Skirmish/Fluffy_Skirmish/Assets/_Photon/Plugins/Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>C:/Users/Mylla/Desktop/Fluffy_Skirmish/Fluffy_Skirmish/Assets/_Photon/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+      <HintPath>D:/Mylla/Fluffy_Skirmish/Fluffy_Skirmish/Assets/_Photon/Plugins/WebSocket/websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/Mylla/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>

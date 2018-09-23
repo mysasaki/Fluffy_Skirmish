@@ -79,16 +79,16 @@
     <Compile Include="Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PlayerRoomIndexingInspector.cs" />
     <Compile Include="Assets\_Photon\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PunTeamsInspector.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/Mylla/Desktop/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>D:/Mylla/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/Mylla/Desktop/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Mylla/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/Mylla/Desktop/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/Mylla/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Mylla/Desktop/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Mylla/Fluffy_Skirmish/Fluffy_Skirmish/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Program Files/Unity/2018.2.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -331,13 +331,13 @@
       <HintPath>D:/Program Files/Unity/2018.2.8f1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>C:/Users/Mylla/Desktop/Fluffy_Skirmish/Fluffy_Skirmish/Assets/_Photon/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll</HintPath>
+      <HintPath>D:/Mylla/Fluffy_Skirmish/Fluffy_Skirmish/Assets/_Photon/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Photon3Unity3D">
-      <HintPath>C:/Users/Mylla/Desktop/Fluffy_Skirmish/Fluffy_Skirmish/Assets/_Photon/Plugins/Photon3Unity3D.dll</HintPath>
+      <HintPath>D:/Mylla/Fluffy_Skirmish/Fluffy_Skirmish/Assets/_Photon/Plugins/Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>C:/Users/Mylla/Desktop/Fluffy_Skirmish/Fluffy_Skirmish/Assets/_Photon/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+      <HintPath>D:/Mylla/Fluffy_Skirmish/Fluffy_Skirmish/Assets/_Photon/Plugins/WebSocket/websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/Mylla/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>

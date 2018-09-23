@@ -6,21 +6,21 @@ public class CameraFollow : MonoBehaviour {
 
     public Transform Target;
 
-    private float m_smoothSpeed;
-    private Vector3 m_offset;
-
-    private void Awake() {
-        m_smoothSpeed = 0.125f;
-        m_offset = new Vector3(0, 5, -10);
-    }
+    private float m_rotateSpeed = 5;
+    private Vector3 m_offset = new Vector3(0, -2.5f, 7f);
 
     private void FixedUpdate() {
 
         if (Target == null)
             return;
 
-        Vector3 desiredPosition = Target.position + m_offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, m_smoothSpeed);
-        transform.position = smoothedPosition;   
+        float horizontal = Input.GetAxis("Mouse X") * m_rotateSpeed;
+        Target.Rotate(0, horizontal, 0);
+
+        float desiredAngle = Target.eulerAngles.y;
+        Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
+        transform.position = Target.position - (rotation * m_offset);
+
+        transform.LookAt(Target);
     }
 }
