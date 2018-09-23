@@ -6,8 +6,10 @@ public class CameraFollow : MonoBehaviour {
 
     public Transform Target;
 
-    private float m_rotateSpeed = 5;
-    private Vector3 m_offset = new Vector3(0, -2.5f, 7f);
+    //TODO: - setar tudo pra private depois. ta public pra ajustar os valores
+    public float m_rotateSpeed = 8;
+    public Vector3 m_offset = new Vector3(0, -2.5f, 7f);
+    public Vector3 m_offset2 = new Vector3(0, 0, 0);
 
     private void FixedUpdate() {
 
@@ -19,7 +21,7 @@ public class CameraFollow : MonoBehaviour {
 
         float desiredAngle = Target.eulerAngles.y;
         Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
-        transform.position = Target.position - (rotation * m_offset);
+        transform.position = Target.position + m_offset2 - (rotation * m_offset);
 
         transform.LookAt(Target);
     }

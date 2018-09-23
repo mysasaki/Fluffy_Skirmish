@@ -8,12 +8,13 @@ public class PlayerMovement : Photon.MonoBehaviour {
     private Vector3 TargetPosition;
     private Quaternion TargetRotation;
     public float Health;
+    public float m_moveSpeed = 10;
 
     private void Awake() {
         PhotonView = GetComponent<PhotonView>();
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         if (PhotonView.isMine)
             CheckInput();
         else
@@ -42,14 +43,13 @@ public class PlayerMovement : Photon.MonoBehaviour {
     }
 
     private void CheckInput() { //Handle player movement
-        float moveSpeed = 15;
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
 
         Vector3 moveVertical = transform.forward * vertical;
         Vector3 moveHorizontal = transform.right * horizontal;
 
-        transform.position += (moveHorizontal + moveVertical) * (moveSpeed * Time.deltaTime);
+        transform.position += (moveHorizontal + moveVertical) * (m_moveSpeed * Time.deltaTime);
 
     }
 }
