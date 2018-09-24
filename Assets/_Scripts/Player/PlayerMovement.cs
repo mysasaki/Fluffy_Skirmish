@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class PlayerMovement : Photon.MonoBehaviour {
 
-    private PhotonView PhotonView;
-    private Vector3 TargetPosition;
-    private Quaternion TargetRotation;
-    public float Health;
+    private PhotonView m_photonView;
+    private Vector3 m_targetPosition;
+    private Quaternion m_targetRotation;
+    public float m_health;
     public float m_moveSpeed = 10;
 
     private void Awake() {
-        PhotonView = GetComponent<PhotonView>();
+        m_photonView = GetComponent<PhotonView>();
     }
 
     private void FixedUpdate() {
-        if (PhotonView.isMine)
-            CheckInput();
-        else
+        if (!m_photonView.isMine)
             SmoothMove();
     } 
 
@@ -31,20 +29,18 @@ public class PlayerMovement : Photon.MonoBehaviour {
             //stream.SendNext(Health);
 
         } else {
-            TargetPosition = (Vector3) stream.ReceiveNext(); //pulled first entry of stream
-            TargetRotation = (Quaternion)stream.ReceiveNext();
+            m_targetPosition = (Vector3) stream.ReceiveNext(); //pulled first entry of stream
+            m_targetRotation = (Quaternion)stream.ReceiveNext();
             //Health = (float)stream.ReceiveNext();
         }
     }
 
     private void SmoothMove() {
-        transform.position = Vector3.Lerp(transform.position, TargetPosition, 0.25f); //the higher the value, more torwards the target the move is
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, TargetRotation, 500 * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, m_targetPosition, 0.25f); //the higher the value, more torwards the target the move is
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, m_targetRotation, 500 * Time.deltaTime);
     }
 
-    private void CheckInput() { //Handle player movement
-        float vertical = Input.GetAxis("Vertical");
-        float horizontal = Input.GetAxis("Horizontal");
+    public void Move(float vertical, float horizontal) { //Handle player movement
 
         Vector3 moveVertical = transform.forward * vertical;
         Vector3 moveHorizontal = transform.right * horizontal;

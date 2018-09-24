@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour {
 
-    private PhotonView PhotonView;
+    private PhotonView m_photonView;
 
     private void Awake() {
-        PhotonView = GetComponent<PhotonView>();
+        m_photonView = GetComponent<PhotonView>();
     }
 
     private void Start() {
         print("JOINED ROOM");
-        if (!PhotonView.isMine)
+        if (!m_photonView.isMine)
             return;
 
-        GameObject camera = Camera.main.gameObject;
-        if (camera != null) {
-            CameraFollow cameraFollow = camera.GetComponent<CameraFollow>();
+        GameObject cameraRig = GameObject.FindGameObjectWithTag("CameraRig");
+        if (cameraRig != null) {
+            CameraRig cameraFollow = cameraRig.GetComponent<CameraRig>();
             if (cameraFollow != null) {
-                cameraFollow.Target = gameObject.transform;
+                cameraFollow.m_target = gameObject.transform;
             }
         }
     }

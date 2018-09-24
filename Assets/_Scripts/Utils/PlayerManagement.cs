@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerManagement : MonoBehaviour {
 
     public static PlayerManagement Instance;
-    private PhotonView PhotonView;
+    private PhotonView m_photonView;
 
     private List<PlayerStats> PlayerStats = new List<PlayerStats>();
 
     private void Awake() {
         Instance = this;
-        PhotonView = GetComponent<PhotonView>();
+        m_photonView = GetComponent<PhotonView>();
     }
     
     public void AddPlayerStats(PhotonPlayer photonPlayer) {

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerListing : MonoBehaviour {
 
-    public PhotonPlayer PhotonPlayer { get; private set; }
+    public PhotonPlayer m_photonPlayer { get; private set; }
 
     [SerializeField]
     private Text m_playerName;
@@ -13,7 +13,7 @@ public class PlayerListing : MonoBehaviour {
 
     public void ApplyPhotonPlayer(PhotonPlayer photonPlayer) {
 
-        PhotonPlayer = photonPlayer;
+        m_photonPlayer = photonPlayer;
         PlayerName.text = photonPlayer.NickName;
     }
 }
