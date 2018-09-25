@@ -11,6 +11,9 @@ public class PlayerInput : MonoBehaviour {
     public class InputSettings {
         public string verticalAxis = "Vertical";
         public string horizontalAxis = "Horizontal";
+        public string reloadButton = "Reload ";
+        public string aimButton = "Fire2";
+        public string fireButton = "Fire1";
     }
 
     [SerializeField]
@@ -20,10 +23,15 @@ public class PlayerInput : MonoBehaviour {
     public class OtherSettings {
         public float lookSpeed = 7.5f;
         public float lookDistance = 10.0f;
-        public bool requireInputForTurn = false; 
+        public bool requireInputForTurn = false;
+        public LayerMask aimDetectionLayers;
     }
     [SerializeField]
     public OtherSettings settings;
+
+    public bool m_debugAim;
+    public Transform m_spine;
+    private bool m_aiming;
 
     Camera m_mainCamera;
 
