@@ -16,8 +16,8 @@ public class Weapon : MonoBehaviour {
 
     [System.Serializable]
     public class UserSettings { //settings that vary by the user
-        public Transform LeftHandIKTarget;
-        public Vector3 SpineRotation;
+        public Transform leftHandIKTarget;
+        public Vector3 spineRotation;
     }
     [SerializeField]
     public UserSettings userSettings;
@@ -25,28 +25,28 @@ public class Weapon : MonoBehaviour {
     [System.Serializable]
     public class WeaponSettings {
         [Header("-Bullet Options")]
-        public Transform BulletSpawn;
-        public float Damage = 5.0f;
-        public float BulletSpread = 5.0f;
-        public float FireRate = 3.0f;
-        public LayerMask BulletLayers; //layers that bullet will hit
-        public float Range = 200.0f;
+        public Transform bulletSpawn;
+        public float damage = 5.0f;
+        public float bulletSpread = 5.0f;
+        public float fireRate = 3.0f;
+        public LayerMask bulletLayers; //layers that bullet will hit
+        public float range = 200.0f;
 
         [Header("-Effects-")]
-        public GameObject MuzzleFlash;
-        public GameObject Decal;
-        public GameObject Shell;
+        public GameObject muzzleFlash;
+        public GameObject decal;
+        public GameObject shell;
 
         [Header("-Options-")]
-        public float ReloadDuration = 2.0f;
-        public Transform ShellEjectSpot;
-        public float ShellEjectSpeed = 7.5f;
+        public float reloadDuration = 2.0f;
+        public Transform shellEjectSpot;
+        public float shellEjectSpeed = 7.5f;
 
         [Header("-Positioning-")]
-        public Vector3 EquipPosition;
-        public Vector3 EquipRotation;
-        public Vector3 UnequipPosition;
-        public Vector3 UnequipRotation;
+        public Vector3 equipPosition;
+        public Vector3 equipRotation;
+        public Vector3 unequipPosition;
+        public Vector3 unequipRotation;
 
         //Animation if necessary
     }
@@ -55,9 +55,9 @@ public class Weapon : MonoBehaviour {
 
     [System.Serializable]
     public class Ammunition {
-        public int CarryingAmmo;
-        public int ClipAmmo;
-        public int MaxClipAmmo;
+        public int carryingAmmo;
+        public int clipAmmo;
+        public int maxClipAmmo;
     }
     [SerializeField]
     public Ammunition ammo;
@@ -79,7 +79,7 @@ public class Weapon : MonoBehaviour {
             DisableEnableComponents(false);
 
             if (m_equipped) {
-                if(owner.userSettings.RightHand) {
+                if(owner.userSettings.rightHand) {
                     Equip();
 
                     if(m_pullingTrigger) 
@@ -96,23 +96,23 @@ public class Weapon : MonoBehaviour {
 
     //Fires the weapon
     private void Fire() {
-        if (ammo.ClipAmmo == 0 || m_resettingCartridge || !weaponSettings.BulletSpawn)
+        if (ammo.clipAmmo == 0 || m_resettingCartridge || !weaponSettings.bulletSpawn)
             return;
 
         RaycastHit hit;
-        Transform bulletSpawn = weaponSettings.BulletSpawn;
+        Transform bulletSpawn = weaponSettings.bulletSpawn;
         Vector3 bulletSpawnPoints = bulletSpawn.position;
         Vector3 direction = bulletSpawn.forward;
 
-        direction += (Vector3)Random.insideUnitCircle * weaponSettings.BulletSpread;
+        direction += (Vector3)Random.insideUnitCircle * weaponSettings.bulletSpread;
 
-        if (Physics.Raycast(bulletSpawnPoints, direction, out hit, weaponSettings.Range, weaponSettings.BulletLayers)) {
+        if (Physics.Raycast(bulletSpawnPoints, direction, out hit, weaponSettings.range, weaponSettings.bulletLayers)) {
             #region Decal
             if(hit.collider.gameObject.isStatic) {
-                if(weaponSettings.Decal) {
+                if(weaponSettings.decal) {
                     Vector3 hitpoint = hit.point;
                     Quaternion lookRotation = Quaternion.LookRotation(hit.normal);
-                    GameObject decal = Instantiate(weaponSettings.Decal, hitpoint, lookRotation) as GameObject;
+                    GameObject decal = Instantiate(weaponSettings.decal, hitpoint, lookRotation) as GameObject;
 
                     Transform decalT = decal.transform;
                     Transform hitT = hit.transform;
@@ -124,39 +124,39 @@ public class Weapon : MonoBehaviour {
         }
 
         #region Muzzle Flash
-        if (weaponSettings.MuzzleFlash) {
-            Vector3 bulletSpawnPos = weaponSettings.BulletSpawn.position;
-            GameObject muzzleFlash = Instantiate(weaponSettings.MuzzleFlash, bulletSpawnPos, Quaternion.identity) as GameObject;
+        if (weaponSettings.muzzleFlash) {
+            Vector3 bulletSpawnPos = weaponSettings.bulletSpawn.position;
+            GameObject muzzleFlash = Instantiate(weaponSettings.muzzleFlash, bulletSpawnPos, Quaternion.identity) as GameObject;
             Transform muzzleT = muzzleFlash.transform;
-            muzzleT.SetParent(weaponSettings.BulletSpawn);
+            muzzleT.SetParent(weaponSettings.bulletSpawn);
             Destroy(muzzleFlash, 1.0f);
         }
         #endregion
 
         #region Shell
-        if (weaponSettings.Shell) {
-            if(weaponSettings.ShellEjectSpot) {
-                Vector3 shellEjectPos = weaponSettings.ShellEjectSpot.position;
-                Quaternion shellEjectRot = weaponSettings.ShellEjectSpot.rotation;
-                GameObject shell = Instantiate(weaponSettings.Shell, shellEjectPos, shellEjectRot) as GameObject;
+        if (weaponSettings.shell) {
+            if(weaponSettings.shellEjectSpot) {
+                Vector3 shellEjectPos = weaponSettings.shellEjectSpot.position;
+                Quaternion shellEjectRot = weaponSettings.shellEjectSpot.rotation;
+                GameObject shell = Instantiate(weaponSettings.shell, shellEjectPos, shellEjectRot) as GameObject;
 
                 if (shell.GetComponent<Rigidbody>()) {
                     Rigidbody rb = shell.GetComponent<Rigidbody>();
-                    rb.AddForce(weaponSettings.ShellEjectSpot.forward * weaponSettings.ShellEjectSpeed, ForceMode.Impulse);
+                    rb.AddForce(weaponSettings.shellEjectSpot.forward * weaponSettings.shellEjectSpeed, ForceMode.Impulse);
                 }
                 Destroy(shell, Random.Range(30.0f, 45.0f));
             }
         }
         #endregion
 
-        ammo.ClipAmmo--;
+        ammo.clipAmmo--;
         m_resettingCartridge = true;
         StartCoroutine(LoadNextBullet());
     }
 
     //Loads the next bullet in chamber
     private IEnumerator LoadNextBullet() {
-        yield return new WaitForSeconds(weaponSettings.FireRate);
+        yield return new WaitForSeconds(weaponSettings.fireRate);
         m_resettingCartridge = false;
     }
 
@@ -177,13 +177,13 @@ public class Weapon : MonoBehaviour {
         if (!owner)
             return;
 
-        else if (!owner.userSettings.RightHand)
+        else if (!owner.userSettings.rightHand)
             return;
 
-        transform.SetParent(owner.userSettings.RightHand);
-        transform.localPosition = weaponSettings.EquipPosition;
+        transform.SetParent(owner.userSettings.rightHand);
+        transform.localPosition = weaponSettings.equipPosition;
 
-        Quaternion equipRotation = Quaternion.Euler(weaponSettings.EquipRotation);
+        Quaternion equipRotation = Quaternion.Euler(weaponSettings.equipRotation);
         transform.localRotation = equipRotation;
     }
 
@@ -194,28 +194,28 @@ public class Weapon : MonoBehaviour {
 
         switch (weaponType) {
             case WeaponType.Pistol:
-                transform.SetParent(owner.userSettings.PistolUnequipSpot);
+                transform.SetParent(owner.userSettings.pistolUnequipSpot);
                 break;
 
             default:
                 print("Error in unequip weapon");
                 break;
         }
-        transform.localPosition = weaponSettings.UnequipPosition;
-        Quaternion unequipRot = Quaternion.Euler(weaponSettings.UnequipRotation);
+        transform.localPosition = weaponSettings.unequipPosition;
+        Quaternion unequipRot = Quaternion.Euler(weaponSettings.unequipRotation);
         transform.localRotation = unequipRot;
     }
 
     //Loads the clip and calculates ammo
     public void LoadClip() {
-        int ammoNeeded = ammo.MaxClipAmmo - ammo.ClipAmmo;
+        int ammoNeeded = ammo.maxClipAmmo - ammo.clipAmmo;
         
-        if (ammoNeeded >= ammo.CarryingAmmo) {
-            ammo.ClipAmmo = ammo.CarryingAmmo;
-            ammo.CarryingAmmo = 0;
+        if (ammoNeeded >= ammo.carryingAmmo) {
+            ammo.clipAmmo = ammo.carryingAmmo;
+            ammo.carryingAmmo = 0;
         } else {
-            ammo.CarryingAmmo -= ammoNeeded;
-            ammo.ClipAmmo = ammo.MaxClipAmmo;
+            ammo.carryingAmmo -= ammoNeeded;
+            ammo.clipAmmo = ammo.maxClipAmmo;
         }
     }
 

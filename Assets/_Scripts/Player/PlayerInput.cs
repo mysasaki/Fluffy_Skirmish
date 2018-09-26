@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour {
 
     private PlayerMovement m_playerMovement;
     private PhotonView m_photonView;
+    private WeaponHandler m_weaponHandler;
 
     [System.Serializable]
     public class InputSettings {
@@ -14,6 +15,8 @@ public class PlayerInput : MonoBehaviour {
         public string reloadButton = "Reload ";
         public string aimButton = "Fire2";
         public string fireButton = "Fire1";
+        public string dropWeaponButton = "DropWeapon";
+        public string switchWeaponButton = "SwitchWeapon";
     }
 
     [SerializeField]
@@ -27,7 +30,7 @@ public class PlayerInput : MonoBehaviour {
         public LayerMask aimDetectionLayers;
     }
     [SerializeField]
-    public OtherSettings settings;
+    public OtherSettings otherSettings;
 
     public bool m_debugAim;
     public Transform m_spine;
@@ -45,25 +48,61 @@ public class PlayerInput : MonoBehaviour {
 
         m_playerMovement = GetComponent<PlayerMovement>();
         m_mainCamera = Camera.main;
+        m_weaponHandler = GetComponent<WeaponHandler>();
     }
 
     private void FixedUpdate() {
         if (!m_photonView.isMine)
             return;
 
-        if (m_playerMovement) { 
-            m_playerMovement.Move(Input.GetAxis(input.verticalAxis), Input.GetAxis(input.horizontalAxis));
-            //m_playerAnimation.Animate(blabla)
-        }
+        CharacterLogic();
+        CameraLookLogic();
+        WeaponLogic();
+    }
 
-        if (m_mainCamera) {
-            if (settings.requireInputForTurn) {
-                if (Input.GetAxis(input.horizontalAxis) != 0 || Input.GetAxis(input.verticalAxis) != 0) 
-                    PlayerLook();
-                
-            } else {
+    //Handles character Logic
+    private void CharacterLogic() {
+        if (!m_playerMovement)
+            return;
+
+        m_playerMovement.Move(Input.GetAxis(input.verticalAxis), Input.GetAxis(input.horizontalAxis));
+        //m_playerAnimation.Animate(blabla)
+
+    }
+
+    //Handle camera logic
+    private void CameraLookLogic() {
+        if (!m_mainCamera)
+            return;
+
+        if (otherSettings.requireInputForTurn) {
+            if (Input.GetAxis(input.horizontalAxis) != 0 || Input.GetAxis(input.verticalAxis) != 0)
                 PlayerLook();
-            }
+
+        } else {
+            PlayerLook();
+        }
+    }
+
+    //Handles all weapon logic
+    private void WeaponLogic() {
+        if (!m_weaponHandler)
+            return;
+
+        m_aiming = Input.GetButton(input.aimButton);
+        if(m_weaponHandler.currentWeapon) {
+            m_weaponHandler.Aim(m_aiming);
+            otherSettings.requireInputForTurn = !m_aiming;
+            m_weaponHandler.FingerOnTrigger(Input.GetButton(input.fireButton));
+
+            if (Input.GetButtonDown(input.reloadButton))
+                m_weaponHandler.Reload();
+
+            if (Input.GetButtonDown(input.dropWeaponButton))
+                m_weaponHandler.DropCurrentWeapon();
+
+            if (Input.GetButtonDown(input.switchWeaponButton))
+                m_weaponHandler.SwitchWeapons();
         }
     }
 
@@ -72,7 +111,7 @@ public class PlayerInput : MonoBehaviour {
         Transform mainCameraT = m_mainCamera.transform;
         Transform pivotT = mainCameraT.parent;
         Vector3 pivotPos = pivotT.position;
-        Vector3 lookTarget = pivotPos + (pivotT.forward * settings.lookDistance);
+        Vector3 lookTarget = pivotPos + (pivotT.forward * otherSettings.lookDistance);
 
         Vector3 thisPos = transform.position;
         Vector3 lookDir = lookTarget - thisPos;
@@ -80,7 +119,7 @@ public class PlayerInput : MonoBehaviour {
         lookRot.x = 0;
         lookRot.z = 0;
 
-        Quaternion newRotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * settings.lookSpeed);
+        Quaternion newRotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * otherSettings.lookSpeed);
         transform.rotation = newRotation;
     }
 }
