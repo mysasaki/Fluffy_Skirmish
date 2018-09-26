@@ -48,4 +48,6 @@ public class PlayerMovement : Photon.MonoBehaviour {
         transform.position += (moveHorizontal + moveVertical) * (m_moveSpeed * Time.deltaTime);
 
     }
+
+    
 }

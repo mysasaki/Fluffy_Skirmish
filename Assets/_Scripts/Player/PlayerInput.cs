@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour {
 
     private PlayerMovement m_playerMovement;
+    private PlayerAnimation m_playerAnimation;
+
     private PhotonView m_photonView;
     private WeaponHandler m_weaponHandler;
 
@@ -36,10 +38,11 @@ public class PlayerInput : MonoBehaviour {
     public Transform m_spine;
     private bool m_aiming;
 
-    Camera m_mainCamera;
+    private Camera m_mainCamera;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
+        m_playerAnimation = GetComponent<PlayerAnimation>();
     }
 
     private void Start() {
@@ -66,6 +69,7 @@ public class PlayerInput : MonoBehaviour {
             return;
 
         m_playerMovement.Move(Input.GetAxis(input.verticalAxis), Input.GetAxis(input.horizontalAxis));
+        m_playerAnimation.AnimateMovement(Input.GetAxis(input.horizontalAxis), Input.GetAxis(input.verticalAxis));
         //m_playerAnimation.Animate(blabla)
 
     }
@@ -90,7 +94,7 @@ public class PlayerInput : MonoBehaviour {
             return;
 
         m_aiming = Input.GetButton(input.aimButton);
-        if(m_weaponHandler.currentWeapon) {
+        if (m_weaponHandler.currentWeapon) {
             m_weaponHandler.Aim(m_aiming);
             otherSettings.requireInputForTurn = !m_aiming;
             m_weaponHandler.FingerOnTrigger(Input.GetButton(input.fireButton));

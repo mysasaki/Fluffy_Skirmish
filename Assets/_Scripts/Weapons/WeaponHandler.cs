@@ -14,6 +14,7 @@ public class WeaponHandler : MonoBehaviour {
     [SerializeField]
     public UserSettings userSettings;
 
+    public PhotonView m_photonView;
     public Weapon currentWeapon;
     public List<Weapon> weaponsList = new List<Weapon>();
     public int maxWeapons = 2;
@@ -22,11 +23,14 @@ public class WeaponHandler : MonoBehaviour {
     private int m_weaponType;
     private bool m_settingWeapon; //prevent to change weapons rapo=idly
 
-    private void Start() {
-        
+    private void Awake() {
+        m_photonView = GetComponent<PhotonView>();
     }
 
     private void Update() {
+        if (!m_photonView.isMine)
+            return;
+
         if(currentWeapon) {
             currentWeapon.SetEquipped(true);
             currentWeapon.SetOwner(this);
@@ -51,6 +55,8 @@ public class WeaponHandler : MonoBehaviour {
 
     //Animates the character
     private void Animate() {
+        if (!currentWeapon)
+            return;
 
         switch(currentWeapon.weaponType) {
             case Weapon.WeaponType.Pistol:

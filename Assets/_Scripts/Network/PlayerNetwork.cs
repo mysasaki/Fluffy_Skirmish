@@ -82,7 +82,7 @@ public class PlayerNetwork : MonoBehaviour {
         float randomZ = Random.Range(0f, 150f);
         float randomX = Random.Range(0f, 150f);
 
-        GameObject obj = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "NewPlayer"), new Vector3(randomX, 5, randomZ), Quaternion.identity, 0);
+        GameObject obj = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Player"), new Vector3(randomX, 5, randomZ), Quaternion.identity, 0);
         m_currentPlayer = obj.GetComponent<PlayerMovement>();
         
     }
