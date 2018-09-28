@@ -155,21 +155,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1336095605163712
-GameObject:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4509180105644006}
-  m_Layer: 0
-  m_Name: Spine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1434380375711822
 GameObject:
   m_ObjectHideFlags: 1
@@ -576,19 +561,6 @@ Transform:
   m_Father: {fileID: 4232344604068854}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4509180105644006
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1336095605163712}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.24, z: -0.95}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4783001422224364}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4548892071890848
 Transform:
   m_ObjectHideFlags: 1
@@ -670,7 +642,6 @@ Transform:
   m_Children:
   - {fileID: 4314442227726024}
   - {fileID: 4633144490590770}
-  - {fileID: 4509180105644006}
   m_Father: {fileID: 4690009314255054}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -844,7 +815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userSettings:
     rightHand: {fileID: 4633144490590770}
-    pistolUnequipSpot: {fileID: 4509180105644006}
+    pistolUnequipSpot: {fileID: 0}
   m_photonView: {fileID: 0}
   currentWeapon: {fileID: 0}
   weaponsList: []

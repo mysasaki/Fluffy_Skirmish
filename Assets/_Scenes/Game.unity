@@ -516,7 +516,7 @@ MonoBehaviour:
     m_Bits: 1
   shoulder: 0
   cameraSettings:
-    CamPositionOffsetLeft: {x: -1.7, y: -2.45, z: -3.85}
+    CamPositionOffsetLeft: {x: -1.7, y: 2.45, z: -3.85}
     CamPositionOffsetRight: {x: 1.7, y: 2.45, z: -3.85}
     MouseXSensitivity: 4
     MouseYSensitivity: 2.5
@@ -577,6 +577,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6fd371a35e609445be36b5526941761, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &713091273 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114960510006248334, guid: a6fd371a35e609445be36b5526941761,
+    type: 2}
+  m_PrefabInternal: {fileID: 713091272}
+  m_Script: {fileID: 11500000, guid: 58fb85317761d194bb30978a4bb5eb55, type: 3}
 --- !u!1 &873373228
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,7 +995,7 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!1001 &1995335469
+--- !u!1001 &2022741733
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1028,6 +1034,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114728228290506088, guid: 5dc4d0b18643bee47a5387f9add9cba6,
+        type: 2}
+      propertyPath: currentWeapon
+      value: 
+      objectReference: {fileID: 713091273}
     - target: {fileID: 114772006955008480, guid: 5dc4d0b18643bee47a5387f9add9cba6,
         type: 2}
       propertyPath: viewIdField

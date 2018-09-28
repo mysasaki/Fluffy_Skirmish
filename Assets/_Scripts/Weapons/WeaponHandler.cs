@@ -118,6 +118,7 @@ public class WeaponHandler : MonoBehaviour {
         currentWeapon.SetEquipped(false);
         currentWeapon.SetOwner(null);
         weaponsList.Remove(currentWeapon);
+        currentWeapon = null;
     }
 
     //Switches to the next weapon

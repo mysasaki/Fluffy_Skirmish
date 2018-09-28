@@ -47,7 +47,7 @@ public class CameraRig : MonoBehaviour {
         public string VerticalAxis = "Mouse X";
         public string HorizontalAxis = "Mouse Y";
         public string AimButton = "Fire2";
-        public string SwitchShoulderButton = "Fire4";
+        public string SwitchShoulderButton = "SwapShoulder";
 
     }
 
@@ -82,10 +82,9 @@ public class CameraRig : MonoBehaviour {
         Zoom(Input.GetButton(input.AimButton));
 
         if(Input.GetButtonDown(input.SwitchShoulderButton)) 
-            SwitchShoulders();
-            
-        
+            SwitchShoulders();  
     }
+
 
     //All functionality that follows player
     private void FixedUpdate() {
@@ -97,6 +96,7 @@ public class CameraRig : MonoBehaviour {
 
         FollowTarget(targetPos, targetRot);
     }
+
 
     #region Camera
     //Rotates the camera with Input

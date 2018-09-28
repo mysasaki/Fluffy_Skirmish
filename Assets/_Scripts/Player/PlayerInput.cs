@@ -19,6 +19,7 @@ public class PlayerInput : MonoBehaviour {
         public string fireButton = "Fire1";
         public string dropWeaponButton = "DropWeapon";
         public string switchWeaponButton = "SwitchWeapon";
+        public string pickupWeapon = "Pickup";
     }
 
     [SerializeField]
@@ -63,6 +64,32 @@ public class PlayerInput : MonoBehaviour {
         WeaponLogic();
     }
 
+    private void LateUpdate() {
+        if (m_weaponHandler) {
+            if (m_weaponHandler.currentWeapon) {
+                if (m_aiming)
+                    PositionSpine();
+            }
+        }
+    }
+
+    //Position spine when aiming 
+    private void PositionSpine() {
+        if (!m_spine || !m_weaponHandler.currentWeapon || !m_mainCamera)
+            return;
+
+        Transform mainCameraT = m_mainCamera.transform;
+        Vector3 mainCamPos = mainCameraT.position;
+        Vector3 dir = mainCameraT.forward;
+        Ray ray = new Ray(mainCamPos, dir);
+        m_spine.LookAt(ray.GetPoint(50));
+
+        Vector3 eulerAngleOffset = m_weaponHandler.currentWeapon.userSettings.spineRotation;
+        m_spine.Rotate(eulerAngleOffset);
+        print("EULER ANGLE: " + eulerAngleOffset);
+
+    }
+
     //Handles character Logic
     private void CharacterLogic() {
         if (!m_playerMovement)
@@ -93,7 +120,7 @@ public class PlayerInput : MonoBehaviour {
         if (!m_weaponHandler)
             return;
 
-        m_aiming = Input.GetButton(input.aimButton);
+        m_aiming = Input.GetButton(input.aimButton) || m_debugAim;
         if (m_weaponHandler.currentWeapon) {
             m_weaponHandler.Aim(m_aiming);
             otherSettings.requireInputForTurn = !m_aiming;
