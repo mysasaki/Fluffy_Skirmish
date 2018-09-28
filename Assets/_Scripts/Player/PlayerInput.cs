@@ -39,7 +39,7 @@ public class PlayerInput : MonoBehaviour {
     public Transform m_spine;
     private bool m_aiming;
 
-    private Camera m_mainCamera;
+    public Camera m_tpsCamera;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
@@ -51,7 +51,7 @@ public class PlayerInput : MonoBehaviour {
             return;
 
         m_playerMovement = GetComponent<PlayerMovement>();
-        m_mainCamera = Camera.main;
+        m_tpsCamera = Camera.main;
         m_weaponHandler = GetComponent<WeaponHandler>();
     }
 
@@ -75,10 +75,10 @@ public class PlayerInput : MonoBehaviour {
 
     //Position spine when aiming 
     private void PositionSpine() {
-        if (!m_spine || !m_weaponHandler.currentWeapon || !m_mainCamera)
+        if (!m_spine || !m_weaponHandler.currentWeapon || !m_tpsCamera)
             return;
 
-        Transform mainCameraT = m_mainCamera.transform;
+        Transform mainCameraT = m_tpsCamera.transform;
         Vector3 mainCamPos = mainCameraT.position;
         Vector3 dir = mainCameraT.forward;
         Ray ray = new Ray(mainCamPos, dir);
@@ -103,7 +103,7 @@ public class PlayerInput : MonoBehaviour {
 
     //Handle camera logic
     private void CameraLookLogic() {
-        if (!m_mainCamera)
+        if (!m_tpsCamera)
             return;
 
         if (otherSettings.requireInputForTurn) {
@@ -134,12 +134,17 @@ public class PlayerInput : MonoBehaviour {
 
             if (Input.GetButtonDown(input.switchWeaponButton))
                 m_weaponHandler.SwitchWeapons();
+
+            if (!m_weaponHandler.currentWeapon)
+                return;
+
+            m_weaponHandler.currentWeapon.shootRay = new Ray(m_tpsCamera.transform.position, m_tpsCamera.transform.forward);
         }
     }
 
     //Maker player look at a forward point from the camera
     private void PlayerLook() {
-        Transform mainCameraT = m_mainCamera.transform;
+        Transform mainCameraT = m_tpsCamera.transform;
         Transform pivotT = mainCameraT.parent;
         Vector3 pivotPos = pivotT.position;
         Vector3 lookTarget = pivotPos + (pivotT.forward * otherSettings.lookDistance);

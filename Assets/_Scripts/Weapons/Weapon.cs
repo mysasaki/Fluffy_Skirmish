@@ -33,14 +33,11 @@ public class Weapon : MonoBehaviour {
         public float range = 200.0f;
 
         [Header("-Effects-")]
-        public GameObject muzzleFlash;
         public GameObject decal;
-        public GameObject shell;
+        public GameObject clip;
 
         [Header("-Options-")]
         public float reloadDuration = 2.0f;
-        public Transform shellEjectSpot;
-        public float shellEjectSpeed = 7.5f;
 
         [Header("-Positioning-")]
         public Vector3 equipPosition;
@@ -62,6 +59,7 @@ public class Weapon : MonoBehaviour {
     [SerializeField]
     public Ammunition ammo;
 
+    public Ray shootRay { protected get; set; }
     private WeaponHandler owner;
     private bool m_equipped;
     private bool m_pullingTrigger;
@@ -83,7 +81,7 @@ public class Weapon : MonoBehaviour {
                     Equip();
 
                     if(m_pullingTrigger) 
-                        Fire();
+                        Fire(shootRay);
                 }
             } else {
                 Unequip(weaponType);
@@ -95,14 +93,14 @@ public class Weapon : MonoBehaviour {
     }
 
     //Fires the weapon
-    private void Fire() {
+    private void Fire(Ray ray) {
         if (ammo.clipAmmo == 0 || m_resettingCartridge || !weaponSettings.bulletSpawn)
             return;
 
         RaycastHit hit;
         Transform bulletSpawn = weaponSettings.bulletSpawn;
         Vector3 bulletSpawnPoints = bulletSpawn.position;
-        Vector3 direction = bulletSpawn.forward;
+        Vector3 direction = ray.GetPoint(weaponSettings.range); //Mira em direçao ao centro da camera, utilizando o ray criado da camera
 
         direction += (Vector3)Random.insideUnitCircle * weaponSettings.bulletSpread;
 
@@ -122,32 +120,6 @@ public class Weapon : MonoBehaviour {
             }
             #endregion
         }
-
-        #region Muzzle Flash
-        if (weaponSettings.muzzleFlash) {
-            Vector3 bulletSpawnPos = weaponSettings.bulletSpawn.position;
-            GameObject muzzleFlash = Instantiate(weaponSettings.muzzleFlash, bulletSpawnPos, Quaternion.identity) as GameObject;
-            Transform muzzleT = muzzleFlash.transform;
-            muzzleT.SetParent(weaponSettings.bulletSpawn);
-            Destroy(muzzleFlash, 1.0f);
-        }
-        #endregion
-
-        #region Shell
-        if (weaponSettings.shell) {
-            if(weaponSettings.shellEjectSpot) {
-                Vector3 shellEjectPos = weaponSettings.shellEjectSpot.position;
-                Quaternion shellEjectRot = weaponSettings.shellEjectSpot.rotation;
-                GameObject shell = Instantiate(weaponSettings.shell, shellEjectPos, shellEjectRot) as GameObject;
-
-                if (shell.GetComponent<Rigidbody>()) {
-                    Rigidbody rb = shell.GetComponent<Rigidbody>();
-                    rb.AddForce(weaponSettings.shellEjectSpot.forward * weaponSettings.shellEjectSpeed, ForceMode.Impulse);
-                }
-                Destroy(shell, Random.Range(30.0f, 45.0f));
-            }
-        }
-        #endregion
 
         ammo.clipAmmo--;
         m_resettingCartridge = true;

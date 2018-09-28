@@ -39,6 +39,10 @@ public class WeaponHandler : MonoBehaviour {
             if (currentWeapon.ammo.clipAmmo <= 0)
                 Reload();
 
+            if (m_reload)
+                if (m_settingWeapon)
+                    m_reload = false;
+
             if (weaponsList.Count > 0) {
                 for (int i = 0; i < weaponsList.Count; i++) {
                     if(weaponsList[i] != currentWeapon) {
@@ -83,7 +87,7 @@ public class WeaponHandler : MonoBehaviour {
         if (!currentWeapon)
             return;
 
-        currentWeapon.PullTrigger(pulling);
+        currentWeapon.PullTrigger(pulling && m_aim && ! m_reload);
     }
 
     //Reloads the current weapon
@@ -123,7 +127,7 @@ public class WeaponHandler : MonoBehaviour {
 
     //Switches to the next weapon
     public void SwitchWeapons() {
-        if (m_settingWeapon)
+        if (m_settingWeapon || weaponsList.Count == 0)
             return;
 
         if (currentWeapon) {
