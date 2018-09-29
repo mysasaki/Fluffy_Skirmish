@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimation : MonoBehaviour {
+public class PlayerAnimation : Photon.MonoBehaviour {
 
     private PhotonView m_photonView;
     private Animator animator;
@@ -53,6 +53,29 @@ public class PlayerAnimation : MonoBehaviour {
     public void AnimateMovement(float horizontal, float vertical) {
         animationParameters.horizontalMovement = horizontal;
         animationParameters.verticalMovement = vertical;
+
+        animationParameters.isWalking = (horizontal == 0 && vertical == 0) ? false : true;
+
     }
 
+    private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+        //check if we're sending the data
+        if (stream.isWriting == true) {
+            stream.SendNext(animationParameters.verticalMovement);
+            stream.SendNext(animationParameters.horizontalMovement);      
+            stream.SendNext(animationParameters.aimAngle);      
+            stream.SendNext(animationParameters.isWalking);      
+            stream.SendNext(animationParameters.isSprinting);      
+            stream.SendNext(animationParameters.isAiming);      
+
+        } else {
+            animationParameters.verticalMovement = (float)stream.ReceiveNext(); //pulled first entry of stream
+            animationParameters.horizontalMovement = (float)stream.ReceiveNext(); 
+            animationParameters.aimAngle = (float)stream.ReceiveNext(); 
+            animationParameters.isWalking = (bool)stream.ReceiveNext(); 
+            animationParameters.isSprinting = (bool)stream.ReceiveNext(); 
+            animationParameters.isAiming = (bool)stream.ReceiveNext(); 
+            
+        }
+    }
 }

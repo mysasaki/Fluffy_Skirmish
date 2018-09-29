@@ -94,8 +94,6 @@ public class PlayerInput : MonoBehaviour {
             return;
 
         m_playerMovement.Move(Input.GetAxis(input.verticalAxis), Input.GetAxis(input.horizontalAxis));
-     
-        //m_playerAnimation.Animate(blabla)
 
     }
 

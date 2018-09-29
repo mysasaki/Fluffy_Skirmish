@@ -769,6 +769,7 @@ MonoBehaviour:
     fireButton: Fire1
     dropWeaponButton: DropWeapon
     switchWeaponButton: SwitchWeapon
+    pickupWeapon: Pickup
   otherSettings:
     lookSpeed: 7.5
     lookDistance: 10
@@ -778,6 +779,7 @@ MonoBehaviour:
       m_Bits: 0
   m_debugAim: 0
   m_spine: {fileID: 0}
+  m_tpsCamera: {fileID: 0}
 --- !u!114 &114550732444531198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -841,6 +843,7 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 114701857075122604}
+  - {fileID: 114814498844648182}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
