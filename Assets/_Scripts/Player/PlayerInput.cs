@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour {
 
     private PlayerMovement m_playerMovement;
-    private PlayerAnimation m_playerAnimation;
 
     private PhotonView m_photonView;
     private WeaponHandler m_weaponHandler;
@@ -43,7 +42,6 @@ public class PlayerInput : MonoBehaviour {
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
-        m_playerAnimation = GetComponent<PlayerAnimation>();
     }
 
     private void Start() {
@@ -96,7 +94,7 @@ public class PlayerInput : MonoBehaviour {
             return;
 
         m_playerMovement.Move(Input.GetAxis(input.verticalAxis), Input.GetAxis(input.horizontalAxis));
-        m_playerAnimation.AnimateMovement(Input.GetAxis(input.horizontalAxis), Input.GetAxis(input.verticalAxis));
+     
         //m_playerAnimation.Animate(blabla)
 
     }

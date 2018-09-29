@@ -7,11 +7,14 @@ public class PlayerMovement : Photon.MonoBehaviour {
     private PhotonView m_photonView;
     private Vector3 m_targetPosition;
     private Quaternion m_targetRotation;
+    private PlayerAnimation m_playerAnimation;
+
     public float m_health;
     public float m_moveSpeed = 10;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
+        m_playerAnimation = GetComponent<PlayerAnimation>();
     }
 
     private void FixedUpdate() {
@@ -38,6 +41,7 @@ public class PlayerMovement : Photon.MonoBehaviour {
     private void SmoothMove() {
         transform.position = Vector3.Lerp(transform.position, m_targetPosition, 0.25f); //the higher the value, more torwards the target the move is
         transform.rotation = Quaternion.RotateTowards(transform.rotation, m_targetRotation, 500 * Time.deltaTime);
+        
     }
 
     public void Move(float vertical, float horizontal) { //Handle player movement
@@ -46,8 +50,6 @@ public class PlayerMovement : Photon.MonoBehaviour {
         Vector3 moveHorizontal = transform.right * horizontal;
 
         transform.position += (moveHorizontal + moveVertical) * (m_moveSpeed * Time.deltaTime);
-
-    }
-
-    
+        m_playerAnimation.AnimateMovement(horizontal, vertical);
+    }    
 }
