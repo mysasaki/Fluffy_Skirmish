@@ -154,9 +154,8 @@ public class Weapon : MonoBehaviour {
 
         transform.SetParent(owner.userSettings.rightHand);
         transform.localPosition = weaponSettings.equipPosition;
-
-        Quaternion equipRotation = Quaternion.Euler(weaponSettings.equipRotation);
-        transform.localRotation = equipRotation;
+        Quaternion equipRot = Quaternion.Euler(weaponSettings.equipRotation);
+        transform.localRotation = equipRot;
     }
 
     //Unequips the weapon and places it to the desired location

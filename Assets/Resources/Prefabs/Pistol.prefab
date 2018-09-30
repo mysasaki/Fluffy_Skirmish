@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4359252865731338}
   - component: {fileID: 33822876850584828}
   - component: {fileID: 23370495506633980}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pistola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4457091801780728}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,10 +53,12 @@ GameObject:
   - component: {fileID: 4798205332331200}
   - component: {fileID: 54512748311437576}
   - component: {fileID: 65547267669230778}
+  - component: {fileID: 114062464727688868}
   - component: {fileID: 114960510006248334}
-  m_Layer: 0
+  - component: {fileID: 114519023789348082}
+  m_Layer: 10
   m_Name: Pistol
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1718101033954036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.935, y: 0.84, z: 9.483}
+  m_LocalPosition: {x: 57.5, y: 0.84, z: 103}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4359252865731338}
@@ -157,7 +159,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &65547267669230778
 BoxCollider:
@@ -171,6 +173,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.41562128, y: 0.7652857, z: 0.8500595}
   m_Center: {x: 0.050571203, y: 0.09386048, z: 0.22088146}
+--- !u!114 &114062464727688868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1718101033954036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 1
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
+--- !u!114 &114519023789348082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1718101033954036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29d2412d8905384e89eac0122bf1b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_hasOwner: 0
 --- !u!114 &114960510006248334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,14 +235,11 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 0
     range: 200
-    muzzleFlash: {fileID: 0}
     decal: {fileID: 1578811779501652, guid: 16d971a8cf15f704b81aa1f9e19a11ab, type: 2}
-    shell: {fileID: 1441078417033874, guid: b73e74c542c4ba44a91551997509fe2a, type: 2}
+    clip: {fileID: 0}
     reloadDuration: 2
-    shellEjectSpot: {fileID: 0}
-    shellEjectSpeed: 7.5
-    equipPosition: {x: 4.935, y: 0.84, z: 9.483}
-    equipRotation: {x: -0, y: 0, z: 0}
+    equipPosition: {x: -0.25, y: 0, z: 0}
+    equipRotation: {x: 0, y: 0, z: 0}
     unequipPosition: {x: 0, y: 0, z: 0}
     unequipRotation: {x: 0, y: 0, z: 0}
   ammo:

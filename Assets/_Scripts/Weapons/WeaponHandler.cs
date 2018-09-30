@@ -16,8 +16,6 @@ public class WeaponHandler : MonoBehaviour {
 
     public PhotonView m_photonView;
     public Weapon currentWeapon;
-    public List<Weapon> weaponsList = new List<Weapon>();
-    public int maxWeapons = 2;
     private bool m_aim;
     private bool m_reload;
     private int m_weaponType;
@@ -34,7 +32,6 @@ public class WeaponHandler : MonoBehaviour {
         if(currentWeapon) {
             currentWeapon.SetEquipped(true);
             currentWeapon.SetOwner(this);
-            AddWeaponToList(currentWeapon);
 
             if (currentWeapon.ammo.clipAmmo <= 0)
                 Reload();
@@ -42,16 +39,6 @@ public class WeaponHandler : MonoBehaviour {
             if (m_reload)
                 if (m_settingWeapon)
                     m_reload = false;
-
-            if (weaponsList.Count > 0) {
-                for (int i = 0; i < weaponsList.Count; i++) {
-                    if(weaponsList[i] != currentWeapon) {
-                        weaponsList[i].SetEquipped(false);
-                        weaponsList[i].SetOwner(this);
-
-                    }
-                }
-            }
         }
 
         Animate();
@@ -72,14 +59,6 @@ public class WeaponHandler : MonoBehaviour {
                 print("Error in weaponhandler");
                 break;
         }
-    }
-
-    //Add weapon to the weaponsList
-    private void AddWeaponToList(Weapon weapon) {
-        if (weaponsList.Contains(weapon))
-            return;
-
-        weaponsList.Add(weapon);
     }
 
     //Puts the finger on the trigger and asks if we pulled
@@ -121,30 +100,20 @@ public class WeaponHandler : MonoBehaviour {
 
         currentWeapon.SetEquipped(false);
         currentWeapon.SetOwner(null);
-        weaponsList.Remove(currentWeapon);
         currentWeapon = null;
     }
 
-    //Switches to the next weapon
-    public void SwitchWeapons() {
-        if (m_settingWeapon || weaponsList.Count == 0)
+    public void PickupWeapon(GameObject pickup) {
+
+        if (currentWeapon)
+            DropCurrentWeapon();
+
+        Weapon weapon = pickup.GetComponent<Weapon>();
+        if (!weapon)
             return;
 
-        if (currentWeapon) {
-            int currentWeaponIndex = weaponsList.IndexOf(currentWeapon);
-            int nextIndex = (currentWeaponIndex + 1) % weaponsList.Count;
-
-            currentWeapon = weaponsList[nextIndex];
-        } else {
-            currentWeapon = weaponsList[0];
-        }
-        m_settingWeapon = true;
-        StartCoroutine(StopSettingWeapon());
-    }
-
-    private IEnumerator StopSettingWeapon() {
-        yield return new WaitForSeconds(0.7f);
-        m_settingWeapon = false;
+        weapon.SetOwner(this);
+        weapon.SetEquipped(true);
     }
 
     //private void OnAnimatorIK() {}

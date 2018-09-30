@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour {
 
     private PlayerMovement m_playerMovement;
+    private PlayerTakeover m_playerTakeover;
 
     private PhotonView m_photonView;
     private WeaponHandler m_weaponHandler;
@@ -17,7 +18,6 @@ public class PlayerInput : MonoBehaviour {
         public string aimButton = "Fire2";
         public string fireButton = "Fire1";
         public string dropWeaponButton = "DropWeapon";
-        public string switchWeaponButton = "SwitchWeapon";
         public string pickupWeapon = "Pickup";
     }
 
@@ -51,6 +51,7 @@ public class PlayerInput : MonoBehaviour {
         m_playerMovement = GetComponent<PlayerMovement>();
         m_tpsCamera = Camera.main;
         m_weaponHandler = GetComponent<WeaponHandler>();
+        m_playerTakeover = GetComponent<PlayerTakeover>();
     }
 
     private void FixedUpdate() {
@@ -95,6 +96,18 @@ public class PlayerInput : MonoBehaviour {
 
         m_playerMovement.Move(Input.GetAxis(input.verticalAxis), Input.GetAxis(input.horizontalAxis));
 
+        if (!m_playerTakeover)
+            return;
+
+        if (Input.GetButton(input.pickupWeapon)) {
+            print("press");
+            m_playerTakeover.pickupInRange = true;
+        }
+
+        if (Input.GetButtonUp(input.pickupWeapon)) {
+            print("release");
+            m_playerTakeover.pickupInRange = false;
+        }
     }
 
     //Handle camera logic
@@ -127,9 +140,6 @@ public class PlayerInput : MonoBehaviour {
 
             if (Input.GetButtonDown(input.dropWeaponButton))
                 m_weaponHandler.DropCurrentWeapon();
-
-            if (Input.GetButtonDown(input.switchWeaponButton))
-                m_weaponHandler.SwitchWeapons();
 
             if (!m_weaponHandler.currentWeapon)
                 return;
