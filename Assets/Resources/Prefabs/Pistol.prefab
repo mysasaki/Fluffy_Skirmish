@@ -195,7 +195,7 @@ MonoBehaviour:
     fireRate: 3
     bulletLayers:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 4294967295
     range: 200
     decal: {fileID: 1578811779501652, guid: 16d971a8cf15f704b81aa1f9e19a11ab, type: 2}
     clip: {fileID: 0}

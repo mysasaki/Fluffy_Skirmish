@@ -19,7 +19,6 @@ public class PlayerInput : MonoBehaviour {
         public string dropWeaponButton = "DropWeapon";
         public string pickupWeapon = "Pickup";
     }
-
     [SerializeField]
     private InputSettings input;
 
@@ -48,7 +47,6 @@ public class PlayerInput : MonoBehaviour {
             return;
 
         m_playerMovement = GetComponent<PlayerMovement>();
-        m_tpsCamera = Camera.main;
         m_weaponHandler = GetComponent<WeaponHandler>();
         m_playerTakeover = GetComponent<PlayerTakeover>();
     }
@@ -164,5 +162,10 @@ public class PlayerInput : MonoBehaviour {
 
         Quaternion newRotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * otherSettings.lookSpeed);
         transform.rotation = newRotation;
+    }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(new Ray(m_tpsCamera.transform.position, m_tpsCamera.transform.forward * 10));
     }
 }

@@ -106,9 +106,9 @@ public class PlayerTakeover : MonoBehaviour {
 
     }
 
-    private void OnDrawGizmosSelected() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + transform.up, 3.0f);
-    }
+    //private void OnDrawGizmosSelected() {
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(transform.position + transform.up, 3.0f);
+    //}
 
 }

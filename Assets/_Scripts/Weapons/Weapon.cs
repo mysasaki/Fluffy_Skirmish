@@ -109,13 +109,13 @@ public class Weapon : MonoBehaviour {
     //Fires the weapon
     private void Fire(Ray ray) {
         print("Pew pew");
-        if (ammo.clipAmmo <= 0 || m_resettingCartridge || !weaponSettings.bulletSpawn)
+        if (ammo.clipAmmo <= 0 || m_resettingCartridge || !weaponSettings.bulletSpawn || !m_equipped)
             return;
 
         RaycastHit hit;
         Transform bulletSpawn = weaponSettings.bulletSpawn;
         Vector3 bulletSpawnPosition = bulletSpawn.position;
-        Vector3 direction = ray.GetPoint(weaponSettings.range); //Mira em direçao ao centro da camera, utilizando o ray criado da camera
+        Vector3 direction = ray.GetPoint(weaponSettings.range) - bulletSpawnPosition; //Mira em direçao ao centro da camera, utilizando o ray criado da camera
 
         direction += (Vector3)Random.insideUnitCircle * weaponSettings.bulletSpread;
 
