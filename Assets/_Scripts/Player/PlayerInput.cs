@@ -100,12 +100,10 @@ public class PlayerInput : MonoBehaviour {
             return;
 
         if (Input.GetButton(input.pickupWeapon)) {
-            print("press");
             m_playerTakeover.pickupInRange = true;
         }
 
         if (Input.GetButtonUp(input.pickupWeapon)) {
-            print("release");
             m_playerTakeover.pickupInRange = false;
         }
     }
