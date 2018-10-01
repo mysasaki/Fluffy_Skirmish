@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerTakeover : MonoBehaviour {
 
     public bool pickupInRange = false;
+    public bool dropWeapon = false;
     public LayerMask layerMask;
 
     private GameObject m_hitObject;
     private PhotonView m_photonView;
-    private WeaponHandler m_weaponHandler;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
@@ -40,6 +40,14 @@ public class PlayerTakeover : MonoBehaviour {
                 }
             }
         }  
+
+        if(dropWeapon) {
+            WeaponHandler weaponHandler = GetComponent<WeaponHandler>();
+
+            if (weaponHandler.currentWeapon != null) {
+                m_photonView.RPC("RPC_WeaponDrop", PhotonTargets.All, this.m_photonView.instantiationId);
+            }
+        }
     }
 
     [PunRPC]
@@ -64,16 +72,38 @@ public class PlayerTakeover : MonoBehaviour {
                     if (playerTakeover.m_photonView.instantiationId == playerID) {
                         WeaponTakeover weaponTakeover = selectedWeapon.GetComponent<WeaponTakeover>();
                         weaponTakeover.TakeoverWeapon();
-                        m_weaponHandler = p.GetComponent<WeaponHandler>();
-                        m_weaponHandler.PickupWeapon(selectedWeapon);
+                        WeaponHandler weaponHandler = p.GetComponent<WeaponHandler>();
+                        weaponHandler.PickupWeapon(selectedWeapon);
                         
-                        return;
+                         return;
                     }
 
                 }
 
             }
         }    
+    }
+
+    [PunRPC]
+    private void RPC_WeaponDrop(int playerID) {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        if (players.Length > 0) {
+            foreach (GameObject p in players) {
+                PlayerTakeover playerTakeover = p.GetComponent<PlayerTakeover>();
+                print("p " + playerTakeover.m_photonView.instantiationId);
+                if (playerTakeover.m_photonView.instantiationId == playerID) {
+                    print("RPC DROPPED");
+                    WeaponHandler weaponHandler = p.GetComponent<WeaponHandler>();
+                    weaponHandler.DropCurrentWeapon();
+
+                    return;
+                }
+
+            }
+
+        }
+
     }
 
     private void OnDrawGizmosSelected() {

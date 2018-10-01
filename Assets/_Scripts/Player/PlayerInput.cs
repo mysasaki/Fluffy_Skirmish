@@ -130,14 +130,18 @@ public class PlayerInput : MonoBehaviour {
         m_aiming = Input.GetButton(input.aimButton) || m_debugAim;
         if (m_weaponHandler.currentWeapon) {
             m_weaponHandler.Aim(m_aiming);
-            otherSettings.requireInputForTurn = !m_aiming;
+            //otherSettings.requireInputForTurn = !m_aiming;
             m_weaponHandler.FingerOnTrigger(Input.GetButton(input.fireButton));
 
-            if (Input.GetButtonDown(input.reloadButton))
+            if (Input.GetButton(input.reloadButton))
                 m_weaponHandler.Reload();
 
-            if (Input.GetButtonDown(input.dropWeaponButton))
-                m_weaponHandler.DropCurrentWeapon();
+            #region DropWeapon
+            if (Input.GetButton(input.dropWeaponButton)) 
+                m_playerTakeover.dropWeapon = true;
+            if(Input.GetButtonUp(input.dropWeaponButton))
+                m_playerTakeover.dropWeapon = false;
+            #endregion
 
             if (!m_weaponHandler.currentWeapon)
                 return;

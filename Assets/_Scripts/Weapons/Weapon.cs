@@ -94,7 +94,8 @@ public class Weapon : MonoBehaviour {
 
     //Fires the weapon
     private void Fire(Ray ray) {
-        if (ammo.clipAmmo == 0 || m_resettingCartridge || !weaponSettings.bulletSpawn)
+        print("Pew pew");
+        if (ammo.clipAmmo <= 0 || m_resettingCartridge || !weaponSettings.bulletSpawn)
             return;
 
         RaycastHit hit;
@@ -197,6 +198,8 @@ public class Weapon : MonoBehaviour {
 
     //Pull the trigger
     public void PullTrigger(bool isPulling) {
+        if (isPulling)
+            print("Pull trigger");
         m_pullingTrigger = isPulling;
     }
 

@@ -19,5 +19,9 @@ public class WeaponTakeover : Photon.PunBehaviour {
         m_photonView.RequestOwnership();
         m_hasOwner = true;
     }
+
+    public void DropWeapon() {
+        m_hasOwner = false;
+    }
   
 }

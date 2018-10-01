@@ -65,8 +65,9 @@ public class WeaponHandler : MonoBehaviour {
     public void FingerOnTrigger(bool pulling) {
         if (!currentWeapon)
             return;
-
-        currentWeapon.PullTrigger(pulling && m_aim && ! m_reload);
+        if(pulling)
+            print("Finger on trigger");
+        currentWeapon.PullTrigger(pulling && m_aim && !m_reload);
     }
 
     //Reloads the current weapon
@@ -98,6 +99,10 @@ public class WeaponHandler : MonoBehaviour {
         if (!currentWeapon)
             return;
 
+        print("DROPPED WEAPON");
+
+        WeaponTakeover weaponTakeover = currentWeapon.GetComponent<WeaponTakeover>();
+        weaponTakeover.DropWeapon();
         currentWeapon.SetEquipped(false);
         currentWeapon.SetOwner(null);
         currentWeapon = null;
@@ -114,6 +119,9 @@ public class WeaponHandler : MonoBehaviour {
 
         weapon.SetOwner(this);
         weapon.SetEquipped(true);
+
+        Weapon pickupWeapon = pickup.GetComponent<Weapon>();
+        currentWeapon = pickupWeapon;
     }
 
     //private void OnAnimatorIK() {}
