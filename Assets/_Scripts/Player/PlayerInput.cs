@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour {
 
-    private PlayerMovement m_playerMovement;
+    public WeaponHandler m_weaponHandler { get; protected set; }
+    public PlayerMovement m_playerMovement { get; protected set; }
     private PlayerTakeover m_playerTakeover;
-
     private PhotonView m_photonView;
-    private WeaponHandler m_weaponHandler;
 
     [System.Serializable]
     public class InputSettings {

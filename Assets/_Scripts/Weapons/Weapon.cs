@@ -36,8 +36,9 @@ public class Weapon : MonoBehaviour {
         public GameObject decal;
         public GameObject clip;
 
-        [Header("-Options-")]
+        [Header("-Other-")]
         public float reloadDuration = 2.0f;
+        public GameObject crosshairPrefab;
 
         [Header("-Positioning-")]
         public Vector3 equipPosition;
@@ -60,6 +61,7 @@ public class Weapon : MonoBehaviour {
     public Ammunition ammo;
 
     public Ray shootRay { protected get; set; }
+    public bool m_ownerAiming { get; set; }
     private WeaponHandler owner;
     private bool m_equipped;
     private bool m_pullingTrigger;
@@ -70,7 +72,11 @@ public class Weapon : MonoBehaviour {
         collider = GetComponent<Collider>();
         rigidBody = GetComponent<Rigidbody>();
 
-    }
+        if (weaponSettings.crosshairPrefab != null) {
+            weaponSettings.crosshairPrefab = Instantiate(weaponSettings.crosshairPrefab);
+            ToggleCrosshair(false);
+        }
+    }  
 
     private void Update() {
         if(owner) {
@@ -82,6 +88,13 @@ public class Weapon : MonoBehaviour {
 
                     if(m_pullingTrigger) 
                         Fire(shootRay);
+
+                    if(m_ownerAiming) {
+                        PositionCrosshair(shootRay);
+
+                    } else {
+                        ToggleCrosshair(false);
+                    }
                 }
             } else {
                 Unequip(weaponType);
@@ -89,6 +102,7 @@ public class Weapon : MonoBehaviour {
         } else {
             DisableEnableComponents(true);
             transform.SetParent(null);
+            m_ownerAiming = false;
         }
     }
 
@@ -100,31 +114,58 @@ public class Weapon : MonoBehaviour {
 
         RaycastHit hit;
         Transform bulletSpawn = weaponSettings.bulletSpawn;
-        Vector3 bulletSpawnPoints = bulletSpawn.position;
+        Vector3 bulletSpawnPosition = bulletSpawn.position;
         Vector3 direction = ray.GetPoint(weaponSettings.range); //Mira em direçao ao centro da camera, utilizando o ray criado da camera
 
         direction += (Vector3)Random.insideUnitCircle * weaponSettings.bulletSpread;
 
-        if (Physics.Raycast(bulletSpawnPoints, direction, out hit, weaponSettings.range, weaponSettings.bulletLayers)) {
-            #region Decal
-            if(hit.collider.gameObject.isStatic) {
-                if(weaponSettings.decal) {
-                    Vector3 hitpoint = hit.point;
-                    Quaternion lookRotation = Quaternion.LookRotation(hit.normal);
-                    GameObject decal = Instantiate(weaponSettings.decal, hitpoint, lookRotation) as GameObject;
-
-                    Transform decalT = decal.transform;
-                    Transform hitT = hit.transform;
-                    decalT.SetParent(hitT);
-                    Destroy(decalT, Random.Range(30.0f, 45.0f));
-                }
-            }
-            #endregion
+        if (Physics.Raycast(bulletSpawnPosition, direction, out hit, weaponSettings.range, weaponSettings.bulletLayers)) {
+            HitEffects(hit); //decal
         }
 
         ammo.clipAmmo--;
         m_resettingCartridge = true;
         StartCoroutine(LoadNextBullet());
+    }
+
+    private void HitEffects(RaycastHit hit) {
+        if (hit.collider.gameObject.isStatic) {
+            if (weaponSettings.decal) {
+                Vector3 hitpoint = hit.point;
+                Quaternion lookRotation = Quaternion.LookRotation(hit.normal);
+                GameObject decal = Instantiate(weaponSettings.decal, hitpoint, lookRotation) as GameObject;
+
+                Transform decalT = decal.transform;
+                Transform hitT = hit.transform;
+                decalT.SetParent(hitT);
+                Destroy(decal, Random.Range(30.0f, 45.0f));
+            }
+        }
+    }
+
+    //Position crosshair to the point that we are aiming at
+    private void PositionCrosshair(Ray ray) {
+        RaycastHit hit;
+        Transform bulletSpawn = weaponSettings.bulletSpawn;
+        Vector3 bulletSpawnPoints = bulletSpawn.position;
+        Vector3 direction = ray.GetPoint(weaponSettings.range); //Mira em direçao ao centro da camera, utilizando o ray criado da camera
+
+        if (Physics.Raycast(bulletSpawnPoints, direction, out hit, weaponSettings.range, weaponSettings.bulletLayers)) {
+            if(weaponSettings.crosshairPrefab != null) {
+                ToggleCrosshair(true);
+                weaponSettings.crosshairPrefab.transform.position = hit.point;
+                weaponSettings.crosshairPrefab.transform.LookAt(Camera.main.transform);
+            }
+        } else {
+            ToggleCrosshair(false);
+        }
+    }
+
+    //Toggle on and off the crosshair prefab
+    private void ToggleCrosshair(bool enabled) {
+        if (weaponSettings.crosshairPrefab != null) {
+            weaponSettings.crosshairPrefab.SetActive(enabled);
+        }
     }
 
     //Loads the next bullet in chamber
