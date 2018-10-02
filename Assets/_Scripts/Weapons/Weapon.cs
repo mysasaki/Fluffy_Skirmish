@@ -27,14 +27,13 @@ public class Weapon : MonoBehaviour {
         [Header("-Bullet Options")]
         public Transform bulletSpawn;
         public float damage = 5.0f;
-        public float bulletSpread = 5.0f;
         public float fireRate = 3.0f;
         public LayerMask bulletLayers; //layers that bullet will hit
         public float range = 200.0f;
 
         [Header("-Effects-")]
         public GameObject decal;
-        public GameObject clip;
+        public GameObject bullet;
 
         [Header("-Other-")]
         public float reloadDuration = 2.0f;
@@ -99,21 +98,19 @@ public class Weapon : MonoBehaviour {
     }
 
     //Fires the weapon
-    public void Fire(Ray ray) {
+    public void Fire() {
         print("Pew pew");
         if (ammo.clipAmmo <= 0 || m_resettingCartridge || !weaponSettings.bulletSpawn || !m_equipped)
             return;
 
-        RaycastHit hit;
         Transform bulletSpawn = weaponSettings.bulletSpawn;
-        Vector3 bulletSpawnPosition = bulletSpawn.position;
-        Vector3 direction = ray.GetPoint(weaponSettings.range) - bulletSpawnPosition; //Mira em direçao ao centro da camera, utilizando o ray criado da camera
 
-        direction += (Vector3)Random.insideUnitCircle * weaponSettings.bulletSpread;
+        Quaternion rotation = Quaternion.LookRotation(bulletSpawn.forward);
+        GameObject bullet = Instantiate(weaponSettings.bullet, bulletSpawn.position, rotation);
+        print(rotation);
 
-        if (Physics.Raycast(bulletSpawnPosition, direction, out hit, weaponSettings.range, weaponSettings.bulletLayers)) {
-            HitEffects(hit); //decal
-        }
+        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+        bulletRb.AddForce(bullet.transform.forward * 100);
 
         ammo.clipAmmo--;
         m_resettingCartridge = true;

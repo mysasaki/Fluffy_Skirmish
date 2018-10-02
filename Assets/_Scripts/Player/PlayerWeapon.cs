@@ -44,13 +44,13 @@ public class PlayerWeapon : MonoBehaviour {
     }
 
 
-    public void FireWeapon(Ray ray) {
+    public void FireWeapon() {
         if(currentWeapon.ammo.clipAmmo == 0) {
             Reload();
             return;
         }
 
-        currentWeapon.Fire(ray);
+        currentWeapon.Fire();
     }
 
     //Reloads the current weapon

@@ -11,15 +11,15 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1879005513744178}
   m_IsPrefabAsset: 1
---- !u!1 &1577597945712792
+--- !u!1 &1854135884385452
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4977090147913676}
-  m_Layer: 10
+  - component: {fileID: 4469031926780618}
+  m_Layer: 0
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,8 +74,21 @@ Transform:
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 4775186218419350}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 90}
+--- !u!4 &4469031926780618
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1854135884385452}
+  m_LocalRotation: {x: 0.5796344, y: -0.40499875, z: -0.40499875, w: 0.5796344}
+  m_LocalPosition: {x: -0.316, y: -0.118, z: 0.43}
+  m_LocalScale: {x: 0.90909094, y: 0.90909094, z: 0.90909094}
+  m_Children: []
+  m_Father: {fileID: 4775186218419350}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 20.115002, y: -90.00001, z: -90.00001}
 --- !u!4 &4775186218419350
 Transform:
   m_ObjectHideFlags: 1
@@ -86,24 +99,11 @@ Transform:
   m_LocalPosition: {x: 67.89, y: 1.17, z: 77.61}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
+  - {fileID: 4469031926780618}
   - {fileID: 4396487572828382}
-  - {fileID: 4977090147913676}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
---- !u!4 &4977090147913676
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1577597945712792}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.034, y: 0.246, z: 0.619}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4775186218419350}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23413796908857328
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -189,16 +189,15 @@ MonoBehaviour:
     leftHandIKTarget: {fileID: 0}
     spineRotation: {x: 0, y: 0, z: 0}
   weaponSettings:
-    bulletSpawn: {fileID: 4977090147913676}
+    bulletSpawn: {fileID: 4469031926780618}
     damage: 5
-    bulletSpread: 5
     fireRate: 3
     bulletLayers:
       serializedVersion: 2
       m_Bits: 4294967295
     range: 200
     decal: {fileID: 1578811779501652, guid: 16d971a8cf15f704b81aa1f9e19a11ab, type: 2}
-    clip: {fileID: 0}
+    bullet: {fileID: 1441078417033874, guid: b73e74c542c4ba44a91551997509fe2a, type: 2}
     reloadDuration: 2
     crosshairPrefab: {fileID: 1374720585793836, guid: 5356494b2c6a58f4a8ad0bcb92d2fb97,
       type: 2}

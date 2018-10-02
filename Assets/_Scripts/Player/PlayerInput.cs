@@ -37,6 +37,7 @@ public class PlayerInput : MonoBehaviour {
     private bool m_aiming;
 
     public Camera tpsCamera;
+
     public GameObject crosshairPrefab;
     private Crosshair m_crosshair;
 
@@ -138,10 +139,12 @@ public class PlayerInput : MonoBehaviour {
         m_playerWeapon.Aim(m_aiming);
 
         if (m_playerWeapon.currentWeapon) {
-            Ray aimRay = new Ray(tpsCamera.transform.position, tpsCamera.transform.forward);
+            Transform pivotTransform = tpsCamera.transform.parent;
+            Vector3 look = pivotTransform.position + (pivotTransform.forward * otherSettings.lookDistance);
+            Vector3 direction = look - transform.position;
 
             if (Input.GetButton(input.fireButton) && m_aiming)
-                m_playerWeapon.FireWeapon(aimRay);
+                m_playerWeapon.FireWeapon(); //tpsCamera.transform.position, tpsCamera.transform.forward
 
             if (Input.GetButton(input.reloadButton))
                 m_playerWeapon.Reload();
@@ -182,8 +185,10 @@ public class PlayerInput : MonoBehaviour {
         transform.rotation = newRotation;
     }
 
-    private void OnDrawGizmosSelected() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(new Ray(tpsCamera.transform.position, tpsCamera.transform.forward * 10));
-    }
+    //private void OnDrawGizmosSelected() {
+    //    Gizmos.color = Color.red;
+    //    float x = Screen.width / 2;
+    //    float y = Screen.height / 2;
+    //    Gizmos.DrawRay(tpsCamera.ScreenPointToRay(new Vector3(x, y, 0)));
+    //}
 }
