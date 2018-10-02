@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 223030314339981406}
   - component: {fileID: 114168782717615536}
   - component: {fileID: 114826802759997368}
+  - component: {fileID: 114218269762666174}
   m_Layer: 5
   m_Name: Dynamic_Crosshair
   m_TagString: Untagged
@@ -94,6 +95,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114218269762666174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374720585793836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935c6ca48ac8f1841b1f567d8bef33f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114826802759997368
 MonoBehaviour:
   m_ObjectHideFlags: 1

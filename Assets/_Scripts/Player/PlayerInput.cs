@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour {
 
-    public WeaponHandler m_weaponHandler { get; protected set; }
+    public PlayerWeapon m_playerWeapon { get; protected set; }
     public PlayerMovement m_playerMovement { get; protected set; }
     private PlayerTakeover m_playerTakeover;
     private PhotonView m_photonView;
@@ -36,7 +36,9 @@ public class PlayerInput : MonoBehaviour {
     public Transform m_spine;
     private bool m_aiming;
 
-    public Camera m_tpsCamera;
+    public Camera tpsCamera;
+    public GameObject crosshairPrefab;
+    private Crosshair m_crosshair;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
@@ -47,8 +49,16 @@ public class PlayerInput : MonoBehaviour {
             return;
 
         m_playerMovement = GetComponent<PlayerMovement>();
-        m_weaponHandler = GetComponent<WeaponHandler>();
+        m_playerWeapon = GetComponent<PlayerWeapon>();
         m_playerTakeover = GetComponent<PlayerTakeover>();
+
+        tpsCamera = Camera.main;
+
+        if (crosshairPrefab != null) {
+            crosshairPrefab = Instantiate(crosshairPrefab);
+            m_crosshair = crosshairPrefab.GetComponent<Crosshair>();
+            m_crosshair.ToggleCrosshair(false);
+        }
     }
 
     private void FixedUpdate() {
@@ -61,8 +71,8 @@ public class PlayerInput : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        if (m_weaponHandler) {
-            if (m_weaponHandler.currentWeapon) {
+        if (m_playerWeapon) {
+            if (m_playerWeapon.currentWeapon) {
                 if (m_aiming)
                     PositionSpine();
             }
@@ -71,16 +81,16 @@ public class PlayerInput : MonoBehaviour {
 
     //Position spine when aiming 
     private void PositionSpine() {
-        if (!m_spine || !m_weaponHandler.currentWeapon || !m_tpsCamera)
+        if (!m_spine || !m_playerWeapon.currentWeapon || !tpsCamera)
             return;
 
-        Transform mainCameraT = m_tpsCamera.transform;
+        Transform mainCameraT = tpsCamera.transform;
         Vector3 mainCamPos = mainCameraT.position;
         Vector3 dir = mainCameraT.forward;
         Ray ray = new Ray(mainCamPos, dir);
         m_spine.LookAt(ray.GetPoint(50));
 
-        Vector3 eulerAngleOffset = m_weaponHandler.currentWeapon.userSettings.spineRotation;
+        Vector3 eulerAngleOffset = m_playerWeapon.currentWeapon.userSettings.spineRotation;
         m_spine.Rotate(eulerAngleOffset);
         print("EULER ANGLE: " + eulerAngleOffset);
 
@@ -107,7 +117,7 @@ public class PlayerInput : MonoBehaviour {
 
     //Handle camera logic
     private void CameraLookLogic() {
-        if (!m_tpsCamera)
+        if (!tpsCamera)
             return;
 
         if (otherSettings.requireInputForTurn) {
@@ -121,17 +131,20 @@ public class PlayerInput : MonoBehaviour {
 
     //Handles all weapon logic
     private void WeaponLogic() {
-        if (!m_weaponHandler)
+        if (!m_playerWeapon)
             return;
 
         m_aiming = Input.GetButton(input.aimButton) || m_debugAim;
-        if (m_weaponHandler.currentWeapon) {
-            m_weaponHandler.Aim(m_aiming);
-            //otherSettings.requireInputForTurn = !m_aiming;
-            m_weaponHandler.FingerOnTrigger(Input.GetButton(input.fireButton));
+        m_playerWeapon.Aim(m_aiming);
+
+        if (m_playerWeapon.currentWeapon) {
+            Ray aimRay = new Ray(tpsCamera.transform.position, tpsCamera.transform.forward);
+
+            if (Input.GetButton(input.fireButton) && m_aiming)
+                m_playerWeapon.FireWeapon(aimRay);
 
             if (Input.GetButton(input.reloadButton))
-                m_weaponHandler.Reload();
+                m_playerWeapon.Reload();
 
             #region DropWeapon
             if (Input.GetButton(input.dropWeaponButton)) 
@@ -140,16 +153,21 @@ public class PlayerInput : MonoBehaviour {
                 m_playerTakeover.dropWeapon = false;
             #endregion
 
-            if (!m_weaponHandler.currentWeapon)
-                return;
+            if(m_aiming) 
+                m_crosshair.ToggleCrosshair(true);
+                
+             else 
+                m_crosshair.ToggleCrosshair(false);
+            
 
-            m_weaponHandler.currentWeapon.shootRay = new Ray(m_tpsCamera.transform.position, m_tpsCamera.transform.forward);
+        } else {
+            m_crosshair.ToggleCrosshair(false);
         }
     }
 
     //Maker player look at a forward point from the camera
     private void PlayerLook() {
-        Transform mainCameraT = m_tpsCamera.transform;
+        Transform mainCameraT = tpsCamera.transform;
         Transform pivotT = mainCameraT.parent;
         Vector3 pivotPos = pivotT.position;
         Vector3 lookTarget = pivotPos + (pivotT.forward * otherSettings.lookDistance);
@@ -166,6 +184,6 @@ public class PlayerInput : MonoBehaviour {
 
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(new Ray(m_tpsCamera.transform.position, m_tpsCamera.transform.forward * 10));
+        Gizmos.DrawRay(new Ray(tpsCamera.transform.position, tpsCamera.transform.forward * 10));
     }
 }

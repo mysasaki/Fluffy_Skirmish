@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour {
         set { m_playerUI = value; }
     }
 
-    private WeaponHandler m_weaponHandler {
-        get { return FindObjectOfType<WeaponHandler>(); }
+    private PlayerWeapon m_weaponHandler {
+        get { return FindObjectOfType<PlayerWeapon>(); }
         set { m_weaponHandler = value; }
     }
 

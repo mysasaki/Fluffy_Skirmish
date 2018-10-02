@@ -776,10 +776,12 @@ MonoBehaviour:
     requireInputForTurn: 0
     aimDetectionLayers:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 1
   m_debugAim: 0
   m_spine: {fileID: 0}
-  m_tpsCamera: {fileID: 0}
+  tpsCamera: {fileID: 0}
+  crosshairPrefab: {fileID: 1374720585793836, guid: 5356494b2c6a58f4a8ad0bcb92d2fb97,
+    type: 2}
 --- !u!114 &114496698033931416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -792,6 +794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupInRange: 0
+  dropWeapon: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 1024

@@ -62,20 +62,14 @@ public class Weapon : MonoBehaviour {
 
     public Ray shootRay { protected get; set; }
     public bool m_ownerAiming { get; set; }
-    private WeaponHandler owner;
+    private PlayerWeapon owner;
     private bool m_equipped;
-    private bool m_pullingTrigger;
     private bool m_resettingCartridge;
 
 
     private void Start() {
         collider = GetComponent<Collider>();
         rigidBody = GetComponent<Rigidbody>();
-
-        if (weaponSettings.crosshairPrefab != null) {
-            weaponSettings.crosshairPrefab = Instantiate(weaponSettings.crosshairPrefab);
-            ToggleCrosshair(false);
-        }
     }  
 
     private void Update() {
@@ -85,18 +79,16 @@ public class Weapon : MonoBehaviour {
             if (m_equipped) {
                 if(owner.userSettings.rightHand) {
                     Equip();
+                }
 
-                    if(m_pullingTrigger) 
-                        Fire(shootRay);
+            } else {
 
-                    if(m_ownerAiming) {
-                        PositionCrosshair(shootRay);
-
-                    } else {
-                        ToggleCrosshair(false);
+                if (weaponSettings.bulletSpawn.childCount > 0) {
+                    foreach (Transform t in weaponSettings.bulletSpawn.GetComponentsInChildren<Transform>()) {
+                        if (t != weaponSettings.bulletSpawn)
+                            Destroy(t.gameObject);
                     }
                 }
-            } else {
                 Unequip(weaponType);
             }
         } else {
@@ -107,7 +99,7 @@ public class Weapon : MonoBehaviour {
     }
 
     //Fires the weapon
-    private void Fire(Ray ray) {
+    public void Fire(Ray ray) {
         print("Pew pew");
         if (ammo.clipAmmo <= 0 || m_resettingCartridge || !weaponSettings.bulletSpawn || !m_equipped)
             return;
@@ -140,31 +132,6 @@ public class Weapon : MonoBehaviour {
                 decalT.SetParent(hitT);
                 Destroy(decal, Random.Range(30.0f, 45.0f));
             }
-        }
-    }
-
-    //Position crosshair to the point that we are aiming at
-    private void PositionCrosshair(Ray ray) {
-        RaycastHit hit;
-        Transform bulletSpawn = weaponSettings.bulletSpawn;
-        Vector3 bulletSpawnPoints = bulletSpawn.position;
-        Vector3 direction = ray.GetPoint(weaponSettings.range); //Mira em direçao ao centro da camera, utilizando o ray criado da camera
-
-        if (Physics.Raycast(bulletSpawnPoints, direction, out hit, weaponSettings.range, weaponSettings.bulletLayers)) {
-            if(weaponSettings.crosshairPrefab != null) {
-                ToggleCrosshair(true);
-                weaponSettings.crosshairPrefab.transform.position = hit.point;
-                weaponSettings.crosshairPrefab.transform.LookAt(Camera.main.transform);
-            }
-        } else {
-            ToggleCrosshair(false);
-        }
-    }
-
-    //Toggle on and off the crosshair prefab
-    private void ToggleCrosshair(bool enabled) {
-        if (weaponSettings.crosshairPrefab != null) {
-            weaponSettings.crosshairPrefab.SetActive(enabled);
         }
     }
 
@@ -237,15 +204,9 @@ public class Weapon : MonoBehaviour {
         m_equipped = equip;
     }
 
-    //Pull the trigger
-    public void PullTrigger(bool isPulling) {
-        if (isPulling)
-            print("Pull trigger");
-        m_pullingTrigger = isPulling;
-    }
 
     //Sets owner of the weapon
-    public void SetOwner(WeaponHandler wp) {
+    public void SetOwner(PlayerWeapon wp) {
         owner = wp;
     }
 }

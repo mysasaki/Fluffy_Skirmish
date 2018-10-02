@@ -42,7 +42,7 @@ public class PlayerTakeover : MonoBehaviour {
         }  
 
         if(dropWeapon) {
-            WeaponHandler weaponHandler = GetComponent<WeaponHandler>();
+            PlayerWeapon weaponHandler = GetComponent<PlayerWeapon>();
 
             if (weaponHandler.currentWeapon != null) {
                 m_photonView.RPC("RPC_WeaponDrop", PhotonTargets.All, this.m_photonView.instantiationId);
@@ -72,7 +72,7 @@ public class PlayerTakeover : MonoBehaviour {
                     if (playerTakeover.m_photonView.instantiationId == playerID) {
                         WeaponTakeover weaponTakeover = selectedWeapon.GetComponent<WeaponTakeover>();
                         weaponTakeover.TakeoverWeapon();
-                        WeaponHandler weaponHandler = p.GetComponent<WeaponHandler>();
+                        PlayerWeapon weaponHandler = p.GetComponent<PlayerWeapon>();
                         weaponHandler.PickupWeapon(selectedWeapon);
                         
                          return;
@@ -94,7 +94,7 @@ public class PlayerTakeover : MonoBehaviour {
                 print("p " + playerTakeover.m_photonView.instantiationId);
                 if (playerTakeover.m_photonView.instantiationId == playerID) {
                     print("RPC DROPPED");
-                    WeaponHandler weaponHandler = p.GetComponent<WeaponHandler>();
+                    PlayerWeapon weaponHandler = p.GetComponent<PlayerWeapon>();
                     weaponHandler.DropCurrentWeapon();
 
                     return;
