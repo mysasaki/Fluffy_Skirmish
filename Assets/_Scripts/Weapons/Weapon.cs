@@ -64,6 +64,7 @@ public class Weapon : MonoBehaviour {
     private PlayerWeapon owner;
     private bool m_equipped;
     private bool m_resettingCartridge;
+    private PlayerShoot m_playerShoot;
 
 
     private void Start() {
@@ -104,13 +105,7 @@ public class Weapon : MonoBehaviour {
             return;
 
         Transform bulletSpawn = weaponSettings.bulletSpawn;
-        Camera camera = Camera.main;
-        Quaternion rotation = Quaternion.LookRotation(camera.transform.forward);
-        GameObject bullet = Instantiate(weaponSettings.bullet, bulletSpawn.position, rotation);
-        print(rotation);
-
-        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-        bulletRb.AddForce(bullet.transform.forward * 50, ForceMode.Impulse);
+        m_playerShoot.InstantiateBullet(bulletSpawn.position);
 
         ammo.clipAmmo--;
         m_resettingCartridge = true;
@@ -160,6 +155,8 @@ public class Weapon : MonoBehaviour {
 
         transform.SetParent(owner.userSettings.rightHand);
         transform.localPosition = weaponSettings.equipPosition;
+        m_playerShoot = owner.GetComponent<PlayerShoot>();
+
         Quaternion equipRot = Quaternion.Euler(weaponSettings.equipRotation);
         transform.localRotation = equipRot;
     }
@@ -179,8 +176,10 @@ public class Weapon : MonoBehaviour {
                 break;
         }
         transform.localPosition = weaponSettings.unequipPosition;
+
         Quaternion unequipRot = Quaternion.Euler(weaponSettings.unequipRotation);
         transform.localRotation = unequipRot;
+        m_playerShoot = null;
     }
 
     //Loads the clip and calculates ammo
