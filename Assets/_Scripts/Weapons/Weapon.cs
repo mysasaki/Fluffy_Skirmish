@@ -52,7 +52,6 @@ public class Weapon : MonoBehaviour {
 
     [System.Serializable]
     public class Ammunition {
-        public int carryingAmmo;
         public int clipAmmo;
         public int maxClipAmmo;
     }
@@ -65,6 +64,7 @@ public class Weapon : MonoBehaviour {
     private bool m_equipped;
     private bool m_resettingCartridge;
     private PlayerShoot m_playerShoot;
+    private Player m_player;
 
 
     private void Start() {
@@ -156,6 +156,7 @@ public class Weapon : MonoBehaviour {
         transform.SetParent(owner.userSettings.rightHand);
         transform.localPosition = weaponSettings.equipPosition;
         m_playerShoot = owner.GetComponent<PlayerShoot>();
+        m_player = owner.GetComponent<Player>();
 
         Quaternion equipRot = Quaternion.Euler(weaponSettings.equipRotation);
         transform.localRotation = equipRot;
@@ -180,19 +181,24 @@ public class Weapon : MonoBehaviour {
         Quaternion unequipRot = Quaternion.Euler(weaponSettings.unequipRotation);
         transform.localRotation = unequipRot;
         m_playerShoot = null;
+        m_player = null;
     }
 
     //Loads the clip and calculates ammo
     public void LoadClip() {
         int ammoNeeded = ammo.maxClipAmmo - ammo.clipAmmo;
-        
-        if (ammoNeeded >= ammo.carryingAmmo) {
-            ammo.clipAmmo = ammo.carryingAmmo;
-            ammo.carryingAmmo = 0;
+        PhotonView photonView = owner.GetComponent<PhotonView>();
+
+        if (ammoNeeded >= m_player.Ammo) {
+            ammo.clipAmmo = m_player.Ammo;
+            PlayerManagement.Instance.ModifyAmmo(PhotonNetwork.player.ID, -m_player.Ammo);
+
         } else {
-            ammo.carryingAmmo -= ammoNeeded;
             ammo.clipAmmo = ammo.maxClipAmmo;
+            PlayerManagement.Instance.ModifyAmmo(PhotonNetwork.player.ID, -ammoNeeded);
+            
         }
+     
     }
 
     //Sets the weapons equip state

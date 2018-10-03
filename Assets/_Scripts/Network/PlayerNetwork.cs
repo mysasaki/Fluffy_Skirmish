@@ -42,12 +42,12 @@ public class PlayerNetwork : MonoBehaviour {
         m_photonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient, PhotonNetwork.player);
     }
 
-    public void NewHealth(PhotonPlayer photonPlayer, int health) {
-        m_photonView.RPC("RPC_NewHealth", photonPlayer, health);
+    public void NewHealth(int photonPlayer, int health) {
+        m_photonView.RPC("RPC_NewHealth", PhotonTargets.All, health);
     }
 
-    public void NewAmmo(PhotonPlayer photonPlayer, int ammo) {
-        m_photonView.RPC("RPC_NewAmmo", photonPlayer, ammo);
+    public void NewAmmo(int photonPlayer, int ammo) {
+        m_photonView.RPC("RPC_NewAmmo", PhotonTargets.All, ammo);
     }
 
     #region RPC 
@@ -60,7 +60,7 @@ public class PlayerNetwork : MonoBehaviour {
     private void RPC_LoadedGameScene(PhotonPlayer photonPlayer) { //called on the master to tell how many players on the game
 
         //populate the playerStats in Playermanagement
-        PlayerManagement.Instance.AddPlayerStats(photonPlayer);
+        PlayerManagement.Instance.AddPlayerStats(photonPlayer.ID);
 
         m_playersInGame++;
         if (m_playersInGame == PhotonNetwork.playerList.Length) { //all the players are in the game
@@ -83,6 +83,7 @@ public class PlayerNetwork : MonoBehaviour {
 
     [PunRPC]
     private void RPC_NewAmmo(int ammo) {
+        print("RPC NEW AMMO");
         if (m_currentPlayer == null)
             return;
 

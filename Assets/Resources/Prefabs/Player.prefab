@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 114814498844648182}
   - component: {fileID: 114496698033931416}
   - component: {fileID: 114190309865936774}
+  - component: {fileID: 114945525192565888}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -834,7 +835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3185a5466ff814f479dc9666a0d8020f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 0
   m_moveSpeed: 6
 --- !u!114 &114728228290506088
 MonoBehaviour:
@@ -904,6 +904,19 @@ MonoBehaviour:
     isWalking: 0
     isSprinting: 0
     isAiming: 0
+--- !u!114 &114945525192565888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1069429208874228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d66ab550e1d95438eeaf64f9180c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  Ammo: 24
 --- !u!136 &136077847775714884
 CapsuleCollider:
   m_ObjectHideFlags: 1

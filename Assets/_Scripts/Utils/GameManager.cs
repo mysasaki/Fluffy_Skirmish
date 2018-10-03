@@ -27,13 +27,23 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
+        GetPlayerComponents();
+    }
+
+    private void Update() {
+        if (m_player == null)
+            GetPlayerComponents();
+        UpdateUI();
+    }
+
+    private void GetPlayerComponents() {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
         if (players.Length > 0) {
             foreach (GameObject p in players) {
                 PhotonView photonView = p.GetComponent<PhotonView>();
-                
-                if(photonView.isMine) {
+
+                if (photonView.isMine) {
                     m_player = p.GetComponent<Player>();
                     m_playerInput = p.GetComponent<PlayerInput>();
                     m_playerWeapon = p.GetComponent<PlayerWeapon>();
@@ -41,10 +51,6 @@ public class GameManager : MonoBehaviour {
                 }
             }
         }
-    }
-
-    private void Update() {
-        UpdateUI();
     }
 
     private void UpdateUI() {
@@ -56,7 +62,7 @@ public class GameManager : MonoBehaviour {
                         m_playerUI.ammoText.text = "Unarmed";
 
                     } else {
-                        m_playerUI.ammoText.text = m_playerWeapon.currentWeapon.ammo.clipAmmo + "/" + m_playerWeapon.currentWeapon.ammo.carryingAmmo;
+                        m_playerUI.ammoText.text = m_playerWeapon.currentWeapon.ammo.clipAmmo + "/" + m_player.Ammo;
                     }
                 }
 

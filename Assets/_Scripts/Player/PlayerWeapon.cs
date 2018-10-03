@@ -20,9 +20,11 @@ public class PlayerWeapon : MonoBehaviour {
     private bool m_reload;
     private int m_weaponType;
     private bool m_settingWeapon; //prevent to change weapons rapo=idly
+    private Player m_player;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
+        m_player = GetComponent<Player>();
     }
 
     private void Update() {
@@ -58,7 +60,7 @@ public class PlayerWeapon : MonoBehaviour {
         if (m_reload || !currentWeapon)
             return;
 
-        if (currentWeapon.ammo.carryingAmmo <= 0 || currentWeapon.ammo.clipAmmo == currentWeapon.ammo.maxClipAmmo)
+        if (m_player.Ammo <= 0 || currentWeapon.ammo.clipAmmo == currentWeapon.ammo.maxClipAmmo)
             return;
 
         m_reload = true;
