@@ -104,13 +104,13 @@ public class Weapon : MonoBehaviour {
             return;
 
         Transform bulletSpawn = weaponSettings.bulletSpawn;
-
-        Quaternion rotation = Quaternion.LookRotation(bulletSpawn.forward);
+        Camera camera = Camera.main;
+        Quaternion rotation = Quaternion.LookRotation(camera.transform.forward);
         GameObject bullet = Instantiate(weaponSettings.bullet, bulletSpawn.position, rotation);
         print(rotation);
 
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-        bulletRb.AddForce(bullet.transform.forward * 100);
+        bulletRb.AddForce(bullet.transform.forward * 50, ForceMode.Impulse);
 
         ammo.clipAmmo--;
         m_resettingCartridge = true;

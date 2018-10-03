@@ -80,7 +80,7 @@ public class CameraRig : MonoBehaviour {
         RotateCamera();
         CheckWall(); //check for wall behind it
         CheckMeshRenderer();
-        //Zoom(Input.GetButton(input.AimButton));
+        Zoom(Input.GetButton(input.AimButton));
 
         if(Input.GetButtonDown(input.SwitchShoulderButton)) 
             SwitchShoulders();  

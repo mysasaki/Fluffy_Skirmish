@@ -771,7 +771,7 @@ MonoBehaviour:
     dropWeaponButton: DropWeapon
     pickupWeapon: Pickup
   otherSettings:
-    lookSpeed: 7.5
+    lookSpeed: 14
     lookDistance: 10
     requireInputForTurn: 0
     aimDetectionLayers:

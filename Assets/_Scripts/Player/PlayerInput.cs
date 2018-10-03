@@ -156,10 +156,10 @@ public class PlayerInput : MonoBehaviour {
                 m_playerTakeover.dropWeapon = false;
             #endregion
 
-            if(m_aiming) 
+            if (m_aiming) {
                 m_crosshair.ToggleCrosshair(true);
-                
-             else 
+
+            } else
                 m_crosshair.ToggleCrosshair(false);
             
 
