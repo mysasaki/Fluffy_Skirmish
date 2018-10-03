@@ -42,4 +42,5 @@ MonoBehaviour:
   - RPC_NewHealth
   - RPC_WeaponTakeover
   - RPC_WeaponDrop
+  - RPC_InstantiateBullet
   DisableAutoOpenWizard: 1

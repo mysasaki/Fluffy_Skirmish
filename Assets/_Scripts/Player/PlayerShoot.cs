@@ -14,11 +14,21 @@ public class PlayerShoot : MonoBehaviour {
     }
 
     public void InstantiateBullet(Vector3 position) {
+        if (!m_photonView.isMine)
+            return;
+
         Camera camera = Camera.main;
         Quaternion rotation = Quaternion.LookRotation(camera.transform.forward);
-        GameObject bullet = Instantiate(bulletPrefab, position, rotation);
+        m_photonView.RPC("RPC_InstantiateBullet", PhotonTargets.All, position, rotation);
+    }
 
+    [PunRPC]
+    private void RPC_InstantiateBullet(Vector3 position, Quaternion rotation) {
+       
+        GameObject bullet = Instantiate(bulletPrefab, position, rotation);
         Rigidbody bulleRb = bullet.GetComponent<Rigidbody>();
         bulleRb.AddForce(bullet.transform.forward * 50, ForceMode.Impulse);
     }
+
+
 }
