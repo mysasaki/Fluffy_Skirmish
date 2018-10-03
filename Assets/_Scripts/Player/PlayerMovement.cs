@@ -9,7 +9,6 @@ public class PlayerMovement : Photon.MonoBehaviour {
     private Quaternion m_targetRotation;
     private PlayerAnimation m_playerAnimation;
 
-    public float m_health;
     public float m_moveSpeed = 10;
 
     private void Awake() {

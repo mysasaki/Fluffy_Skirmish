@@ -8,7 +8,7 @@ public class PlayerNetwork : MonoBehaviour {
     private PhotonView m_photonView;
     private int m_playersInGame = 0;
 
-    public PlayerMovement m_currentPlayer;
+    public Player m_currentPlayer;
 
     private void Awake() {
         Instance = this; //singleton
@@ -46,6 +46,10 @@ public class PlayerNetwork : MonoBehaviour {
         m_photonView.RPC("RPC_NewHealth", photonPlayer, health);
     }
 
+    public void NewAmmo(PhotonPlayer photonPlayer, int ammo) {
+        m_photonView.RPC("RPC_NewAmmo", photonPlayer, ammo);
+    }
+
     #region RPC 
     [PunRPC]
     private void RPC_LoadGameOthers() {
@@ -73,8 +77,16 @@ public class PlayerNetwork : MonoBehaviour {
         if (health <= 0)
             PhotonNetwork.Destroy(m_currentPlayer.gameObject); //ded
         else
-            m_currentPlayer.m_health = health; //passa a vida pro player. Assim ele nao consegue manipular com hacks
+            m_currentPlayer.Health = health; //passa a vida pro player. Assim ele nao consegue manipular com hacks
 
+    }
+
+    [PunRPC]
+    private void RPC_NewAmmo(int ammo) {
+        if (m_currentPlayer == null)
+            return;
+
+        m_currentPlayer.Ammo = ammo;
     }
 
     [PunRPC]
@@ -83,7 +95,7 @@ public class PlayerNetwork : MonoBehaviour {
         float randomX = Random.Range(0f, 150f);
 
         GameObject obj = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Player"), new Vector3(randomX, 5, randomZ), Quaternion.identity, 0);
-        m_currentPlayer = obj.GetComponent<PlayerMovement>();
+        m_currentPlayer = obj.GetComponent<Player>();
         
     }
 }

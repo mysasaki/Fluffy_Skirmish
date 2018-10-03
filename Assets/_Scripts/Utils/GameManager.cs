@@ -7,21 +7,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour { 
 
     public static GameManager Instance = null;
-
-    private PlayerInput m_playerInput {
-        get { return FindObjectOfType<PlayerInput>(); }
-        set { m_playerInput = value; }
-    }
-
+    
     private PlayerUI m_playerUI {
         get { return FindObjectOfType<PlayerUI>(); }
         set { m_playerUI = value; }
     }
 
-    private PlayerWeapon m_weaponHandler {
-        get { return FindObjectOfType<PlayerWeapon>(); }
-        set { m_weaponHandler = value; }
-    }
+    private PlayerWeapon m_playerWeapon;
+    private PlayerInput m_playerInput;
+    private Player m_player;
 
     private void Awake() {
         if (Instance == null)
@@ -32,6 +26,23 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start() {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        if (players.Length > 0) {
+            foreach (GameObject p in players) {
+                PhotonView photonView = p.GetComponent<PhotonView>();
+                
+                if(photonView.isMine) {
+                    m_player = p.GetComponent<Player>();
+                    m_playerInput = p.GetComponent<PlayerInput>();
+                    m_playerWeapon = p.GetComponent<PlayerWeapon>();
+                    return;
+                }
+            }
+        }
+    }
+
     private void Update() {
         UpdateUI();
     }
@@ -39,17 +50,18 @@ public class GameManager : MonoBehaviour {
     private void UpdateUI() {
         if (m_playerInput) {
             if (m_playerUI) {
-                if (m_weaponHandler) {
+                if (m_playerWeapon) {
 
-                    if (m_weaponHandler.currentWeapon == null) {
+                    if (m_playerWeapon.currentWeapon == null) {
                         m_playerUI.ammoText.text = "Unarmed";
 
                     } else {
-                        m_playerUI.ammoText.text = m_weaponHandler.currentWeapon.ammo.clipAmmo + "//" + m_weaponHandler.currentWeapon.ammo.carryingAmmo;
+                        m_playerUI.ammoText.text = m_playerWeapon.currentWeapon.ammo.clipAmmo + "/" + m_playerWeapon.currentWeapon.ammo.carryingAmmo;
                     }
                 }
 
                 if (m_playerUI.healthBar && m_playerUI.healthText) {
+                    m_playerUI.healthBar.value = Mathf.Round(m_player.Health);
                     m_playerUI.healthText.text = Mathf.Round(m_playerUI.healthBar.value).ToString();
                 }
             }
