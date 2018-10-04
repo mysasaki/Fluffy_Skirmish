@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
 
                     if (m_playerWeapon.currentWeapon == null) {
                         m_playerUI.ammoText.text = "Unarmed";
-
+                        
                     } else {
                         m_playerUI.ammoText.text = m_playerWeapon.currentWeapon.ammo.clipAmmo + "/" + m_player.Ammo;
                     }
@@ -75,3 +75,4 @@ public class GameManager : MonoBehaviour {
         }
     }
 }
+

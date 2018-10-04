@@ -187,15 +187,16 @@ public class Weapon : MonoBehaviour {
     //Loads the clip and calculates ammo
     public void LoadClip() {
         int ammoNeeded = ammo.maxClipAmmo - ammo.clipAmmo;
-        PhotonView photonView = owner.GetComponent<PhotonView>();
+        PhotonView photonView = owner.GetComponentInParent<PhotonView>();
+        print("Load clip: " + photonView.owner.ID);
 
         if (ammoNeeded >= m_player.Ammo) {
             ammo.clipAmmo = m_player.Ammo;
-            PlayerManagement.Instance.ModifyAmmo(PhotonNetwork.player.ID, -m_player.Ammo);
+            PlayerManagement.Instance.ModifyAmmo(photonView.owner.ID, -m_player.Ammo);
 
         } else {
             ammo.clipAmmo = ammo.maxClipAmmo;
-            PlayerManagement.Instance.ModifyAmmo(PhotonNetwork.player.ID, -ammoNeeded);
+            PlayerManagement.Instance.ModifyAmmo(photonView.owner.ID, -ammoNeeded);
             
         }
      

@@ -52,7 +52,6 @@ public class PlayerTakeover : MonoBehaviour {
 
     [PunRPC]
     private void RPC_WeaponTakeover(int playerID, int weaponID) {
-        print("RPC called " + playerID + ", " + weaponID);
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         GameObject[] weapons = GameObject.FindGameObjectsWithTag("Weapon");
         GameObject selectedWeapon = weapons[0];
@@ -60,7 +59,6 @@ public class PlayerTakeover : MonoBehaviour {
         if(weapons.Length > 0 ) {
             foreach (GameObject w in weapons) {
                 WeaponTakeover weaponTakeover = w.GetComponent<WeaponTakeover>();
-                print("w " + weaponTakeover.m_photonView.instantiationId);
                 if (weaponTakeover.m_photonView.instantiationId == weaponID)
                     selectedWeapon = w;
             }
@@ -68,7 +66,7 @@ public class PlayerTakeover : MonoBehaviour {
             if (players.Length > 0) {
                 foreach (GameObject p in players) {
                     PlayerTakeover playerTakeover = p.GetComponent<PlayerTakeover>();
-                    print("p " + playerTakeover.m_photonView.instantiationId);
+
                     if (playerTakeover.m_photonView.instantiationId == playerID) {
                         WeaponTakeover weaponTakeover = selectedWeapon.GetComponent<WeaponTakeover>();
                         weaponTakeover.TakeoverWeapon();
@@ -91,7 +89,6 @@ public class PlayerTakeover : MonoBehaviour {
         if (players.Length > 0) {
             foreach (GameObject p in players) {
                 PlayerTakeover playerTakeover = p.GetComponent<PlayerTakeover>();
-                print("p " + playerTakeover.m_photonView.instantiationId);
                 if (playerTakeover.m_photonView.instantiationId == playerID) {
                     print("RPC DROPPED");
                     PlayerWeapon weaponHandler = p.GetComponent<PlayerWeapon>();

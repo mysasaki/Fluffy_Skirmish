@@ -13,33 +13,94 @@ public class PlayerManagement : MonoBehaviour {
         Instance = this;
         m_photonView = GetComponent<PhotonView>();
     }
+
+    //public void UpdatePlayerList() {
+    //    print("Update List");
+    //    DebugPrint();
+    //    GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+    //    foreach (GameObject p in players) {
+    //        PhotonView photonView = p.GetPhotonView();
+    //        Player player = p.GetComponent<Player>();
+    //        AddPlayer(photonView.instantiationId, player.Health, player.Ammo);
+
+    //    }
+    //}
     
-    public void AddPlayerStats(int photonPlayerID) {
-        int index = m_playerStatsList.FindIndex(x => x.PhotonPlayerID == photonPlayerID); //make sure the player is not already in the list
-        
+    public void AddPlayer(int id, string name, int health, int ammo) {
+        m_photonView.RPC("RPC_NewPlayer", PhotonTargets.All, id, name, health, ammo);
+    }
+
+    public void ModifyHealth(int id, int value) {
+        m_photonView.RPC("RPC_NewHealth", PhotonTargets.All, id, value);
+
+    }
+
+    public void ModifyAmmo(int id, int value) {
+        m_photonView.RPC("RPC_NewAmmo", PhotonTargets.All, id, value);
+    }
+
+    [PunRPC]
+    private void RPC_NewPlayer(int id, string name, int health, int ammo) {
+        print("RPC NEW PLAYER");
+        int index = m_playerStatsList.FindIndex(x => x.ID == id); //make sure the player is not already in the list
+
         if (index == -1) {
-            m_playerStatsList.Add(new PlayerStats(photonPlayerID, 100, 24)); //initial health = 30
+            m_playerStatsList.Add(new PlayerStats(id, name, health, ammo)); //initial health = 30
+
         }
     }
 
-    public void ModifyHealth(int photonPlayerID, int value) {
-        //Find the player in playerstats that we're going to modify
-        int index = m_playerStatsList.FindIndex(x => x.PhotonPlayerID == photonPlayerID);
+    [PunRPC]
+    private void RPC_NewHealth(int id, int health) {
+        int index = m_playerStatsList.FindIndex(x => x.ID == id); //Find the player in playerstats that we're going to modify
+
 
         if (index != -1) {
             PlayerStats playerStats = m_playerStatsList[index];
-            playerStats.Health += value;
-            PlayerNetwork.Instance.NewHealth(photonPlayerID, playerStats.Health);
+            playerStats.Health += health;
+
+        }
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject p in players) {
+            Player player = p.GetComponent<Player>();
+            if (player.ID == id) {
+                
+                player.UpdateHealth(m_playerStatsList[index].Health);
+                return;
+            }
+        }
+
+    }
+
+    [PunRPC]
+    private void RPC_NewAmmo(int id, int ammo) {
+        print("RPC NEW AMMO");
+        int index = m_playerStatsList.FindIndex(x => x.ID == id);
+
+        if (index != -1) {
+            PlayerStats playerStats = m_playerStatsList[index];
+            playerStats.Ammo += ammo;
+        }
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject p in players) {
+            Player player = p.GetComponent<Player>();
+            if (player.ID == id) {            
+                player.UpdateAmmo(m_playerStatsList[index].Ammo);
+                DebugPrint();
+                return;
+            }
         }
     }
 
-    public void ModifyAmmo(int photonPlayerID, int value) {
-        int index = m_playerStatsList.FindIndex(x => x.PhotonPlayerID == photonPlayerID);
-
-        if(index != -1) {
-            PlayerStats playerStats = m_playerStatsList[index];
-            playerStats.Ammo += value;
-            PlayerNetwork.Instance.NewAmmo(photonPlayerID, playerStats.Ammo);
+    private void DebugPrint() {
+        print("PlayerList Length: " + m_playerStatsList.Count);
+        foreach (PlayerStats p in m_playerStatsList) {
+            print(p.ID + " : " + p.Ammo);
         }
     }
 }
@@ -47,13 +108,19 @@ public class PlayerManagement : MonoBehaviour {
 //Hold data about each player - anticheating
 public class PlayerStats {
 
-    public PlayerStats(int photonPlayerID, int health, int ammo) {
-        PhotonPlayerID = photonPlayerID;
+    public PlayerStats(int id, string name, int health, int ammo) {
+        ID = id;
+        Name = name;
         Health = health;
         Ammo = ammo;
+        Kills = 0;
+        Death = 0;
     }
 
-    public readonly int PhotonPlayerID; //Whenever you create this class you will assign the photonplayer and that will not change bc is readonly
+    public readonly int ID; //Whenever you create this class you will assign the photonplayer and that will not change bc is readonly
+    public readonly string Name;
     public int Health;
     public int Ammo;
+    public int Kills;
+    public int Death;
 }

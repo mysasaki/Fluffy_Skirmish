@@ -44,4 +44,5 @@ MonoBehaviour:
   - RPC_WeaponDrop
   - RPC_InstantiateBullet
   - RPC_NewAmmo
+  - RPC_NewPlayer
   DisableAutoOpenWizard: 1

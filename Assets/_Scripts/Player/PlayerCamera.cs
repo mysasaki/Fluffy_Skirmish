@@ -11,7 +11,6 @@ public class PlayerCamera : MonoBehaviour {
     }
 
     private void Start() {
-        print("JOINED ROOM");
         if (!m_photonView.isMine)
             return;
 

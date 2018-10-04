@@ -42,14 +42,6 @@ public class PlayerNetwork : MonoBehaviour {
         m_photonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient, PhotonNetwork.player);
     }
 
-    public void NewHealth(int photonPlayer, int health) {
-        m_photonView.RPC("RPC_NewHealth", PhotonTargets.All, health);
-    }
-
-    public void NewAmmo(int photonPlayer, int ammo) {
-        m_photonView.RPC("RPC_NewAmmo", PhotonTargets.All, ammo);
-    }
-
     #region RPC 
     [PunRPC]
     private void RPC_LoadGameOthers() {
@@ -58,10 +50,8 @@ public class PlayerNetwork : MonoBehaviour {
 
     [PunRPC]
     private void RPC_LoadedGameScene(PhotonPlayer photonPlayer) { //called on the master to tell how many players on the game
-
-        //populate the playerStats in Playermanagement
-        PlayerManagement.Instance.AddPlayerStats(photonPlayer.ID);
-
+        print("Player added: " + photonPlayer + " [" + photonPlayer.ID + "]");
+        PlayerManagement.Instance.AddPlayer(photonPlayer.ID, photonPlayer.NickName, 100, 24);
         m_playersInGame++;
         if (m_playersInGame == PhotonNetwork.playerList.Length) { //all the players are in the game
             print("All players are in game scene");
@@ -70,34 +60,21 @@ public class PlayerNetwork : MonoBehaviour {
     }
 
     [PunRPC]
-    private void RPC_NewHealth(int health) {
-        if (m_currentPlayer == null)  //verify if there's an object to destroy
-            return;
-
-        if (health <= 0)
-            PhotonNetwork.Destroy(m_currentPlayer.gameObject); //ded
-        else
-            m_currentPlayer.Health = health; //passa a vida pro player. Assim ele nao consegue manipular com hacks
-
-    }
-
-    [PunRPC]
-    private void RPC_NewAmmo(int ammo) {
-        print("RPC NEW AMMO");
-        if (m_currentPlayer == null)
-            return;
-
-        m_currentPlayer.Ammo = ammo;
-    }
-
-    [PunRPC]
     private void RPC_CreatePlayer() {
+        
         float randomZ = Random.Range(0f, 150f);
         float randomX = Random.Range(0f, 150f);
 
         GameObject obj = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Player"), new Vector3(randomX, 5, randomZ), Quaternion.identity, 0);
         m_currentPlayer = obj.GetComponent<Player>();
+
+        Player player = obj.GetComponent<Player>();
+        player.ID = PhotonNetwork.player.ID;
+        player.Name = PhotonNetwork.player.NickName;
+        print("Created player with id: " + PhotonNetwork.player.ID + ", " + PhotonNetwork.player.NickName);
         
+        //PlayerManagement.Instance.AddPlayer(photonView.instantiationId); //populate the playerStats in Playermanagement
+
     }
 }
 #endregion
