@@ -45,4 +45,7 @@ MonoBehaviour:
   - RPC_InstantiateBullet
   - RPC_NewAmmo
   - RPC_NewPlayer
+  - RPC_DealDamage
+  - RPC_PlayerDie
+  - RPC_RespawnPlayer
   DisableAutoOpenWizard: 1

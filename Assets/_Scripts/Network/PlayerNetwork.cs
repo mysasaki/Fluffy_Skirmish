@@ -33,13 +33,13 @@ public class PlayerNetwork : MonoBehaviour {
     }
 
     private void MasterLoadedGame() { //mastercliente deu load na scene
-        m_photonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient, PhotonNetwork.player); //needs to call becase if the other client never joins, this rpc will never be called
+        m_photonView.RPC("RPC_LoadedGameScene", PhotonTargets.All, PhotonNetwork.player); //needs to call becase if the other client never joins, this rpc will never be called
         //tell all the other players that they should load scene
         m_photonView.RPC("RPC_LoadGameOthers", PhotonTargets.Others); //rpc: broadcast messsage to others
     }
 
     private void NonMasterLoadedGame() {
-        m_photonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient, PhotonNetwork.player);
+        m_photonView.RPC("RPC_LoadedGameScene", PhotonTargets.All, PhotonNetwork.player);
     }
 
     #region RPC 
@@ -49,13 +49,14 @@ public class PlayerNetwork : MonoBehaviour {
     }
 
     [PunRPC]
-    private void RPC_LoadedGameScene(PhotonPlayer photonPlayer) { //called on the master to tell how many players on the game
+    private void RPC_LoadedGameScene(PhotonPlayer photonPlayer) { //called on the master to tell how many players on the game   
         print("Player added: " + photonPlayer + " [" + photonPlayer.ID + "]");
         PlayerManagement.Instance.AddPlayer(photonPlayer.ID, photonPlayer.NickName, 100, 24);
         m_playersInGame++;
         if (m_playersInGame == PhotonNetwork.playerList.Length) { //all the players are in the game
             print("All players are in game scene");
             m_photonView.RPC("RPC_CreatePlayer", PhotonTargets.All);
+            //PlayerManagement.Instance.AddPlayer(photonPlayer.ID, photonPlayer.NickName, 100, 24); //doublecheck
         }
     }
 

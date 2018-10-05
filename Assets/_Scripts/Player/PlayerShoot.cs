@@ -25,10 +25,10 @@ public class PlayerShoot : MonoBehaviour {
     [PunRPC]
     private void RPC_InstantiateBullet(Vector3 position, Quaternion rotation) {
        
-        GameObject bullet = Instantiate(bulletPrefab, position, rotation);
-        Rigidbody bulleRb = bullet.GetComponent<Rigidbody>();
-        bulleRb.AddForce(bullet.transform.forward * 50, ForceMode.Impulse);
+        GameObject bulletGameObject = Instantiate(bulletPrefab, position, rotation);
+        Bullet bullet = bulletGameObject.GetComponent<Bullet>();
+        bullet.m_owner = GetComponent<Player>();
+        Rigidbody bulleRb = bulletGameObject.GetComponent<Rigidbody>();
+        bulleRb.AddForce(bulletGameObject.transform.forward * 80, ForceMode.Impulse);
     }
-
-
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CameraRig
   - Weapon
+  - DamangeDealer
   layers:
   - Default
   - TransparentFX
