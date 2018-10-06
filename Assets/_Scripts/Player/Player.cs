@@ -10,20 +10,33 @@ public class Player : MonoBehaviour {
     public int Ammo = 24;
     public int Kill = 0;
     public int Death = 0;
-
     public bool IsDead = false;
+
+    private PhotonView m_photonView;
+
+    private void Awake() {
+        m_photonView = GetComponent<PhotonView>();
+    }
+
+    private void Start() {
+        if(m_photonView.isMine) {
+            m_photonView.RPC("RPC_UpdatePlayerData", PhotonTargets.Others, ID, Name);
+        }
+    }
 
     public void Update() {
         if (IsDead) {
             print("Player " + Name + " diededdened.");
+            IsDead = false;
             StartCoroutine(StartRespawnPlayer());
         }
     }
 
     private IEnumerator StartRespawnPlayer() {
+        print("startRespawnPlayer called");
         yield return new WaitForSeconds(10);
-        RespawnPlayer();
-        IsDead = false;
+        gameObject.SetActive(false);
+        RespawnPlayer();      
     }
 
     private void RespawnPlayer() {
@@ -44,5 +57,16 @@ public class Player : MonoBehaviour {
 
     public void UpdateKill(int kill) {
         this.Kill = kill;
+    }
+
+    [PunRPC]
+    private void RPC_UpdatePlayerData(int ID, string name) {
+        if (m_photonView.isMine)
+            return;
+        
+        if(m_photonView.owner.ID == ID) {
+            this.ID = ID;
+            this.Name = name;
+        }
     }
 }

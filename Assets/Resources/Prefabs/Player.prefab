@@ -915,8 +915,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d66ab550e1d95438eeaf64f9180c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
+  Name: 
   Health: 100
   Ammo: 24
+  Kill: 0
+  Death: 0
+  IsDead: 0
 --- !u!136 &136077847775714884
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -926,10 +931,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.98492503
+  m_Radius: 1.1769745
   m_Height: 3.248932
   m_Direction: 1
-  m_Center: {x: -0.0070279837, y: 1.5057578, z: 0}
+  m_Center: {x: -0.0147099495, y: 1.5057578, z: 0}
 --- !u!137 &137050673460204150
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
