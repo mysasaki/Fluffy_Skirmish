@@ -11,11 +11,14 @@ public class Player : MonoBehaviour {
     public int Kill = 0;
     public int Death = 0;
     public bool IsDead = false;
+    public bool Respawning = false;
+    public GameObject Mesh;
 
     private PhotonView m_photonView;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
+
     }
 
     private void Start() {
@@ -35,11 +38,12 @@ public class Player : MonoBehaviour {
     private IEnumerator StartRespawnPlayer() {
         print("startRespawnPlayer called");
         yield return new WaitForSeconds(10);
-        gameObject.SetActive(false);
+        ToggleMesh(false);
         RespawnPlayer();      
     }
 
     private void RespawnPlayer() {
+        Respawning = true;
         PlayerManagement.Instance.RespawnPlayer(this.ID);
     }
 
@@ -57,6 +61,10 @@ public class Player : MonoBehaviour {
 
     public void UpdateKill(int kill) {
         this.Kill = kill;
+    }
+
+    public void ToggleMesh(bool activate) {
+        Mesh.SetActive(activate);
     }
 
     [PunRPC]

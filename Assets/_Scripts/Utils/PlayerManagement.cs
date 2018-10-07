@@ -54,12 +54,14 @@ public class PlayerManagement : MonoBehaviour {
     }
 
     public void RespawnPlayer(int id_player) {
-        m_photonView.RPC("RPC_RespawnPlayer", PhotonTargets.All, id_player);
+        float randomZ = Random.Range(0f, 150f);
+        float randomX = Random.Range(0f, 150f);
+        m_photonView.RPC("RPC_RespawnPlayer", PhotonTargets.All, id_player, randomX, randomZ);
     }
 
     [PunRPC]
     private void RPC_NewPlayer(int id, string name, int health, int ammo) {
-        print("RPC NEW PLAYER " + id + ", "+ name);
+        print("RPC NEW PLAYER " + id + ", " + name);
         int index = m_playerStatsList.FindIndex(x => x.Name == name); //make sure the player is not already in the list
         print("INDEX NEW PALYER " + index);
         if (index == -1) {
@@ -97,9 +99,9 @@ public class PlayerManagement : MonoBehaviour {
     }
 
     [PunRPC]
-    private void RPC_DealDamage(int id_owner, int id_other, int damage) {        
+    private void RPC_DealDamage(int id_owner, int id_other, int damage) {
         int index = m_playerStatsList.FindIndex(x => x.ID == id_other);
-        
+
         if (index != -1) {
             PlayerStats otherPlayer = m_playerStatsList[index];
             otherPlayer.Health -= damage;
@@ -111,7 +113,7 @@ public class PlayerManagement : MonoBehaviour {
             if (player.ID == id_other) {
                 player.UpdateHealth(m_playerStatsList[index].Health);
 
-                if(CheckDeath(id_other))
+                if (CheckDeath(id_other))
                     m_photonView.RPC("RPC_PlayerDie", PhotonTargets.All, id_owner, id_other);
             }
         }
@@ -143,7 +145,7 @@ public class PlayerManagement : MonoBehaviour {
 
             if (player.ID == id_owner)
                 player.UpdateKill(m_playerStatsList[index_owner].Kills);
-            
+
         }
     }
 
@@ -169,7 +171,7 @@ public class PlayerManagement : MonoBehaviour {
     }
 
     [PunRPC]
-    private void RPC_RespawnPlayer(int id) {
+    private void RPC_RespawnPlayer(int id, float newX, float newZ) {
         print("respawn player " + id);
         int index = m_playerStatsList.FindIndex(x => x.ID == id);
         if (index != -1) {
@@ -177,21 +179,23 @@ public class PlayerManagement : MonoBehaviour {
             playerStats.IsDead = false;
         }
 
+
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject p in players) {
             Player player = p.GetComponent<Player>();
 
             if (player.ID == id) {
-                print("Respawning");
-                float randomZ = Random.Range(0f, 150f);
-                float randomX = Random.Range(0f, 150f);
-                p.transform.position = new Vector3(randomX, 5, randomZ);
-                p.SetActive(true);
+                print("Respawning");    
+                p.transform.position = new Vector3(newX, 5, newZ);
+                print("POSITION " + newX + ", " + newZ);
+                player.ToggleMesh(true);
                 player.Health = 100;
                 m_playerStatsList[index].Health = 100;
                 return;
             }
         }
+
+
     }
 
     private void DebugPrint() {

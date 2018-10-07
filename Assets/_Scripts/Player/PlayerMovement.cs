@@ -8,18 +8,31 @@ public class PlayerMovement : Photon.MonoBehaviour {
     private Vector3 m_targetPosition;
     private Quaternion m_targetRotation;
     private PlayerAnimation m_playerAnimation;
+    private Player m_player;
 
     public float m_moveSpeed = 10;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
         m_playerAnimation = GetComponent<PlayerAnimation>();
+        m_player = GetComponent<Player>();
     }
 
     private void FixedUpdate() {
         if (!m_photonView.isMine)
-            SmoothMove();
+           SmoothMove();
     } 
+
+    private bool IsRespawning() {
+        List<PlayerStats> playerStats = PlayerManagement.Instance.m_playerStatsList;
+        int index = playerStats.FindIndex(x => x.ID == this.m_player.ID);
+
+        if (index != -1) {
+            return (playerStats[index].IsDead);
+        } else {
+            return false;
+        }
+    }
 
     //photon callback. Called everytime you receive a package
     //Only will be called if youre observing the script
@@ -38,9 +51,21 @@ public class PlayerMovement : Photon.MonoBehaviour {
     }
 
     private void SmoothMove() {
-        transform.position = Vector3.Lerp(transform.position, m_targetPosition, 0.25f); //the higher the value, more torwards the target the move is
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, m_targetRotation, 500 * Time.deltaTime);
-        
+        /*int index = PlayerManagement.Instance.m_playerStatsList.FindIndex(x => x.ID == m_player.ID);
+        if (index == -1)
+            return;
+
+        PlayerStats playerStats = PlayerManagement.Instance.m_playerStatsList[index];*/
+
+        if (!m_player.Respawning) {
+            transform.position = Vector3.Lerp(transform.position, m_targetPosition, 0.25f); //the higher the value, more torwards the target the move is
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, m_targetRotation, 500 * Time.deltaTime);
+
+        } else {
+            transform.position = m_targetPosition;
+            transform.rotation = m_targetRotation;
+            m_player.Respawning = true;
+        }
     }
 
     public void Move(float vertical, float horizontal) { //Handle player movement

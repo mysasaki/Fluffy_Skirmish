@@ -922,6 +922,7 @@ MonoBehaviour:
   Kill: 0
   Death: 0
   IsDead: 0
+  Mesh: {fileID: 1122868640370228}
 --- !u!136 &136077847775714884
 CapsuleCollider:
   m_ObjectHideFlags: 1
