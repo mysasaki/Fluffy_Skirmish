@@ -6,11 +6,16 @@ public class Bullet : MonoBehaviour {
 
     public Player m_owner;
 
+    private void Start() {
+        StartCoroutine(DestroyOnTime());
+    }
+
+    private IEnumerator DestroyOnTime() {
+        yield return new WaitForSeconds(15);
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter(Collider other) {
-        print("eita");
-        if (m_owner.ID != PhotonNetwork.player.ID)
-            return;
-        print("xablau");
         if (other.CompareTag("Player")) {
             Player player = other.GetComponent<Player>();
             Destroy(gameObject);

@@ -9,12 +9,6 @@ public class CameraRig : MonoBehaviour {
     public bool m_autoTargetPlayer; //auto target 
     public LayerMask m_wallLayers; //help detect walls
 
-    public enum Shoulder {
-        Right, Left
-    }
-
-    public Shoulder shoulder;
-
     [System.Serializable]
     public class CameraSettings {//have all the camera settings
         [Header("-Positioning -")]
@@ -37,7 +31,7 @@ public class CameraRig : MonoBehaviour {
 
         [Header("-Visual Options-")]
         public float HideMeshWhenDistance = 0.5f; //when were too close to camera, it will hide the mesh from the camera
-        
+
     }
 
     [SerializeField]
@@ -48,7 +42,6 @@ public class CameraRig : MonoBehaviour {
         public string VerticalAxis = "Mouse X";
         public string HorizontalAxis = "Mouse Y";
         public string AimButton = "Fire2";
-        public string SwitchShoulderButton = "SwapShoulder";
 
     }
 
@@ -67,29 +60,34 @@ public class CameraRig : MonoBehaviour {
     private Camera m_mainCamera;
     private float m_newX = 0.0f; //values that are going to be passed when we move the mouse
     private float m_newY = 0.0f;
+    private Escape m_escape;
 
     private void Start() {
         m_mainCamera = Camera.main;
         m_pivot = transform.GetChild(0);
+        m_escape = FindObjectOfType<Escape>();
     }
 
     private void Update() {
         if (m_target == null)
             return;
 
+        if (m_escape.m_isActive)
+            return;
+
         RotateCamera();
         CheckWall(); //check for wall behind it
         CheckMeshRenderer();
         Zoom(Input.GetButton(input.AimButton));
-
-        if(Input.GetButtonDown(input.SwitchShoulderButton)) 
-            SwitchShoulders();  
     }
 
 
     //All functionality that follows player
     private void FixedUpdate() {
         if (m_target == null) //TargetPlayer() -> do tutorial mas talvez n precise por ser mo
+            return;
+
+        if (m_escape.m_isActive)
             return;
 
         Vector3 targetPos = m_target.position;
@@ -132,21 +130,13 @@ public class CameraRig : MonoBehaviour {
         Vector3 start = pivotPosition;
         Vector3 direction = mainCamPosition - pivotPosition;
 
-        float distance = Mathf.Abs(shoulder == Shoulder.Left ? cameraSettings.CamPositionOffsetLeft.z : cameraSettings.CamPositionOffsetRight.z);
+        float distance = Mathf.Abs(cameraSettings.CamPositionOffsetRight.z);
 
         if (Physics.SphereCast(start, cameraSettings.MaxCheckDist, direction, out hit, distance, m_wallLayers)) {
             //MoveCamUp(hit, pivotPosition, direction, mainCamTransform);
         } else {
+            PositionCamera(cameraSettings.CamPositionOffsetRight);
 
-            switch(shoulder) { //positioning the camera based on the shoulder
-                case Shoulder.Left:
-                    PositionCamera(cameraSettings.CamPositionOffsetLeft);    
-                    break;
-
-                case Shoulder.Right:
-                    PositionCamera(cameraSettings.CamPositionOffsetRight);
-                    break;
-            }
         }
     }
 
@@ -196,11 +186,11 @@ public class CameraRig : MonoBehaviour {
         if (!m_mainCamera)
             return;
 
-        if(isZooming) {
+        if (isZooming) {
             float newFieldOfView = Mathf.Lerp(m_mainCamera.fieldOfView, cameraSettings.ZoomFieldOfView, Time.deltaTime * cameraSettings.ZoomSpeed);
             m_mainCamera.fieldOfView = newFieldOfView;
 
-            if(cameraSettings.UICamera != null) {
+            if (cameraSettings.UICamera != null) {
                 cameraSettings.UICamera.fieldOfView = newFieldOfView;
             }
 
@@ -214,18 +204,18 @@ public class CameraRig : MonoBehaviour {
         }
     }
 
-    //Switches the cameras shoulderview
-    public void SwitchShoulders() {
-        switch(shoulder) {
-            case Shoulder.Left:
-                shoulder = Shoulder.Right;                
-                break;
+    ////Switches the cameras shoulderview
+    //public void SwitchShoulders() {
+    //    switch(shoulder) {
+    //        case Shoulder.Left:
+    //            shoulder = Shoulder.Right;                
+    //            break;
 
-            case Shoulder.Right:
-                shoulder = Shoulder.Left;
-                break;
-        }
-    }
+    //        case Shoulder.Right:
+    //            shoulder = Shoulder.Left;
+    //            break;
+    //    }
+    //}
     #endregion
 
     #region FollowPlayer
@@ -233,11 +223,11 @@ public class CameraRig : MonoBehaviour {
     private void TargetsPlayer() {
         if (m_autoTargetPlayer) {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            
-            if(player) {
+
+            if (player) {
                 Transform playerT = player.transform;
                 m_target = playerT;
-            }         
+            }
         }
     }
 
@@ -245,7 +235,7 @@ public class CameraRig : MonoBehaviour {
     private void FollowTarget(Vector3 targetPos, Quaternion targetRot) {
         Vector3 newPos = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * movement.movementLerpSpeed);
         transform.position = newPos;
-        
+
     }
 
     #endregion

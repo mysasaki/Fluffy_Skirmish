@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour {
     public PlayerMovement m_playerMovement { get; protected set; }
     private PlayerTakeover m_playerTakeover;
     private PhotonView m_photonView;
+    private Escape m_escape;
 
     [System.Serializable]
     public class InputSettings {
@@ -18,6 +19,7 @@ public class PlayerInput : MonoBehaviour {
         public string fireButton = "Fire1";
         public string dropWeaponButton = "DropWeapon";
         public string pickupWeapon = "Pickup";
+        public string escape = "Cancel";
     }
     [SerializeField]
     private InputSettings input;
@@ -52,6 +54,7 @@ public class PlayerInput : MonoBehaviour {
         m_playerMovement = GetComponent<PlayerMovement>();
         m_playerWeapon = GetComponent<PlayerWeapon>();
         m_playerTakeover = GetComponent<PlayerTakeover>();
+        m_escape = FindObjectOfType<Escape>();
 
         tpsCamera = Camera.main;
 
@@ -66,19 +69,23 @@ public class PlayerInput : MonoBehaviour {
         if (!m_photonView.isMine)
             return;
 
-        CharacterLogic();
-        CameraLookLogic();
-        WeaponLogic();
+        if (!m_escape.m_isActive) {
+            CharacterLogic();
+            CameraLookLogic();
+            WeaponLogic();
+        }
+
+        PlayerLogic();
     }
 
-    private void LateUpdate() {
-        if (m_playerWeapon) {
-            if (m_playerWeapon.currentWeapon) {
-                if (m_aiming)
-                    PositionSpine();
-            }
-        }
-    }
+    //private void LateUpdate() {
+    //    if (m_playerWeapon) {
+    //        if (m_playerWeapon.currentWeapon) {
+    //            if (m_aiming)
+    //                PositionSpine();
+    //        }
+    //    }
+    //}
 
     //Position spine when aiming 
     private void PositionSpine() {
@@ -183,6 +190,12 @@ public class PlayerInput : MonoBehaviour {
 
         Quaternion newRotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * otherSettings.lookSpeed);
         transform.rotation = newRotation;
+    }
+
+    private void PlayerLogic() {
+        if(Input.GetButtonDown(input.escape)) {
+            GameManager.Instance.ToggleEsc();
+        }
     }
 
     //private void OnDrawGizmosSelected() {

@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour {
         set { m_playerUI = value; }
     }
 
+    private Escape m_escape {
+        get { return FindObjectOfType<Escape>(); }
+        set { m_escape = value; }
+    }
+
     private PlayerWeapon m_playerWeapon;
     private PlayerInput m_playerInput;
     private Player m_player;
@@ -28,6 +33,7 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         GetPlayerComponents();
+        
     }
 
     private void Update() {
@@ -73,6 +79,10 @@ public class GameManager : MonoBehaviour {
             }
 
         }
+    }
+
+    public void ToggleEsc() {
+        m_escape.Toggle();
     }
 }
 
