@@ -8,10 +8,12 @@ public class Respawn : MonoBehaviour {
     public Text time;
     public GameObject container;
 
-    private bool m_isActive = false;
+    public bool m_isActive = false;
     private float m_countingValue = 10;
 
     private void Awake() {
+        this.time.text = "10";
+        this.slider.value = 10;
         m_isActive = false;
         container.SetActive(false);
     }
@@ -42,7 +44,7 @@ public class Respawn : MonoBehaviour {
 
     public void EndRespawn() {
         m_isActive = false;
-        container.SetActive(false);     
+        container.SetActive(false);    
     }
 
 }

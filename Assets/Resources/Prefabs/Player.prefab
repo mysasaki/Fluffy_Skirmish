@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 114496698033931416}
   - component: {fileID: 114190309865936774}
   - component: {fileID: 114945525192565888}
+  - component: {fileID: 114429517195108118}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -772,6 +773,7 @@ MonoBehaviour:
     fireButton: Fire1
     dropWeaponButton: DropWeapon
     pickupWeapon: Pickup
+    escape: Cancel
   otherSettings:
     lookSpeed: 14
     lookDistance: 10
@@ -797,6 +799,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1441078417033874, guid: b73e74c542c4ba44a91551997509fe2a,
     type: 2}
+--- !u!114 &114429517195108118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1069429208874228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98982b717c110646959706c4fb97dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114496698033931416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -922,6 +935,8 @@ MonoBehaviour:
   Kill: 0
   Death: 0
   IsDead: 0
+  Respawning: 0
+  RespawnTime: 10
   Mesh: {fileID: 1122868640370228}
 --- !u!136 &136077847775714884
 CapsuleCollider:

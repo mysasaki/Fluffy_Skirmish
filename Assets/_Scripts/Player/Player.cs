@@ -72,6 +72,10 @@ public class Player : MonoBehaviour {
         Mesh.SetActive(activate);
     }
 
+    public void FinishRespawn() {
+        this.Respawning = false;
+    }
+
     [PunRPC]
     private void RPC_UpdatePlayerData(int ID, string name) {
         if (m_photonView.isMine)

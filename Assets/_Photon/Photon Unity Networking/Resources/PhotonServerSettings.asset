@@ -49,4 +49,5 @@ MonoBehaviour:
   - RPC_PlayerDie
   - RPC_RespawnPlayer
   - RPC_UpdatePlayerData
+  - RPC_DebugKill
   DisableAutoOpenWizard: 1

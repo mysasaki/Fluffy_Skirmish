@@ -64,9 +64,7 @@ public class PlayerManagement : MonoBehaviour {
 
     [PunRPC]
     private void RPC_NewPlayer(int id, string name, int health, int ammo) {
-        print("RPC NEW PLAYER " + id + ", " + name);
         int index = m_playerStatsList.FindIndex(x => x.Name == name); //make sure the player is not already in the list
-        print("INDEX NEW PALYER " + index);
         if (index == -1) {
             m_playerStatsList.Add(new PlayerStats(id, name, health, ammo)); //initial health = 30
 
@@ -124,7 +122,6 @@ public class PlayerManagement : MonoBehaviour {
 
     [PunRPC]
     private void RPC_PlayerDie(int id_owner, int id_other) {
-        print("RPC player die");
         int index_other = m_playerStatsList.FindIndex(x => x.ID == id_other);
         if (index_other != -1) {
             PlayerStats other = m_playerStatsList[index_other];
@@ -154,7 +151,6 @@ public class PlayerManagement : MonoBehaviour {
 
     [PunRPC]
     private void RPC_NewAmmo(int id, int ammo) {
-        print("RPC NEW AMMO");
         int index = m_playerStatsList.FindIndex(x => x.ID == id);
 
         if (index != -1) {
@@ -175,7 +171,6 @@ public class PlayerManagement : MonoBehaviour {
 
     [PunRPC]
     private void RPC_RespawnPlayer(int id, float newX, float newZ) {
-        print("respawn player " + id);
         int index = m_playerStatsList.FindIndex(x => x.ID == id);
         if (index != -1) {
             PlayerStats playerStats = m_playerStatsList[index];
@@ -188,12 +183,12 @@ public class PlayerManagement : MonoBehaviour {
             Player player = p.GetComponent<Player>();
 
             if (player.ID == id) {
-                print("Respawning");    
                 p.transform.position = new Vector3(newX, 5, newZ);
-                print("POSITION " + newX + ", " + newZ);
                 player.ToggleMesh(true);
                 player.Health = 100;
                 m_playerStatsList[index].Health = 100;
+                player.FinishRespawn();
+
                 return;
             }
         }
@@ -201,6 +196,35 @@ public class PlayerManagement : MonoBehaviour {
 
     }
 
+    #region Debug
+
+    public void DebugKill(int id_player) {
+        m_photonView.RPC("RPC_DebugKill", PhotonTargets.All, id_player);
+    }
+
+    [PunRPC]
+    private void RPC_DebugKill(int id_player) {
+        print("RPC player debug die");
+
+        int index_player = m_playerStatsList.FindIndex(x => x.ID == id_player);
+        if (index_player != -1) {
+            PlayerStats other = m_playerStatsList[index_player];
+            other.Death += 1;
+            other.IsDead = true;
+        }
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players) {
+            Player player = p.GetComponent<Player>();
+            if (player.ID == id_player) {
+                player.UpdateDeath(m_playerStatsList[index_player].Death);
+                player.IsDead = true;
+            }
+
+        }
+    }
+
+    #endregion
     private void DebugPrint() {
         print("PlayerList Length: " + m_playerStatsList.Count);
         foreach (PlayerStats p in m_playerStatsList) {

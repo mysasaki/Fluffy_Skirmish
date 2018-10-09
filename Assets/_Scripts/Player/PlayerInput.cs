@@ -10,6 +10,7 @@ public class PlayerInput : MonoBehaviour {
     private PhotonView m_photonView;
     private Escape m_escape;
     private Player m_player;
+    private Respawn m_respawn;
 
     [System.Serializable]
     public class InputSettings {
@@ -57,6 +58,7 @@ public class PlayerInput : MonoBehaviour {
         m_playerTakeover = GetComponent<PlayerTakeover>();
         m_player = GetComponent<Player>();
         m_escape = FindObjectOfType<Escape>();
+        m_respawn = FindObjectOfType<Respawn>();
 
         tpsCamera = Camera.main;
 
@@ -71,7 +73,9 @@ public class PlayerInput : MonoBehaviour {
         if (!m_photonView.isMine)
             return;
 
-        if (!m_escape.m_isActive && !m_player.Respawning) {
+        print("ESCAPE: " + m_escape.m_isActive + " ISDEAD: " + m_player.IsDead + " RESPAWNING: " + m_player.Respawning);
+
+        if (!m_escape.m_isActive && !m_player.IsDead && !m_player.Respawning && !m_respawn.m_isActive) {
             CharacterLogic();
             CameraLookLogic();
             WeaponLogic();
