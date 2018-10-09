@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
     public int Death = 0;
     public bool IsDead = false;
     public bool Respawning = false;
+    public float RespawnTime = 10;
     public GameObject Mesh;
 
     private PhotonView m_photonView;
@@ -28,18 +29,22 @@ public class Player : MonoBehaviour {
     }
 
     public void Update() {
+        if (!m_photonView.isMine)
+            return;
+
         if (IsDead) {
             print("Player " + Name + " diededdened.");
             IsDead = false;
             StartCoroutine(StartRespawnPlayer());
+            GameManager.Instance.StartRespawn();
         }
     }
 
     private IEnumerator StartRespawnPlayer() {
         print("startRespawnPlayer called");
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(RespawnTime);
         ToggleMesh(false);
-        RespawnPlayer();      
+        RespawnPlayer();
     }
 
     private void RespawnPlayer() {

@@ -89,7 +89,7 @@ public class CameraRig : MonoBehaviour {
 
         if (m_escape.m_isActive)
             return;
-
+         
         Vector3 targetPos = m_target.position;
         Quaternion targetRot = m_target.rotation;
 

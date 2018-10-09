@@ -8,14 +8,19 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance = null;
     
-    private PlayerUI m_playerUI {
-        get { return FindObjectOfType<PlayerUI>(); }
-        set { m_playerUI = value; }
+    private HUD m_hud {
+        get { return FindObjectOfType<HUD>(); }
+        set { m_hud = value; }
     }
 
     private Escape m_escape {
         get { return FindObjectOfType<Escape>(); }
         set { m_escape = value; }
+    }
+
+    private Respawn m_respawn {
+        get { return FindObjectOfType<Respawn>(); }
+        set { m_respawn = value; }
     }
 
     private PlayerWeapon m_playerWeapon;
@@ -39,7 +44,11 @@ public class GameManager : MonoBehaviour {
     private void Update() {
         if (m_player == null)
             GetPlayerComponents();
-        UpdateUI();
+
+        if(m_playerInput)
+            if(m_hud)
+                if(m_playerWeapon)
+                    m_hud.UpdateUI(m_playerWeapon, m_player);
     }
 
     private void GetPlayerComponents() {
@@ -59,30 +68,12 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void UpdateUI() {
-        if (m_playerInput) {
-            if (m_playerUI) {
-                if (m_playerWeapon) {
-
-                    if (m_playerWeapon.currentWeapon == null) {
-                        m_playerUI.ammoText.text = "Unarmed";
-                        
-                    } else {
-                        m_playerUI.ammoText.text = m_playerWeapon.currentWeapon.ammo.clipAmmo + "/" + m_player.Ammo;
-                    }
-                }
-
-                if (m_playerUI.healthBar && m_playerUI.healthText) {
-                    m_playerUI.healthBar.value = Mathf.Round(m_player.Health);
-                    m_playerUI.healthText.text = Mathf.Round(m_playerUI.healthBar.value).ToString();
-                }
-            }
-
-        }
-    }
-
     public void ToggleEsc() {
         m_escape.Toggle();
+    }
+
+    public void StartRespawn() {
+        m_respawn.StartRespawn();
     }
 }
 
