@@ -14,8 +14,8 @@ public class ToxicArea : MonoBehaviour {
         PhotonView photonView = other.GetComponent<PhotonView>();
         if (photonView != null && photonView.isMine) {
             //PlayerManagement.Instance.ModifyHealth(photonView.owner, -10); //anti hacking
-            PlayerMovement playerMovement = other.GetComponent<PlayerMovement>();
-            playerMovement.Health -= 10; //jeito izi de fazer. E nao da problema caso o host saia da partida
+            Player player = other.GetComponent<Player>();
+            player.Health -= 10; //jeito izi de fazer. E nao da problema caso o host saia da partida
         }
     }
 }

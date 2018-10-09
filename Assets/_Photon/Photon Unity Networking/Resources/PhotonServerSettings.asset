@@ -40,4 +40,14 @@ MonoBehaviour:
   - RPC_LoadGameOthers
   - RPC_CreatePlayer
   - RPC_NewHealth
+  - RPC_WeaponTakeover
+  - RPC_WeaponDrop
+  - RPC_InstantiateBullet
+  - RPC_NewAmmo
+  - RPC_NewPlayer
+  - RPC_DealDamage
+  - RPC_PlayerDie
+  - RPC_RespawnPlayer
+  - RPC_UpdatePlayerData
+  - RPC_DebugKill
   DisableAutoOpenWizard: 1

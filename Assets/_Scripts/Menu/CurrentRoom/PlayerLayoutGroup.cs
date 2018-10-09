@@ -65,7 +65,7 @@ public class PlayerLayoutGroup : MonoBehaviour {
     }
 
     private void PlayerLeftRoom(PhotonPlayer photonPlayer) {
-        int index = PlayerListings.FindIndex(x => x.PhotonPlayer == photonPlayer);
+        int index = PlayerListings.FindIndex(x => x.m_photonPlayer == photonPlayer);
 
         if (index != -1) { //encontro o player na lista
             Destroy(PlayerListings[index].gameObject);
