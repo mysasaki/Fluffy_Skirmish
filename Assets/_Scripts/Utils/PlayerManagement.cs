@@ -6,12 +6,17 @@ public class PlayerManagement : MonoBehaviour {
 
     public static PlayerManagement Instance;
     private PhotonView m_photonView;
+    private KillFeed m_killFeed;
 
     public List<PlayerStats> m_playerStatsList = new List<PlayerStats>();
 
     private void Awake() {
         Instance = this;
         m_photonView = GetComponent<PhotonView>();
+    }
+
+    private void Start() {
+        m_killFeed = FindObjectOfType<KillFeed>();
     }
 
     public void AddPlayer(int id, string name, int health, int ammo) {
@@ -115,24 +120,31 @@ public class PlayerManagement : MonoBehaviour {
                 player.UpdateHealth(m_playerStatsList[index].Health);
 
                 if (CheckDeath(id_other))
-                    m_photonView.RPC("RPC_PlayerDie", PhotonTargets.All, id_owner, id_other);
+                    m_photonView.RPC("RPC_PlayerDie", PhotonTargets.Others, id_owner, id_other);
             }
         }
     }
 
     [PunRPC]
     private void RPC_PlayerDie(int id_owner, int id_other) {
+        print("RPC PLAUER DIE. MY ID: " + PhotonNetwork.player.ID);
+        if (!m_killFeed)
+            m_killFeed = FindObjectOfType<KillFeed>();
+
         int index_other = m_playerStatsList.FindIndex(x => x.ID == id_other);
+        Kill kill = new Kill();
         if (index_other != -1) {
             PlayerStats other = m_playerStatsList[index_other];
             other.Death += 1;
             other.IsDead = true;
+            kill.Victim = other.Name;
         }
 
         int index_owner = m_playerStatsList.FindIndex(y => y.ID == id_owner);
         if (index_owner != -1) {
             PlayerStats owner = m_playerStatsList[index_owner];
             owner.Kills += 1;
+            kill.Killer = owner.Name;
         }
 
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -145,8 +157,9 @@ public class PlayerManagement : MonoBehaviour {
 
             if (player.ID == id_owner)
                 player.UpdateKill(m_playerStatsList[index_owner].Kills);
-
         }
+
+        m_killFeed.AddKill(kill, PhotonNetwork.player.ID);
     }
 
     [PunRPC]
@@ -204,13 +217,23 @@ public class PlayerManagement : MonoBehaviour {
 
     [PunRPC]
     private void RPC_DebugKill(int id_player) {
+
+        if (!m_killFeed)
+            m_killFeed = FindObjectOfType<KillFeed>();
+
         print("RPC player debug die");
 
+        Kill kill = new Kill();
         int index_player = m_playerStatsList.FindIndex(x => x.ID == id_player);
         if (index_player != -1) {
             PlayerStats other = m_playerStatsList[index_player];
             other.Death += 1;
             other.IsDead = true;
+            kill.Killer = other.Name;
+            kill.Victim = other.Name;
+
+            //print("KILL FEED " + m_killFeed);
+            m_killFeed.AddKill(kill, PhotonNetwork.player.ID);
         }
 
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");

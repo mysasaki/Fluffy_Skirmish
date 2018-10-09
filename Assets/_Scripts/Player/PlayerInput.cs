@@ -73,8 +73,6 @@ public class PlayerInput : MonoBehaviour {
         if (!m_photonView.isMine)
             return;
 
-        print("ESCAPE: " + m_escape.m_isActive + " ISDEAD: " + m_player.IsDead + " RESPAWNING: " + m_player.Respawning);
-
         if (!m_escape.m_isActive && !m_player.IsDead && !m_player.Respawning && !m_respawn.m_isActive) {
             CharacterLogic();
             CameraLookLogic();
