@@ -1332,14 +1332,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   cameraSettings:
-    CamPositionOffsetLeft: {x: -1.7, y: 2.45, z: -3.85}
-    CamPositionOffsetRight: {x: 1.7, y: 2.45, z: -3.85}
-    UICamera: {fileID: 1943343889}
+    CamPositionOffsetRight: {x: 3, y: 2.45, z: -3.85}
+    UICamera: {fileID: 534669904}
     MouseXSensitivity: 7
     MouseYSensitivity: 2.5
     MinAngle: -10
-    MaxAngle: 80
-    RotationSpeed: 9
+    MaxAngle: 65
+    RotationSpeed: 10
     MaxCheckDist: 0.1
     FieldOfView: 70
     ZoomFieldOfView: 30
@@ -1350,7 +1349,7 @@ MonoBehaviour:
     HorizontalAxis: Mouse Y
     AimButton: Fire2
   movement:
-    movementLerpSpeed: 5
+    movementLerpSpeed: 100
 --- !u!1 &634160252
 GameObject:
   m_ObjectHideFlags: 0

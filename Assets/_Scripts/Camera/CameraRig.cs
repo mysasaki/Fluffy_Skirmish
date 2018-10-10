@@ -12,15 +12,14 @@ public class CameraRig : MonoBehaviour {
     [System.Serializable]
     public class CameraSettings {//have all the camera settings
         [Header("-Positioning -")]
-        public Vector3 CamPositionOffsetLeft;
         public Vector3 CamPositionOffsetRight;
 
         [Header("-Camera Options-")]
         public Camera UICamera;
         public float MouseXSensitivity = 3.0f;
         public float MouseYSensitivity = 2.0f;
-        public float MinAngle = -30.0f; //min angle we point up and down
-        public float MaxAngle = 70.0f;
+        public float MinAngle = 10.0f; //min angle we point up and down
+        public float MaxAngle = 100.0f;
         public float RotationSpeed = 5.0f; //lerp speed
         public float MaxCheckDist = 0.1f; //Distance we check the wall for
 
@@ -50,7 +49,7 @@ public class CameraRig : MonoBehaviour {
 
     [System.Serializable]
     public class MovementSettings {
-        public float movementLerpSpeed = 5.0f;
+        public float movementLerpSpeed = 10.0f;
     }
 
     [SerializeField]

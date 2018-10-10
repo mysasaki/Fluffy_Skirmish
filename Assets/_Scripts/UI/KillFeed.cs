@@ -5,7 +5,7 @@ using UnityEngine;
 public class KillFeed : MonoBehaviour {
 
     public GameObject KillListingPrefab;
-    public int maxCapacity = 5;
+    public int maxCapacity = 3;
 
     private List<Kill> m_killList = new List<Kill>();
 
