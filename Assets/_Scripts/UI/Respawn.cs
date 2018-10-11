@@ -43,6 +43,8 @@ public class Respawn : MonoBehaviour {
     }
 
     public void EndRespawn() {
+        this.time.text = "10";
+        this.slider.value = 10;
         m_isActive = false;
         container.SetActive(false);    
     }

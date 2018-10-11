@@ -33,7 +33,7 @@ public class ScoreLayoutGroup : MonoBehaviour {
 
     public void UpdateScoreboard() {
         UpdateList();
-        m_playerStats.Sort((p1, p2) => p1.Kills.CompareTo(p2.Kills));
+        m_playerStats.Sort(SortByScore);
 
         foreach (PlayerStats p in m_playerStats) {
             int index = m_scoreListingList.FindIndex(x => x.id == p.ID);
@@ -59,5 +59,7 @@ public class ScoreLayoutGroup : MonoBehaviour {
         obj.transform.SetParent(transform, false);
     }
 
-
+    private static int SortByScore(PlayerStats p1, PlayerStats p2) {
+        return p1.Kills.CompareTo(p2.Kills);
+    }
 }
