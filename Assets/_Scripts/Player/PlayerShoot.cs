@@ -18,7 +18,7 @@ public class PlayerShoot : MonoBehaviour {
             return;
 
         Camera camera = Camera.main;
-        Quaternion rotation = Quaternion.LookRotation(camera.transform.forward);
+        Quaternion rotation = Quaternion.LookRotation(gameObject.transform.forward);
         m_photonView.RPC("RPC_InstantiateBullet", PhotonTargets.All, position, rotation);
     }
 
@@ -29,6 +29,6 @@ public class PlayerShoot : MonoBehaviour {
         Bullet bullet = bulletGameObject.GetComponent<Bullet>();
         bullet.m_owner = GetComponent<Player>();
         Rigidbody bulleRb = bulletGameObject.GetComponent<Rigidbody>();
-        bulleRb.AddForce(bulletGameObject.transform.forward * 80, ForceMode.Impulse);
+        bulleRb.AddForce(bulletGameObject.transform.forward * 100, ForceMode.Impulse);
     }
 }

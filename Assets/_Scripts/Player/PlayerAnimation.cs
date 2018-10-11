@@ -50,11 +50,14 @@ public class PlayerAnimation : Photon.MonoBehaviour {
 
     }
 
-    public void AnimateMovement(float horizontal, float vertical) {
+    public void AnimateMovement(float horizontal, float vertical, bool isSprinting) {
         animationParameters.horizontalMovement = horizontal;
         animationParameters.verticalMovement = vertical;
 
-        animationParameters.isWalking = (horizontal == 0 && vertical == 0) ? false : true;
+        if(!isSprinting)
+            animationParameters.isWalking = (!(horizontal == 0 && vertical == 0));
+        else
+            animationParameters.isSprinting = (!(horizontal == 0 && vertical == 0));
 
     }
 

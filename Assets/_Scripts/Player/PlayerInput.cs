@@ -23,6 +23,7 @@ public class PlayerInput : MonoBehaviour {
         public string pickupWeapon = "Pickup";
         public string escape = "Cancel";
         public string scoreboard = "Scoreboard";
+        public string sprint = "Sprint";
     }
     [SerializeField]
     private InputSettings input;
@@ -118,6 +119,13 @@ public class PlayerInput : MonoBehaviour {
 
         if (!m_playerTakeover)
             return;
+
+        if(Input.GetButton(input.sprint)) 
+            m_playerMovement.m_sprint = true;
+
+        if (Input.GetButtonUp(input.sprint))
+            m_playerMovement.m_sprint = false;
+        
 
         if (Input.GetButton(input.pickupWeapon)) {
             m_playerTakeover.pickupInRange = true;

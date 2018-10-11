@@ -11,6 +11,8 @@ public class PlayerMovement : Photon.MonoBehaviour {
     private Player m_player;
 
     public float m_moveSpeed = 10;
+    public float m_runSpeed = 20;
+    public bool m_sprint;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
@@ -73,7 +75,12 @@ public class PlayerMovement : Photon.MonoBehaviour {
         Vector3 moveVertical = transform.forward * vertical;
         Vector3 moveHorizontal = transform.right * horizontal;
 
-        transform.position += (moveHorizontal + moveVertical) * (m_moveSpeed * Time.deltaTime);
-        m_playerAnimation.AnimateMovement(horizontal, vertical);
-    }    
+        if(!m_sprint)
+            transform.position += (moveHorizontal + moveVertical) * (m_moveSpeed * Time.deltaTime);           
+        else
+            transform.position += (moveHorizontal + moveVertical) * (m_runSpeed * Time.deltaTime);
+
+        m_playerAnimation.AnimateMovement(horizontal, vertical, m_sprint);
+    }
+
 }
