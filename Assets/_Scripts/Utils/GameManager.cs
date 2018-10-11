@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance = null;
     
+    private PlayerUI m_playerUI {
+        get { return FindObjectOfType<PlayerUI>(); }
+        set { m_playerUI = value; }
+    }
+
     private HUD m_hud {
         get { return FindObjectOfType<HUD>(); }
         set { m_hud = value; }
@@ -21,6 +26,11 @@ public class GameManager : MonoBehaviour {
     private Respawn m_respawn {
         get { return FindObjectOfType<Respawn>(); }
         set { m_respawn = value; }
+    }
+
+    private Scoreboard m_scoreboard {
+        get { return FindObjectOfType<Scoreboard>(); }
+        set { m_scoreboard = value; }
     }
 
     private PlayerWeapon m_playerWeapon;
@@ -46,9 +56,9 @@ public class GameManager : MonoBehaviour {
             GetPlayerComponents();
 
         if(m_playerInput)
-            if(m_hud)
+            if(m_playerUI)
                 if(m_playerWeapon)
-                    m_hud.UpdateUI(m_playerWeapon, m_player);
+                    m_playerUI.UpdateUI(m_playerWeapon, m_player);
     }
 
     private void GetPlayerComponents() {
@@ -74,6 +84,22 @@ public class GameManager : MonoBehaviour {
 
     public void StartRespawn() {
         m_respawn.StartRespawn();
+    }
+
+    public void HideHUD() {
+        m_hud.HideUI();
+    }
+
+    public void ShowHUD() {
+        m_hud.ShowUI();
+    }
+
+    public void ShowScoreboard() {
+        m_scoreboard.ShowScoreboard();
+    }
+
+    public void HideScoreboard() {
+        m_scoreboard.HideScoreboard();
     }
 }
 

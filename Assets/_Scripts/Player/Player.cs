@@ -73,6 +73,7 @@ public class Player : MonoBehaviour {
     }
 
     public void FinishRespawn() {
+        this.IsDead = false;
         this.Respawning = false;
     }
 

@@ -7,6 +7,7 @@ public class PlayerManagement : MonoBehaviour {
     public static PlayerManagement Instance;
     private PhotonView m_photonView;
     private KillFeed m_killFeed;
+    private ScoreLayoutGroup m_scoreLayoutGroup;
 
     public List<PlayerStats> m_playerStatsList = new List<PlayerStats>();
 
@@ -17,6 +18,7 @@ public class PlayerManagement : MonoBehaviour {
 
     private void Start() {
         m_killFeed = FindObjectOfType<KillFeed>();
+        m_scoreLayoutGroup = FindObjectOfType<ScoreLayoutGroup>();
     }
 
     public void AddPlayer(int id, string name, int health, int ammo) {
@@ -127,9 +129,13 @@ public class PlayerManagement : MonoBehaviour {
 
     [PunRPC]
     private void RPC_PlayerDie(int id_owner, int id_other) {
+
         print("RPC PLAUER DIE. MY ID: " + PhotonNetwork.player.ID);
         if (!m_killFeed)
             m_killFeed = FindObjectOfType<KillFeed>();
+
+        if (!m_scoreLayoutGroup)
+            m_scoreLayoutGroup = FindObjectOfType<ScoreLayoutGroup>();
 
         int index_other = m_playerStatsList.FindIndex(x => x.ID == id_other);
         Kill kill = new Kill();
@@ -160,6 +166,7 @@ public class PlayerManagement : MonoBehaviour {
         }
 
         m_killFeed.AddKill(kill, PhotonNetwork.player.ID);
+        //m_scoreLayoutGroup.UpdateScoreboard();
     }
 
     [PunRPC]

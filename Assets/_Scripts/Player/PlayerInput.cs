@@ -22,6 +22,7 @@ public class PlayerInput : MonoBehaviour {
         public string dropWeaponButton = "DropWeapon";
         public string pickupWeapon = "Pickup";
         public string escape = "Cancel";
+        public string scoreboard = "Scoreboard";
     }
     [SerializeField]
     private InputSettings input;
@@ -199,6 +200,16 @@ public class PlayerInput : MonoBehaviour {
     private void PlayerLogic() {
         if(Input.GetButtonDown(input.escape)) {
             GameManager.Instance.ToggleEsc();
+        }
+
+        if(Input.GetButton(input.scoreboard)) {
+            GameManager.Instance.ShowScoreboard();
+            GameManager.Instance.HideHUD();
+        }
+
+        if(Input.GetButtonUp(input.scoreboard)) {
+            GameManager.Instance.HideScoreboard();
+            GameManager.Instance.ShowHUD();
         }
     }
 

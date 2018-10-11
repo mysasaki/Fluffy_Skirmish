@@ -1,28 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HUD : MonoBehaviour {
 
-    public Text ammoText;
-    public Slider healthBar;
-    public Text healthText;
+    private bool m_isActive = true;
+    public GameObject container;
 
-    public void UpdateUI(PlayerWeapon playerWeapon, Player player) {
-        if (playerWeapon) {
+    public void HideUI() {
+        if (!m_isActive)
+            return;
 
-            if (playerWeapon.currentWeapon == null) {
-                this.ammoText.text = "Unarmed";
+        m_isActive = false;
+        container.SetActive(m_isActive);
+    }
 
-            } else {
-                this.ammoText.text = playerWeapon.currentWeapon.ammo.clipAmmo + "/" + player.Ammo;
-            }
-        }
+    public void ShowUI() {
+        if (m_isActive)
+            return;
 
-        if (this.healthBar && this.healthText) {
-            this.healthBar.value = Mathf.Round(player.Health);
-            this.healthText.text = Mathf.Round(this.healthBar.value).ToString();
-        }
+        m_isActive = true;
+        container.SetActive(m_isActive);
     }
 }
