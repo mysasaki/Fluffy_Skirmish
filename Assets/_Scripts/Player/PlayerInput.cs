@@ -125,15 +125,25 @@ public class PlayerInput : MonoBehaviour {
 
         if (Input.GetButtonUp(input.sprint))
             m_playerMovement.m_sprint = false;
-        
+
 
         if (Input.GetButton(input.pickupWeapon)) {
+            print("pickup weapon true");
             m_playerTakeover.pickupInRange = true;
-        }
-
-        if (Input.GetButtonUp(input.pickupWeapon)) {
+        }  else {
+            print("pickup weapon false");
             m_playerTakeover.pickupInRange = false;
         }
+
+        #region DropWeapon
+        if (Input.GetButton(input.dropWeaponButton)) {
+            print("drop weapon true");
+            m_playerTakeover.dropWeapon = true;
+        } else {
+            print("drop weapon false");
+            m_playerTakeover.dropWeapon = false;
+        }
+        #endregion
     }
 
     //Handle camera logic
@@ -168,13 +178,6 @@ public class PlayerInput : MonoBehaviour {
 
             if (Input.GetButton(input.reloadButton))
                 m_playerWeapon.Reload();
-
-            #region DropWeapon
-            if (Input.GetButton(input.dropWeaponButton)) 
-                m_playerTakeover.dropWeapon = true;
-            if(Input.GetButtonUp(input.dropWeaponButton))
-                m_playerTakeover.dropWeapon = false;
-            #endregion
 
             if (m_aiming) {
                 m_crosshair.ToggleCrosshair(true);

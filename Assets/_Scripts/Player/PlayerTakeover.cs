@@ -10,10 +10,17 @@ public class PlayerTakeover : MonoBehaviour {
 
     private GameObject m_hitObject;
     private PhotonView m_photonView;
+    private Player m_player;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
-        
+
+        if (m_photonView.isMine)
+            m_player = GetComponent<Player>();
+    }
+
+    public int GetPlayerID() {
+        return m_player.ID;
     }
 
     private void LateUpdate() {
@@ -23,33 +30,30 @@ public class PlayerTakeover : MonoBehaviour {
         Vector3 origin = transform.position + transform.up;
         
         if (pickupInRange) {
-            print("1");
             Collider[] objs;
             objs = Physics.OverlapSphere(origin, 3.0f, layerMask);
 
             foreach (Collider c in objs) {
-                print("2");
                 if (c.CompareTag("Weapon")) {
                     m_hitObject = c.gameObject;
                     WeaponTakeover weaponTakeover = m_hitObject.GetComponent<WeaponTakeover>();
-                    print("3");
                     if (weaponTakeover.m_hasOwner) {
                         print("weapon has owner");
                         return;
 
                     }  else {
                         print("weapons has no owner");
-                        m_photonView.RPC("RPC_WeaponTakeover", PhotonTargets.All, this.m_photonView.instantiationId, weaponTakeover.m_photonView.instantiationId);
+                        m_photonView.RPC("RPC_WeaponTakeover", PhotonTargets.All, PhotonNetwork.player.ID, weaponTakeover.m_photonView.instantiationId);
                     }
                 }
             }
         }  
 
         if(dropWeapon) {
-            PlayerWeapon weaponHandler = GetComponent<PlayerWeapon>();
+            PlayerWeapon playerWeapon = GetComponent<PlayerWeapon>();
 
-            if (weaponHandler.currentWeapon != null) {
-                m_photonView.RPC("RPC_WeaponDrop", PhotonTargets.All, this.m_photonView.instantiationId);
+            if (playerWeapon.currentWeapon != null) {
+                m_photonView.RPC("RPC_WeaponDrop", PhotonTargets.All, PhotonNetwork.player.ID);
             }
         }
     }
@@ -64,19 +68,23 @@ public class PlayerTakeover : MonoBehaviour {
         if(weapons.Length > 0 ) {
             foreach (GameObject w in weapons) {
                 WeaponTakeover weaponTakeover = w.GetComponent<WeaponTakeover>();
-                if (weaponTakeover.m_photonView.instantiationId == weaponID)
+                if (weaponTakeover.m_photonView.instantiationId == weaponID) {
+                    print("selected weapon " + w);
                     selectedWeapon = w;
+                }
             }
 
             if (players.Length > 0) {
                 foreach (GameObject p in players) {
                     PlayerTakeover playerTakeover = p.GetComponent<PlayerTakeover>();
+                    
 
-                    if (playerTakeover.m_photonView.instantiationId == playerID) {
+                    if (playerTakeover.GetPlayerID() == playerID) {
                         WeaponTakeover weaponTakeover = selectedWeapon.GetComponent<WeaponTakeover>();
                         weaponTakeover.TakeoverWeapon();
-                        PlayerWeapon weaponHandler = p.GetComponent<PlayerWeapon>();
-                        weaponHandler.PickupWeapon(selectedWeapon);
+                        PlayerWeapon playerWeapon = p.GetComponent<PlayerWeapon>();
+                        playerWeapon.PickupWeapon(selectedWeapon);
+                        playerWeapon.PickupWeapon(selectedWeapon);
                         
                          return;
                     }
@@ -94,7 +102,7 @@ public class PlayerTakeover : MonoBehaviour {
         if (players.Length > 0) {
             foreach (GameObject p in players) {
                 PlayerTakeover playerTakeover = p.GetComponent<PlayerTakeover>();
-                if (playerTakeover.m_photonView.instantiationId == playerID) {
+                if (playerTakeover.GetPlayerID() == playerID) {
                     print("RPC DROPPED");
                     PlayerWeapon weaponHandler = p.GetComponent<PlayerWeapon>();
                     weaponHandler.DropCurrentWeapon();

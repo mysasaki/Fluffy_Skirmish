@@ -60,11 +60,11 @@ public class Weapon : MonoBehaviour {
 
     public Ray shootRay { protected get; set; }
     public bool m_ownerAiming { get; set; }
-    private PlayerWeapon owner;
+    public PlayerWeapon owner;
     private bool m_equipped;
     private bool m_resettingCartridge;
     private PlayerShoot m_playerShoot;
-    private Player m_player;
+    public Player m_player;
 
 
     private void Start() {
@@ -164,6 +164,7 @@ public class Weapon : MonoBehaviour {
 
     //Unequips the weapon and places it to the desired location
     private void Unequip(WeaponType weaponType) {
+        print("UNEQUIP");
         if (!owner)
             return;
 
@@ -211,5 +212,9 @@ public class Weapon : MonoBehaviour {
     //Sets owner of the weapon
     public void SetOwner(PlayerWeapon wp) {
         owner = wp;
+
+        if (wp == null)
+            m_player = null;
     }
+
 }
