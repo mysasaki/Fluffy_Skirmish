@@ -127,22 +127,13 @@ public class PlayerInput : MonoBehaviour {
             m_playerMovement.m_sprint = false;
 
 
-        if (Input.GetButton(input.pickupWeapon)) {
-            print("pickup weapon true");
-            m_playerTakeover.pickupInRange = true;
-        }  else {
-            print("pickup weapon false");
-            m_playerTakeover.pickupInRange = false;
-        }
+        if (Input.GetButton(input.pickupWeapon)) 
+            m_playerTakeover.PickupWeapon();
 
         #region DropWeapon
-        if (Input.GetButton(input.dropWeaponButton)) {
-            print("drop weapon true");
-            m_playerTakeover.dropWeapon = true;
-        } else {
-            print("drop weapon false");
-            m_playerTakeover.dropWeapon = false;
-        }
+        if (Input.GetButton(input.dropWeaponButton)) 
+            m_playerTakeover.DropWeapon();
+        
         #endregion
     }
 

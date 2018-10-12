@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerTakeover : MonoBehaviour {
 
-    public bool pickupInRange = false;
-    public bool dropWeapon = false;
     public LayerMask layerMask;
 
     private GameObject m_hitObject;
@@ -23,38 +21,39 @@ public class PlayerTakeover : MonoBehaviour {
         return m_player.ID;
     }
 
-    private void LateUpdate() {
+    public void PickupWeapon() {
         if (!m_photonView.isMine)
             return;
 
         Vector3 origin = transform.position + transform.up;
-        
-        if (pickupInRange) {
-            Collider[] objs;
-            objs = Physics.OverlapSphere(origin, 3.0f, layerMask);
 
-            foreach (Collider c in objs) {
-                if (c.CompareTag("Weapon")) {
-                    m_hitObject = c.gameObject;
-                    WeaponTakeover weaponTakeover = m_hitObject.GetComponent<WeaponTakeover>();
-                    if (weaponTakeover.m_hasOwner) {
-                        print("weapon has owner");
-                        return;
+        Collider[] objs;
+        objs = Physics.OverlapSphere(origin, 3.0f, layerMask);
 
-                    }  else {
-                        print("weapons has no owner");
-                        m_photonView.RPC("RPC_WeaponTakeover", PhotonTargets.All, PhotonNetwork.player.ID, weaponTakeover.m_photonView.instantiationId);
-                    }
+        foreach (Collider c in objs) {
+            if (c.CompareTag("Weapon")) {
+                m_hitObject = c.gameObject;
+                WeaponTakeover weaponTakeover = m_hitObject.GetComponent<WeaponTakeover>();
+                if (weaponTakeover.m_hasOwner) {
+                    print("weapon has owner");
+                    return;
+
+                } else {
+                    print("weapons has no owner");
+                    m_photonView.RPC("RPC_WeaponTakeover", PhotonTargets.All, PhotonNetwork.player.ID, weaponTakeover.m_photonView.instantiationId);
                 }
             }
-        }  
+        }
+    }
 
-        if(dropWeapon) {
-            PlayerWeapon playerWeapon = GetComponent<PlayerWeapon>();
+    public void DropWeapon() {
+        if (!m_photonView.isMine)
+            return;
 
-            if (playerWeapon.currentWeapon != null) {
-                m_photonView.RPC("RPC_WeaponDrop", PhotonTargets.All, PhotonNetwork.player.ID);
-            }
+        PlayerWeapon playerWeapon = GetComponent<PlayerWeapon>();
+
+        if (playerWeapon.currentWeapon != null) {
+            m_photonView.RPC("RPC_WeaponDrop", PhotonTargets.All, PhotonNetwork.player.ID);
         }
     }
 
