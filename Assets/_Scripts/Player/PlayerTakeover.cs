@@ -23,18 +23,22 @@ public class PlayerTakeover : MonoBehaviour {
         Vector3 origin = transform.position + transform.up;
         
         if (pickupInRange) {
+            print("1");
             Collider[] objs;
             objs = Physics.OverlapSphere(origin, 3.0f, layerMask);
 
             foreach (Collider c in objs) {
+                print("2");
                 if (c.CompareTag("Weapon")) {
                     m_hitObject = c.gameObject;
                     WeaponTakeover weaponTakeover = m_hitObject.GetComponent<WeaponTakeover>();
-
-                    if (weaponTakeover.m_hasOwner)
+                    print("3");
+                    if (weaponTakeover.m_hasOwner) {
+                        print("weapon has owner");
                         return;
 
-                    else {
+                    }  else {
+                        print("weapons has no owner");
                         m_photonView.RPC("RPC_WeaponTakeover", PhotonTargets.All, this.m_photonView.instantiationId, weaponTakeover.m_photonView.instantiationId);
                     }
                 }
@@ -52,6 +56,7 @@ public class PlayerTakeover : MonoBehaviour {
 
     [PunRPC]
     private void RPC_WeaponTakeover(int playerID, int weaponID) {
+        print("RpC weapon takeover");
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         GameObject[] weapons = GameObject.FindGameObjectsWithTag("Weapon");
         GameObject selectedWeapon = weapons[0];

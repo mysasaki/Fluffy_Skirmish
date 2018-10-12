@@ -11,7 +11,7 @@ public class PlayerMovement : Photon.MonoBehaviour {
     private Player m_player;
 
     public float m_moveSpeed = 10;
-    public float m_runSpeed = 20;
+    public float m_runSpeed = 15;
     public bool m_sprint;
 
     private void Awake() {

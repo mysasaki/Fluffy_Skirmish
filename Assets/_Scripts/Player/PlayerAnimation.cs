@@ -54,11 +54,17 @@ public class PlayerAnimation : Photon.MonoBehaviour {
         animationParameters.horizontalMovement = horizontal;
         animationParameters.verticalMovement = vertical;
 
-        if(!isSprinting)
-            animationParameters.isWalking = (!(horizontal == 0 && vertical == 0));
-        else
-            animationParameters.isSprinting = (!(horizontal == 0 && vertical == 0));
+        if (horizontal != 0 || vertical != 0) {
+            if (!isSprinting) {
 
+                animationParameters.isWalking = true;
+                animationParameters.isSprinting = false;
+
+            } else {
+                animationParameters.isSprinting = true;
+                animationParameters.isWalking = false;
+            }
+        }
     }
 
     private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
