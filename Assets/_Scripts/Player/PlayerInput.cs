@@ -8,9 +8,7 @@ public class PlayerInput : MonoBehaviour {
     public PlayerMovement m_playerMovement { get; protected set; }
     private PlayerTakeover m_playerTakeover;
     private PhotonView m_photonView;
-    private Escape m_escape;
     private Player m_player;
-    private Respawn m_respawn;
 
     [System.Serializable]
     public class InputSettings {
@@ -24,6 +22,7 @@ public class PlayerInput : MonoBehaviour {
         public string escape = "Cancel";
         public string scoreboard = "Scoreboard";
         public string sprint = "Sprint";
+        public string map = "Map";
     }
     [SerializeField]
     private InputSettings input;
@@ -59,8 +58,6 @@ public class PlayerInput : MonoBehaviour {
         m_playerWeapon = GetComponent<PlayerWeapon>();
         m_playerTakeover = GetComponent<PlayerTakeover>();
         m_player = GetComponent<Player>();
-        m_escape = FindObjectOfType<Escape>();
-        m_respawn = FindObjectOfType<Respawn>();
 
         tpsCamera = Camera.main;
 
@@ -75,7 +72,7 @@ public class PlayerInput : MonoBehaviour {
         if (!m_photonView.isMine)
             return;
 
-        if (!m_escape.m_isActive && !m_player.IsDead && !m_player.Respawning && !m_respawn.m_isActive) {
+        if (!GameManager.Instance.IsEscapeActive() && !m_player.IsDead && !m_player.Respawning && !GameManager.Instance.IsRespawnActive()) { //!m_escape.m_isActive && !m_player.IsDead && !m_player.Respawning && !m_respawn.m_isActive
             CharacterLogic();
             CameraLookLogic();
             WeaponLogic();
@@ -201,10 +198,17 @@ public class PlayerInput : MonoBehaviour {
 
     private void PlayerLogic() {
         if(Input.GetButtonDown(input.escape)) {
+            if (!GameManager.Instance.IsEscapeActive()) {
+                m_playerMovement.Move(0, 0);
+            }
+
             GameManager.Instance.ToggleEsc();
         }
 
-        if(Input.GetButton(input.scoreboard)) {
+        if (GameManager.Instance.IsEscapeActive()) //se tiver com escape ligado, nenhum outro componente do hud pode ser ativado
+            return;
+
+        if(Input.GetButton(input.scoreboard) && (!GameManager.Instance.IsMapActive())) {
             GameManager.Instance.ShowScoreboard();
             GameManager.Instance.HideHUD();
         }
@@ -212,6 +216,14 @@ public class PlayerInput : MonoBehaviour {
         if(Input.GetButtonUp(input.scoreboard)) {
             GameManager.Instance.HideScoreboard();
             GameManager.Instance.ShowHUD();
+        }
+
+        if(Input.GetButton(input.map) && (!GameManager.Instance.IsScoreboardActive())) {
+            GameManager.Instance.ShowMap();
+        }
+
+        if(Input.GetButtonUp(input.map)) {
+            GameManager.Instance.HideMap();
         }
     }
 

@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour {
         set { m_scoreboard = value; }
     }
 
+    private Minimap m_mapmenu {
+        get { return FindObjectOfType<Minimap>(); }
+        set { m_mapmenu = value; }
+    }
+
     private PlayerWeapon m_playerWeapon;
     private PlayerInput m_playerInput;
     private Player m_player;
@@ -78,12 +83,23 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    #region Escape
     public void ToggleEsc() {
         m_escape.Toggle();
     }
 
+    public bool IsEscapeActive() {
+        return m_escape.m_isActive;
+    }
+    #endregion
+
+    #region Respawn & hud
     public void StartRespawn() {
         m_respawn.StartRespawn();
+    }
+
+    public bool IsRespawnActive() {
+        return m_respawn.m_isActive;
     }
 
     public void HideHUD() {
@@ -94,6 +110,12 @@ public class GameManager : MonoBehaviour {
         m_hud.ShowUI();
     }
 
+    public bool IsHUDActive() {
+        return m_hud.m_isActive;
+    }
+    #endregion
+
+    #region Scoreboard
     public void ShowScoreboard() {
         m_scoreboard.ShowScoreboard();
     }
@@ -101,5 +123,24 @@ public class GameManager : MonoBehaviour {
     public void HideScoreboard() {
         m_scoreboard.HideScoreboard();
     }
+
+    public bool IsScoreboardActive() {
+        return m_scoreboard.m_isActive;
+    }
+    #endregion
+
+    #region Map
+    public void ShowMap() {
+        m_mapmenu.ShowMapMenu();
+    }
+
+    public void HideMap() {
+        m_mapmenu.HideMapMenu();
+    }
+
+    public bool IsMapActive() {
+        return m_mapmenu.m_isActive;
+    }
+    #endregion
 }
 

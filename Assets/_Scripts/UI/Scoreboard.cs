@@ -7,7 +7,7 @@ public class Scoreboard : MonoBehaviour {
     public ScoreLayoutGroup scoreLayoutGroup;
     public GameObject container;
 
-    private bool m_isActive;
+    public bool m_isActive;
     //private List<PlayerStats> m_playerList = new List<PlayerStats>();
 
     public void Awake() {

@@ -774,6 +774,8 @@ MonoBehaviour:
     dropWeaponButton: DropWeapon
     pickupWeapon: Pickup
     escape: Cancel
+    scoreboard: Scoreboard
+    sprint: Sprint
   otherSettings:
     lookSpeed: 14
     lookDistance: 10
@@ -821,8 +823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b6c9b9a3b00d54aa2f29e1f01423a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupInRange: 0
-  dropWeapon: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -849,6 +849,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_moveSpeed: 6
+  m_runSpeed: 7
+  m_sprint: 0
 --- !u!114 &114728228290506088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -861,7 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userSettings:
-    rightHand: {fileID: 4041253093992030}
+    rightHand: {fileID: 0}
     pistolUnequipSpot: {fileID: 0}
   m_photonView: {fileID: 0}
   currentWeapon: {fileID: 0}

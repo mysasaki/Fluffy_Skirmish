@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour {
 
-    private bool m_isActive = true;
+    public bool m_isActive = true;
     public GameObject container;
 
     public void HideUI() {
