@@ -124,13 +124,13 @@ public class PlayerInput : MonoBehaviour {
             m_playerMovement.m_sprint = false;
 
 
-        if (Input.GetButton(input.pickupWeapon)) 
+        if (Input.GetButtonDown(input.pickupWeapon)) 
             m_playerTakeover.PickupWeapon();
 
         #region DropWeapon
-        if (Input.GetButton(input.dropWeaponButton)) 
+        if (Input.GetButtonDown(input.dropWeaponButton)) 
             m_playerTakeover.DropWeapon();
-        
+
         #endregion
     }
 

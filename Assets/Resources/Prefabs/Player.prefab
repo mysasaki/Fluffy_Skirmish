@@ -865,7 +865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userSettings:
-    rightHand: {fileID: 0}
+    rightHand: {fileID: 4041253093992030}
     pistolUnequipSpot: {fileID: 0}
   m_photonView: {fileID: 0}
   currentWeapon: {fileID: 0}

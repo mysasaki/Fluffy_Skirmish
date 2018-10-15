@@ -83,13 +83,11 @@ public class PlayerTakeover : MonoBehaviour {
                         weaponTakeover.TakeoverWeapon();
                         PlayerWeapon playerWeapon = p.GetComponent<PlayerWeapon>();
                         playerWeapon.PickupWeapon(selectedWeapon);
-                        playerWeapon.PickupWeapon(selectedWeapon);
+                        //playerWeapon.PickupWeapon(selectedWeapon);
                         
                          return;
                     }
-
                 }
-
             }
         }    
     }

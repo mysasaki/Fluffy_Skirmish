@@ -94,9 +94,9 @@ public class PlayerWeapon : MonoBehaviour {
     }
 
     public void PickupWeapon(GameObject pickup) {
-
+        print("pickup weapon");
         if (currentWeapon)
-            DropCurrentWeapon();
+            return;
 
         Weapon weapon = pickup.GetComponent<Weapon>();
         if (!weapon)
