@@ -33,8 +33,8 @@ public class GameManager : MonoBehaviour {
         set { m_scoreboard = value; }
     }
 
-    private Minimap m_mapmenu {
-        get { return FindObjectOfType<Minimap>(); }
+    private MapMenu m_mapmenu {
+        get { return FindObjectOfType<MapMenu>(); }
         set { m_mapmenu = value; }
     }
 

@@ -13,17 +13,25 @@ public class Compass : MonoBehaviour {
     private Vector3 dir;
 
     // Use this for initialization
-    void Start () {
+    private void Start () {
         //acha o gameobject da bussola pra pegar o transform
-        compassTransform = GameObject.FindGameObjectWithTag("Compass").transform;
+        GetCompassTransform();
+    }
+
+    private void GetCompassTransform() {
+        MapMenu mapMenu = FindObjectOfType<MapMenu>();
+        compassTransform = mapMenu.compass.transform;
     }
 	
 	// Update is called once per frame
-	void Update () {
+	private void Update () {
+        if (!compassTransform)
+            GetCompassTransform();
+
         //se for o local player, faz a rotação
         if (this.GetComponent<PhotonView>().isMine) {
             dir.z = transform.eulerAngles.y;
-            compassTransform.eulerAngles = dir;
+            compassTransform.localEulerAngles = dir;
         }
 
        
