@@ -8,7 +8,7 @@ public class PlayerTakeover : MonoBehaviour {
 
     private GameObject m_hitObject;
     private PhotonView m_photonView;
-    private Player m_player;
+    public Player m_player;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
@@ -18,6 +18,8 @@ public class PlayerTakeover : MonoBehaviour {
     }
 
     public int GetPlayerID() {
+        if(!m_player)
+            m_player = GetComponent<Player>();
         return m_player.ID;
     }
 
@@ -59,7 +61,7 @@ public class PlayerTakeover : MonoBehaviour {
 
     [PunRPC]
     private void RPC_WeaponTakeover(int playerID, int weaponID) {
-        print("RpC weapon takeover");
+        print("RpC weapon takeover " + playerID + ", " + weaponID);
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         GameObject[] weapons = GameObject.FindGameObjectsWithTag("Weapon");
         GameObject selectedWeapon = weapons[0];
@@ -68,7 +70,6 @@ public class PlayerTakeover : MonoBehaviour {
             foreach (GameObject w in weapons) {
                 WeaponTakeover weaponTakeover = w.GetComponent<WeaponTakeover>();
                 if (weaponTakeover.m_photonView.instantiationId == weaponID) {
-                    print("selected weapon " + w);
                     selectedWeapon = w;
                 }
             }
