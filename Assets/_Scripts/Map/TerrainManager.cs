@@ -14,7 +14,7 @@ public class TerrainManager : MonoBehaviour {
     }
 
     [SerializeField]
-    private float timeToNextClose; //tempo para o primeiro fechamento de setor de uma partida
+    public static float timeToNextClose; //tempo para o primeiro fechamento de setor de uma partida
 
     private GameObject go_aux; //gameObject auxiliar para armazenar setor que irá fechar
 
