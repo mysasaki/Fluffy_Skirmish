@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerLayoutGroup : MonoBehaviour {
 
@@ -10,10 +11,17 @@ public class PlayerLayoutGroup : MonoBehaviour {
         get { return m_playerListingPrefab; }
     }
 
+    [SerializeField]
+    private Text m_roomState;
+    private Text roomState {
+        get { return m_roomState; }
+    }
+
     private List<PlayerListing> m_playerListings = new List<PlayerListing>();
     private List<PlayerListing> PlayerListings {
         get { return m_playerListings; }
     }
+
 
     //Callback do photon. Quando o masterclient sai do jogo, esse callback vai pra todos os clientes
     //Kicka todos os players da sala quando o master sai da sala. Reabilitar caso precisar
@@ -80,6 +88,8 @@ public class PlayerLayoutGroup : MonoBehaviour {
 
         PhotonNetwork.room.IsOpen = !PhotonNetwork.room.IsOpen;
         PhotonNetwork.room.IsVisible = PhotonNetwork.room.IsOpen;
+
+        m_roomState.text = (PhotonNetwork.room.IsOpen) ? "Lock room" : "Unlock room";
     }
 
     public void OnClick_LeaveRoom() {
