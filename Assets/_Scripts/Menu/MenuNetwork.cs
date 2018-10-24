@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuNetwork : MonoBehaviour {
 
@@ -11,28 +12,47 @@ public class MenuNetwork : MonoBehaviour {
     }
 
     [SerializeField]
-    private GameObject m_errorScreen;
-    private GameObject errorScreen {
-        get { return m_errorScreen; }
+    private GameObject m_connectionError;
+    private GameObject connectionError {
+        get { return m_connectionError; }
+    }
+
+    [SerializeField]
+    private GameObject m_nameError;
+    private GameObject nameError {
+        get { return m_nameError; }
+    }
+
+    [SerializeField]
+    private Text m_playerName;
+    private Text playerName {
+        get { return m_playerName; }
     }
 
     public void OnClick_Play() {
-        if (!PhotonNetwork.connected) {
-            print("Connecting to server");
-            PhotonNetwork.ConnectUsingSettings("0.1"); //conecta ao servidor
 
-            ToggleLoadingScreen(true);
+        if(playerName.text.Length > 0) {
+            if (!PhotonNetwork.connected) {
+                print("Connecting to server");
+                PhotonNetwork.ConnectUsingSettings("0.1"); //conecta ao servidor
+
+                ToggleLoadingScreen(true);
+            }
+
+        } else {
+            ToggleNameError(true);
         }
     }
 
     public void OnClick_Ok() {
-        ToggleErrorScreen(false);
+        ToggleConnectionError(false);
+        ToggleNameError(false);
     }
 
     private void OnConnectedToMaster() {
         print("Connected to master");
         PhotonNetwork.automaticallySyncScene = true; //automaticament sincroniza a cena que o masterclient esta
-        //PhotonNetwork.playerName = PlayerNetwork.Instance.m_playerName;
+        PhotonNetwork.playerName = playerName.text;
         PhotonNetwork.JoinLobby(TypedLobby.Default);
     }
 
@@ -50,19 +70,23 @@ public class MenuNetwork : MonoBehaviour {
 
     private void OnConnectionFail() {
         print("Deu ruim :(");
-        ToggleErrorScreen(true);
+        ToggleConnectionError(true);
     }
 
     private void OnFailedToConnectToPhoton() {
         print("Deu ruim pra conectar no photon");
-        ToggleErrorScreen(true);
+        ToggleConnectionError(true);
     }
 
     private void ToggleLoadingScreen(bool active) {
         m_loadingScreen.SetActive(active);
     }
 
-    private void ToggleErrorScreen(bool active) {
-        m_errorScreen.SetActive(active);
+    private void ToggleConnectionError(bool active) {
+        connectionError.SetActive(active);
+    }
+
+    private void ToggleNameError(bool active) {
+        nameError.SetActive(active);
     }
 }

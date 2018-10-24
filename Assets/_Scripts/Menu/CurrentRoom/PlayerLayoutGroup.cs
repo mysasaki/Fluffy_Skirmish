@@ -17,6 +17,12 @@ public class PlayerLayoutGroup : MonoBehaviour {
         get { return m_roomState; }
     }
 
+    [SerializeField]
+    private Text m_roomName;
+    private Text roomName {
+        get { return m_roomName; }
+    }
+
     private List<PlayerListing> m_playerListings = new List<PlayerListing>();
     private List<PlayerListing> PlayerListings {
         get { return m_playerListings; }
@@ -37,6 +43,7 @@ public class PlayerLayoutGroup : MonoBehaviour {
         }
 
         MainCanvasManager.Instance.CurrentRoomCanvas.transform.SetAsLastSibling(); //Vai colocar no fim da hierarquia. ie. vai colocar por cima do lobby
+        roomName.text = PhotonNetwork.room.Name;
 
         //Add todos os current players
         PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;
@@ -93,6 +100,8 @@ public class PlayerLayoutGroup : MonoBehaviour {
     }
 
     public void OnClick_LeaveRoom() {
+        print("leave room");
         PhotonNetwork.LeaveRoom();
+        MainCanvasManager.Instance.LobbyCanvas.transform.SetAsLastSibling();
     }
 }
