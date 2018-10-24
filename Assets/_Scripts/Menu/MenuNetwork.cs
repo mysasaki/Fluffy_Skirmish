@@ -31,16 +31,10 @@ public class MenuNetwork : MonoBehaviour {
 
     public void OnClick_Play() {
 
-        if(playerName.text.Length > 0) {
-            if (!PhotonNetwork.connected) {
-                print("Connecting to server");
-                PhotonNetwork.ConnectUsingSettings("0.1"); //conecta ao servidor
+        if (!PhotonNetwork.connected) {
+            PhotonNetwork.ConnectUsingSettings("0.1"); //conecta ao servidor
 
-                ToggleLoadingScreen(true);
-            }
-
-        } else {
-            ToggleNameError(true);
+            ToggleLoadingScreen(true);
         }
     }
 
@@ -51,8 +45,14 @@ public class MenuNetwork : MonoBehaviour {
 
     private void OnConnectedToMaster() {
         print("Connected to master");
+        string name = playerName.text;
+
+        if (name.Length == 0) {
+            name = "Player#" + Random.Range(1000, 9999);
+        }
+
         PhotonNetwork.automaticallySyncScene = true; //automaticament sincroniza a cena que o masterclient esta
-        PhotonNetwork.playerName = playerName.text;
+        PhotonNetwork.playerName = name;
         PhotonNetwork.JoinLobby(TypedLobby.Default);
     }
 

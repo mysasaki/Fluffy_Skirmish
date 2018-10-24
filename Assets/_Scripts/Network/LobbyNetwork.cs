@@ -14,7 +14,6 @@ public class LobbyNetwork : MonoBehaviour {
     private void OnConnectedToMaster() {
         print("Connected to master");
         PhotonNetwork.automaticallySyncScene = true; //automaticament sincroniza a cena que o masterclient esta
-        PhotonNetwork.playerName = PlayerNetwork.Instance.m_playerName;
 
         PhotonNetwork.JoinLobby(TypedLobby.Default);
     }
