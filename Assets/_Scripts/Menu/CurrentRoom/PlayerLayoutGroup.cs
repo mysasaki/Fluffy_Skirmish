@@ -23,6 +23,12 @@ public class PlayerLayoutGroup : MonoBehaviour {
         get { return m_roomName; }
     }
 
+    [SerializeField]
+    private Text m_numberPlayers;
+    private Text numberPlayers {
+        get { return m_numberPlayers; }
+    }
+
     private List<PlayerListing> m_playerListings = new List<PlayerListing>();
     private List<PlayerListing> PlayerListings {
         get { return m_playerListings; }
@@ -67,6 +73,8 @@ public class PlayerLayoutGroup : MonoBehaviour {
         if (photonPlayer == null) {
             return;
         }
+
+        numberPlayers.text = PhotonNetwork.room.PlayerCount.ToString() + "/9";
 
         PlayerLeftRoom(photonPlayer); //Evita ter players duplicados na sala. Acontece as vezes por causa da internets
 

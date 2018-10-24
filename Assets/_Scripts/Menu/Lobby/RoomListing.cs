@@ -9,10 +9,16 @@ public class RoomListing : MonoBehaviour {
         get { return m_roomNameText; }
     }
 
+    [SerializeField]
+    private Text m_numberPlayersText;
+    private Text numberPlayersText {
+        get { return m_numberPlayersText; }
+    }
+
     public string RoomName { get; private set; }
     public bool Updated { get; set; }
 
-	private void Start () {
+    private void Start() {
         //listener
         GameObject lobbyCanvasObj = MainCanvasManager.Instance.LobbyCanvas.gameObject;
         if (lobbyCanvasObj == null) {
@@ -24,7 +30,7 @@ public class RoomListing : MonoBehaviour {
         Button button = GetComponent<Button>();
         button.onClick.AddListener(() => lobbyCanvas.OnClick_JoinRoom(RoomNameText.text));
 
-	}
+    }
 
     private void OnDestroy() {
         Button button = GetComponent<Button>();
@@ -34,5 +40,9 @@ public class RoomListing : MonoBehaviour {
     public void SetRoomNameText(string text) {
         RoomName = text;
         RoomNameText.text = RoomName;
+    }
+
+    public void SetRoomNumberPlayersText(int number) {
+        numberPlayersText.text = number.ToString() + "/9";
     }
 }
