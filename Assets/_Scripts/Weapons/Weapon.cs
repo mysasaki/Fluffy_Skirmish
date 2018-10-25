@@ -105,7 +105,7 @@ public class Weapon : MonoBehaviour {
             return;
 
         Transform bulletSpawn = weaponSettings.bulletSpawn;
-        m_playerShoot.InstantiateBullet(bulletSpawn.position);
+        m_playerShoot.InstantiateBullet(bulletSpawn);
 
         ammo.clipAmmo--;
         m_resettingCartridge = true;
