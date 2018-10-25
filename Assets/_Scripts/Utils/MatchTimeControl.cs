@@ -56,6 +56,8 @@ public class MatchTimeControl : MonoBehaviour {
 
     public Text endText;
 
+    private PhotonView m_photonView;
+
 	// Use this for initialization
 	void Start () {
         OnMinimumPlayersReached += CountDown;  //Assina o evento com a função de countdown
@@ -65,6 +67,7 @@ public class MatchTimeControl : MonoBehaviour {
         //waitToNextScene = 3f;
         endText.enabled = false;
         m_endMatch = false;
+        m_photonView = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
@@ -82,10 +85,16 @@ public class MatchTimeControl : MonoBehaviour {
 
         //Chama o evento se tiver o minimo de players
         if (PhotonNetwork.playerList.Length >= minimumPlayers && !endMatch) {
-            OnMinimumPlayersReached.Invoke();
-            
-            eventTriggered = true;
+            if (PhotonNetwork.isMasterClient) {
+                m_photonView.RPC("RPC_StartCountdown", PhotonTargets.All);                
+            }
         }
+    }
+
+    [PunRPC]
+    private void RPC_StartCountdown() {
+        OnMinimumPlayersReached.Invoke();
+        eventTriggered = true;
     }
 
     /// <summary>
@@ -93,7 +102,6 @@ public class MatchTimeControl : MonoBehaviour {
     /// </summary>
     /// <returns></returns>
     IEnumerator CountDownRoutine() {
-
         while (true) {
             yield return new WaitForSeconds(1f);
             m_currentTime++;
@@ -108,15 +116,13 @@ public class MatchTimeControl : MonoBehaviour {
 
     public void CountDown() {
         StartCoroutine("CountDownRoutine");
-        // m_currentTime += Time.deltaTime;
     }
 
     public void HandleEndMatch() {
         OnMinimumPlayersReached -= CountDown;
         endText.enabled = true;
-        if (waitToNextScene <= 0) {            
-            SceneManager.LoadScene(nextScene);
-            //OnTimeOver -= HandleEndMatch;
+        if (waitToNextScene <= 0) {
+            PhotonNetwork.LoadLevel(nextScene);
         }
         Debug.Log("ACABOU");
     }
