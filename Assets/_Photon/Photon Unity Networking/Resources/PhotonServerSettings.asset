@@ -50,4 +50,7 @@ MonoBehaviour:
   - RPC_RespawnPlayer
   - RPC_UpdatePlayerData
   - RPC_DebugKill
+  - ActivateSector
+  - RPC_DisableSectors
+  - RPC_EnableSectors
   DisableAutoOpenWizard: 1

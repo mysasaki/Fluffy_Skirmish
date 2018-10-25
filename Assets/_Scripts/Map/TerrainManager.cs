@@ -31,9 +31,17 @@ public class TerrainManager : MonoBehaviour {
     Vector3 pos, newPos;
     Vector3 pos2, newPos2;
 
+    private PhotonView m_photonView;
+    private List<int> idsToBeClosed = new List<int>();
+    private List<int> idsToBeOpened = new List<int>();
 
     // *** FUNCTIONS *** //
     void Start() {
+        if (!PhotonNetwork.isMasterClient)
+            return;
+
+        print("xablau");
+        m_photonView = GetComponent<PhotonView>();
         StartCoroutine("Routine");
     }
 
@@ -47,12 +55,16 @@ public class TerrainManager : MonoBehaviour {
             timeToNextClose = 10f;
         }*/
 
+        //if (!PhotonNetwork.isMasterClient) //só o master client vai fazer o esquema de escolher terreno
+        //    yield return null;
+
         m_round = 1;
         while (m_round < 10) {
             sectorToBeClosed.Clear();
+            idsToBeClosed.Clear();
             ChooseRandomSector();
             yield return new WaitForSeconds(timeToNextClose);
-            StartCoroutine("DisableSector");
+            m_photonView.RPC("RPC_DisableSectors", PhotonTargets.All, idsToBeClosed.ToArray());
             timeToNextClose = 20f;
             m_round++;
         }
@@ -92,6 +104,11 @@ public class TerrainManager : MonoBehaviour {
             else
                 sectorToBeClosed.Add(go_aux);
         }
+
+        foreach (GameObject t in sectorToBeClosed) {
+            TerrainID terrainId = t.GetComponent<TerrainID>();
+            idsToBeClosed.Add(terrainId.id);
+        }
     }
 
     bool CheckIfAlreadyChosen() {
@@ -106,6 +123,7 @@ public class TerrainManager : MonoBehaviour {
             yield return new WaitForSeconds(5f);*/
 
         sectorsToBeOpened.Clear();
+        idsToBeOpened.Clear();
 
         foreach (GameObject go_aux in sectorToBeClosed) {
             pos = new Vector3(go_aux.transform.position.x, go_aux.transform.position.y, go_aux.transform.position.z);
@@ -114,13 +132,17 @@ public class TerrainManager : MonoBehaviour {
             StartCoroutine(MoveObject(pos, newPos, 5f, go_aux));
 
             sectorsToBeOpened.Add(go_aux);
+
+            TerrainID t = go_aux.GetComponent<TerrainID>();
+            idsToBeOpened.Add(t.id);
+
         }
 
         yield return new WaitForSeconds(5f);
-        ActivateSector();
+        m_photonView.RPC("RPC_EnableSectors", PhotonTargets.All, idsToBeOpened.ToArray());
     }
 
-    void ActivateSector() {
+    private void ActivateSector() {
         if (m_round < 2)
             return;
 
@@ -129,6 +151,36 @@ public class TerrainManager : MonoBehaviour {
             newPos2 = new Vector3(go_aux.transform.position.x, 0, go_aux.transform.position.z);
 
             StartCoroutine(MoveObject(pos2, newPos2, 5f, go_aux));
+        }
+    }
+
+    [PunRPC]
+    private void RPC_DisableSectors(int[] ids) {
+        print("RPC DISABLE SECTOR");
+        sectorToBeClosed.Clear();
+
+        foreach (GameObject s in sectors) {
+            TerrainID terrainID = s.GetComponent<TerrainID>();
+            
+            if(ids.Contains(terrainID.id)) {
+                sectorToBeClosed.Add(s);
+                StartCoroutine("DisableSector");
+            }
+        }
+    }
+
+    [PunRPC]
+    private void RPC_EnableSectors(int[] ids) {
+        print("RPC ENABLE SECTOR");
+        sectorsToBeOpened.Clear();
+
+        foreach (GameObject s in sectors) {
+            TerrainID t = s.GetComponent<TerrainID>();
+
+            if(ids.Contains(t.id)) {
+                sectorsToBeOpened.Add(s);
+                ActivateSector();
+            }
         }
     }
 }
