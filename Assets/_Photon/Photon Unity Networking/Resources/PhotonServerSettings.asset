@@ -54,4 +54,5 @@ MonoBehaviour:
   - RPC_DisableSectors
   - RPC_EnableSectors
   - RPC_ChoseSectorsToClose
+  - RPC_InstantDeath
   DisableAutoOpenWizard: 1

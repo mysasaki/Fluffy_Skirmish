@@ -16,12 +16,13 @@ public class Bullet : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        Destroy(gameObject);
+        //Destroy(gameObject); boing 
         //Instancia decal ou sangue
         if (m_owner.ID != PhotonNetwork.player.ID) //apenas o dono da bala vai processar o dano pra que nao ocorra multiplicacao do dano por chamar o rpc multiplas vezes
             return;
 
         if (other.CompareTag("Player")) {
+            Destroy(gameObject);
             Player player = other.GetComponent<Player>();
             if(!player.IsDead && !player.Respawning)
                 PlayerManagement.Instance.DealDamage(m_owner.ID, player.ID, 20);

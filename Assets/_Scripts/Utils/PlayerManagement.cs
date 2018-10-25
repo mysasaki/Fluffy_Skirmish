@@ -42,6 +42,11 @@ public class PlayerManagement : MonoBehaviour {
         }*/
     }
 
+    public void InstantDeath(int id_player) {
+        print("Instant death");
+        m_photonView.RPC("RPC_InstantDeath", PhotonTargets.All, id_player);
+    }
+
     public void ModifyAmmo(int id, int value) {
         m_photonView.RPC("RPC_NewAmmo", PhotonTargets.All, id, value);
     }
@@ -215,6 +220,34 @@ public class PlayerManagement : MonoBehaviour {
         }
 
 
+    }
+
+    [PunRPC]
+    private void RPC_InstantDeath(int id_player) {
+        print("RPC instant death");
+        //if (!m_killFeed)
+        //    m_killFeed = FindObjectOfType<KillFeed>();
+
+        ; ; Kill kill = new Kill();
+        int index_player = m_playerStatsList.FindIndex(x => x.ID == id_player);
+        if (index_player != -1) {
+            PlayerStats other = m_playerStatsList[index_player];
+            other.Death += 1;
+            other.IsDead = true;
+            //kill.Killer = other.Name;
+            //kill.Victim = other.Name;
+            //m_killFeed.AddKill(kill, PhotonNetwork.player.ID);
+        }
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players) {
+            Player player = p.GetComponent<Player>();
+            if (player.ID == id_player) {
+                player.UpdateDeath(m_playerStatsList[index_player].Death);
+                player.IsDead = true;
+            }
+
+        }
     }
 
     #region Debug
