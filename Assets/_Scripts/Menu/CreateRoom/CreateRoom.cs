@@ -7,7 +7,7 @@ public class CreateRoom : MonoBehaviour {
 
     [SerializeField]
     private Text m_roomName;
-    private Text RoomName {
+    private Text roomName {
         get { return m_roomName; }
     }
 
@@ -16,10 +16,10 @@ public class CreateRoom : MonoBehaviour {
         RoomOptions roomOptions = new RoomOptions() {
             IsVisible = true,
             IsOpen = true,
-            MaxPlayers = 4
+            MaxPlayers = 9
         };
         
-        if (PhotonNetwork.CreateRoom(RoomName.text, roomOptions, TypedLobby.Default)) {
+        if (PhotonNetwork.CreateRoom(roomName.text, roomOptions, TypedLobby.Default)) {
             print("Create room successfully sent!");
 
         } else {

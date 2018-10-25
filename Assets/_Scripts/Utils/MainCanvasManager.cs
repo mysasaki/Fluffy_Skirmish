@@ -5,7 +5,6 @@ using UnityEngine;
 //Script responsavel em administrar todos os canvas e os filhos
 public class MainCanvasManager : MonoBehaviour {
 
-
     public static MainCanvasManager Instance;
 
     [SerializeField]

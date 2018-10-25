@@ -4,20 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerNetwork : MonoBehaviour {
     public static PlayerNetwork Instance;
-    public string m_playerName { get; private set; } //pode dar get em qualquer script, porem set private
     private PhotonView m_photonView;
     private int m_playersInGame = 0;
-
     public Player m_currentPlayer;
 
     private void Awake() {
         Instance = this; //singleton
         m_photonView = GetComponent<PhotonView>();
-        m_playerName = "Player#" + Random.Range(1000, 9999); //Dá um nome ao player pra quando acessar o lobby
 
         PhotonNetwork.sendRate = 60; ///defaul = 20
         PhotonNetwork.sendRateOnSerialize = 30; //default = 10. Pode ficar muito pesado acima dos valores default
-
+      
         SceneManager.sceneLoaded += OnSceneFinishedLoading; //cria um delegate usando a scenemanager
     }
     
@@ -48,7 +45,7 @@ public class PlayerNetwork : MonoBehaviour {
     #region RPC 
     [PunRPC]
     private void RPC_LoadGameOthers() {
-        PhotonNetwork.LoadLevel(1); 
+        PhotonNetwork.LoadLevel("Game"); 
     }
 
     [PunRPC]

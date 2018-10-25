@@ -42,6 +42,7 @@ public class RoomLayoutGroup : MonoBehaviour {
         if (index != -1) {
             RoomListing roomListing = RoomListingButtons[index];
             roomListing.SetRoomNameText(room.Name);
+            roomListing.SetRoomNumberPlayersText(room.PlayerCount);
             roomListing.Updated = true;
         }
     }

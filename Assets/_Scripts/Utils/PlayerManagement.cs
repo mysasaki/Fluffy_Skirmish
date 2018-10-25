@@ -12,6 +12,8 @@ public class PlayerManagement : MonoBehaviour {
     public List<PlayerStats> m_playerStatsList = new List<PlayerStats>();
 
     private void Awake() {
+
+        print("PLAYER NAMAGEMENT AWAKE " + PhotonNetwork.playerName);
         Instance = this;
         m_photonView = GetComponent<PhotonView>();
     }
@@ -57,7 +59,6 @@ public class PlayerManagement : MonoBehaviour {
             return true;
 
         return false;
-
     }
 
     public void RespawnPlayer(int id_player) {

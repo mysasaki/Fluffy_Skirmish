@@ -17,6 +17,30 @@ public class PlayerLayoutGroup : MonoBehaviour {
         get { return m_roomState; }
     }
 
+    [SerializeField]
+    private Text m_roomName;
+    private Text roomName {
+        get { return m_roomName; }
+    }
+
+    [SerializeField]
+    private Text m_numberPlayers;
+    private Text numberPlayers {
+        get { return m_numberPlayers; }
+    }
+
+    [SerializeField]
+    private GameObject m_startButton;
+    private GameObject startButton {
+        get { return m_startButton; }
+    }
+
+    [SerializeField]
+    private GameObject m_stateButton;
+    private GameObject stateButton {
+        get { return m_stateButton; }
+    }
+
     private List<PlayerListing> m_playerListings = new List<PlayerListing>();
     private List<PlayerListing> PlayerListings {
         get { return m_playerListings; }
@@ -37,12 +61,25 @@ public class PlayerLayoutGroup : MonoBehaviour {
         }
 
         MainCanvasManager.Instance.CurrentRoomCanvas.transform.SetAsLastSibling(); //Vai colocar no fim da hierarquia. ie. vai colocar por cima do lobby
+        roomName.text = PhotonNetwork.room.Name;
 
         //Add todos os current players
         PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;
 
         for (int i = 0; i < photonPlayers.Length; i++) {
             PlayerJoinedRoom(photonPlayers[i]);
+        }
+
+        if (!PhotonNetwork.isMasterClient) {
+            startButton.SetActive(false);
+            stateButton.SetActive(false);
+        }
+    }
+
+    private void OnMasterClientSwitched() {
+        if (PhotonNetwork.isMasterClient) {
+            startButton.SetActive(true);
+            stateButton.SetActive(true);
         }
     }
 
@@ -61,6 +98,8 @@ public class PlayerLayoutGroup : MonoBehaviour {
             return;
         }
 
+        numberPlayers.text = PhotonNetwork.room.PlayerCount.ToString() + "/9";
+
         PlayerLeftRoom(photonPlayer); //Evita ter players duplicados na sala. Acontece as vezes por causa da internets
 
         GameObject playerListingObj = Instantiate(PlayerListingPrefab);
@@ -73,6 +112,7 @@ public class PlayerLayoutGroup : MonoBehaviour {
     }
 
     private void PlayerLeftRoom(PhotonPlayer photonPlayer) {
+        numberPlayers.text = PhotonNetwork.room.PlayerCount.ToString() + "/9";
         int index = PlayerListings.FindIndex(x => x.m_photonPlayer == photonPlayer);
 
         if (index != -1) { //encontro o player na lista
@@ -93,6 +133,8 @@ public class PlayerLayoutGroup : MonoBehaviour {
     }
 
     public void OnClick_LeaveRoom() {
+        print("leave room");
         PhotonNetwork.LeaveRoom();
+        MainCanvasManager.Instance.LobbyCanvas.transform.SetAsLastSibling();
     }
 }
