@@ -65,12 +65,12 @@ public class TerrainManager : MonoBehaviour {
             ChooseRandomSector();
             yield return new WaitForSeconds(timeToNextClose);
             m_photonView.RPC("RPC_DisableSectors", PhotonTargets.All, idsToBeClosed.ToArray());
-            timeToNextClose = 20f;
-            m_round++;
+            
         }
     }
 
     IEnumerator MoveObject(Vector3 source, Vector3 target, float overTime, GameObject go_aux) {
+        print("move object");
         float startTime = Time.time;
         while (Time.time < startTime + overTime) {
             go_aux.transform.position = Vector3.Lerp(source, target, (Time.time - startTime) / overTime);
@@ -119,6 +119,7 @@ public class TerrainManager : MonoBehaviour {
     }
 
     IEnumerator DisableSector() {
+
         /*if(m_round != 1)
             yield return new WaitForSeconds(5f);*/
 
@@ -139,10 +140,13 @@ public class TerrainManager : MonoBehaviour {
         }
 
         yield return new WaitForSeconds(5f);
-        m_photonView.RPC("RPC_EnableSectors", PhotonTargets.All, idsToBeOpened.ToArray());
+
+        if (PhotonNetwork.isMasterClient)
+            m_photonView.RPC("RPC_EnableSectors", PhotonTargets.All, idsToBeOpened.ToArray());
     }
 
     private void ActivateSector() {
+        print("Activate sector " + sectorsToBeOpened.Count);
         if (m_round < 2)
             return;
 
@@ -156,7 +160,10 @@ public class TerrainManager : MonoBehaviour {
 
     [PunRPC]
     private void RPC_DisableSectors(int[] ids) {
-        print("RPC DISABLE SECTOR");
+        timeToNextClose = 20f;
+        m_round++;
+
+        print("RPC DISABLE SECTOR " + ids.Length);
         sectorToBeClosed.Clear();
 
         foreach (GameObject s in sectors) {
@@ -171,16 +178,17 @@ public class TerrainManager : MonoBehaviour {
 
     [PunRPC]
     private void RPC_EnableSectors(int[] ids) {
-        print("RPC ENABLE SECTOR");
+        print("RPC ENABLE SECTOR " + ids.Length);
         sectorsToBeOpened.Clear();
 
         foreach (GameObject s in sectors) {
             TerrainID t = s.GetComponent<TerrainID>();
 
             if(ids.Contains(t.id)) {
-                sectorsToBeOpened.Add(s);
-                ActivateSector();
+                sectorsToBeOpened.Add(s);               
             }
         }
+
+        ActivateSector();
     }
 }
