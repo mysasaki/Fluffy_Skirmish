@@ -107,8 +107,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1887411359178042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fbb9734083586e4e8ecf9c82f419ac1, type: 3}
+  m_Script: {fileID: 11500000, guid: fb42d3762531e294d8e48287e74cdc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lava1vel: {x: 0, y: 0}
-  lava2vel: {x: 0, y: 0}
+  lava1vel: {x: 0.01, y: 0.01}
+  lava2vel: {x: 0.1, y: 0.1}

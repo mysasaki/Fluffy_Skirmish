@@ -170,10 +170,6 @@ public class PlayerInput : MonoBehaviour {
             if (m_aiming) {
                 m_crosshair.ToggleCrosshair(true);
 
-                Transform bulletSpawn = m_playerWeapon.currentWeapon.weaponSettings.bulletSpawn;
-                Quaternion rotation = Quaternion.LookRotation(bulletSpawn.forward);
-                m_crosshair.PositionCrosshair(bulletSpawn, rotation);
-
             } else
                 m_crosshair.ToggleCrosshair(false);
             

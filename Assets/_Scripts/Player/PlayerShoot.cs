@@ -13,13 +13,12 @@ public class PlayerShoot : MonoBehaviour {
         m_photonView = GetComponent<PhotonView>();
     }
 
-    public void InstantiateBullet(Transform bulletSpawn) {
+    public void InstantiateBullet(Vector3 position) {
         if (!m_photonView.isMine)
             return;
 
-        Vector3 position = bulletSpawn.position;
         Camera camera = Camera.main;
-        Quaternion rotation = Quaternion.LookRotation(bulletSpawn.forward);
+        Quaternion rotation = Quaternion.LookRotation(gameObject.transform.forward);
         m_photonView.RPC("RPC_InstantiateBullet", PhotonTargets.All, position, rotation);
     }
 
