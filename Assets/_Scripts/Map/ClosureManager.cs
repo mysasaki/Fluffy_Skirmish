@@ -9,7 +9,6 @@ public class ClosureManager : MonoBehaviour {
     //private List<GameObject> closed = new List<GameObject>();
 
     public void ToClose(List<int> idsToClose) {
-        print("To close");
         foreach (GameObject c in m_closures) {
             Closure closure = c.GetComponent<Closure>();
 
@@ -20,7 +19,6 @@ public class ClosureManager : MonoBehaviour {
     }
 
     public void Closed(List<int> idsClosed) {
-        print("Close");
         foreach (GameObject c in m_closures) {
             Closure closure = c.GetComponent<Closure>();
             if(idsClosed.Contains(closure.id)) {
@@ -30,7 +28,6 @@ public class ClosureManager : MonoBehaviour {
     }
 
     public void Open(List<int> idsToOpen) {
-        print("Öpen");
         foreach (GameObject c in m_closures) {
             Closure closure = c.GetComponent<Closure>();
 

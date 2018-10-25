@@ -12,6 +12,6 @@ public class LeaveCurrentMatch : MonoBehaviour {
         PhotonNetwork.Destroy(PlayerNetwork.Instance.gameObject);
         Destroy(ddol.gameObject);
         PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LoadLevel(1);
+        PhotonNetwork.LoadLevel("Lobby");
     }
 }
