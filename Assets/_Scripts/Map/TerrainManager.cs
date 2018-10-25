@@ -27,6 +27,9 @@ public class TerrainManager : MonoBehaviour {
     [SerializeField]
     private List<GameObject> sectorsToBeOpened; //lista de setores que estavam fechados e irão abrir
 
+    [SerializeField]
+    private MapMenu mapMenu;
+
     //vectors usados para fazer o lerp de ida e volta
     Vector3 pos, newPos;
     Vector3 pos2, newPos2;
@@ -109,6 +112,7 @@ public class TerrainManager : MonoBehaviour {
             TerrainID terrainId = t.GetComponent<TerrainID>();
             idsToBeClosed.Add(terrainId.id);
         }
+        m_photonView.RPC("RPC_ChoseSectorsToClose", PhotonTargets.All, idsToBeClosed.ToArray());
     }
 
     bool CheckIfAlreadyChosen() {
@@ -136,11 +140,9 @@ public class TerrainManager : MonoBehaviour {
 
             TerrainID t = go_aux.GetComponent<TerrainID>();
             idsToBeOpened.Add(t.id);
-
         }
 
         yield return new WaitForSeconds(5f);
-
         if (PhotonNetwork.isMasterClient)
             m_photonView.RPC("RPC_EnableSectors", PhotonTargets.All, idsToBeOpened.ToArray());
     }
@@ -159,12 +161,36 @@ public class TerrainManager : MonoBehaviour {
     }
 
     [PunRPC]
+    private void RPC_ChoseSectorsToClose(int[] ids) {
+
+        List<int> aux = new List<int>();
+        foreach (int i in ids) {
+            aux.Add(i);
+        }
+        mapMenu.ToClose(aux);
+        //foreach (GameObject s in sectors) {
+        //    TerrainID terrainID = s.GetComponent<TerrainID>();
+
+        //    if (ids.Contains(terrainID.id)) {
+        //        idsToBeClosed.Add(terrainID.id);
+        //    }
+        //}
+        
+    }
+
+    [PunRPC]
     private void RPC_DisableSectors(int[] ids) {
+        List<int> aux = new List<int>();
         timeToNextClose = 20f;
         m_round++;
 
         print("RPC DISABLE SECTOR " + ids.Length);
         sectorToBeClosed.Clear();
+
+        foreach (int i in ids) {
+            aux.Add(i);
+        }
+        mapMenu.Close(aux);
 
         foreach (GameObject s in sectors) {
             TerrainID terrainID = s.GetComponent<TerrainID>();
@@ -172,8 +198,9 @@ public class TerrainManager : MonoBehaviour {
             if(ids.Contains(terrainID.id)) {
                 sectorToBeClosed.Add(s);
                 StartCoroutine("DisableSector");
+                aux.Add(terrainID.id);
             }
-        }
+        }        
     }
 
     [PunRPC]
@@ -181,14 +208,20 @@ public class TerrainManager : MonoBehaviour {
         print("RPC ENABLE SECTOR " + ids.Length);
         sectorsToBeOpened.Clear();
 
+        List<int> aux = new List<int>();
+        foreach (int  i in ids) {
+            aux.Add(i);
+        }
+        mapMenu.Open(aux);
+
         foreach (GameObject s in sectors) {
             TerrainID t = s.GetComponent<TerrainID>();
 
             if(ids.Contains(t.id)) {
-                sectorsToBeOpened.Add(s);               
+                sectorsToBeOpened.Add(s);                
             }
         }
-
+        
         ActivateSector();
     }
 }
