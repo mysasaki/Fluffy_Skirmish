@@ -1998,8 +1998,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7, y: 1.35, z: -1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.07, z: -6.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1943343887}
@@ -2320,11 +2320,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   cameraSettings:
-    CamPositionOffsetRight: {x: 3, y: 2.45, z: -3.85}
-    UICamera: {fileID: 534669904}
+    CamPositionOffsetRight: {x: 2.21, y: 3.97, z: -7.19}
+    UICamera: {fileID: 0}
     MouseXSensitivity: 7
     MouseYSensitivity: 2.5
-    MinAngle: -10
+    MinAngle: -60
     MaxAngle: 65
     RotationSpeed: 10
     MaxCheckDist: 0.1

@@ -7,6 +7,8 @@ public class PlayerAnimation : Photon.MonoBehaviour {
     private PhotonView m_photonView;
     private Animator animator;
 
+    private CameraRig camRig;
+
     [System.Serializable]
     public class AnimationSettings {
         public string verticalParamater = "Vertical";
@@ -34,12 +36,14 @@ public class PlayerAnimation : Photon.MonoBehaviour {
     private void Start() {
         m_photonView = GetComponent<PhotonView>();
         animator = GetComponentInChildren<Animator>();
-
+        camRig = GameObject.FindGameObjectWithTag("CameraRig").GetComponent<CameraRig>();
     }
 
     private void FixedUpdate() {
         if (!m_photonView || !animator)
             return;
+
+        animationParameters.aimAngle = camRig.GetAngle();
 
         animator.SetFloat(animationSettings.verticalParamater, animationParameters.verticalMovement);
         animator.SetFloat(animationSettings.horizontalParamater, animationParameters.horizontalMovement);

@@ -208,6 +208,8 @@ MonoBehaviour:
   ammo:
     clipAmmo: 6
     maxClipAmmo: 6
+  owner: {fileID: 0}
+  m_player: {fileID: 0}
 --- !u!114 &114570171864748588
 MonoBehaviour:
   m_ObjectHideFlags: 1

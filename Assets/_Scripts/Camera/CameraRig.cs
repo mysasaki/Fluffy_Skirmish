@@ -116,6 +116,20 @@ public class CameraRig : MonoBehaviour {
         m_pivot.localRotation = newRotation;
     }
 
+    public float GetAngle() {
+        Debug.Log("Cam Angle: " + CheckAngle(m_pivot.eulerAngles.x));
+        return CheckAngle(m_pivot.eulerAngles.x);
+    }
+
+    public float CheckAngle(float value) {
+        float angle = value - 180;
+
+        if (angle > 0)
+            return angle - 180;
+
+        return angle + 180;
+    }
+
     //Check wall and move camera up if it hits
     private void CheckWall() {
         if (!m_pivot || !m_mainCamera)

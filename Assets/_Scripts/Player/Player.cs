@@ -17,9 +17,13 @@ public class Player : MonoBehaviour {
 
     private PhotonView m_photonView;
 
+    public PlayerAim playerAim;
+
+    public Ragdoll ragdoll;
+
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
-
+        ragdoll = GetComponentInChildren<Ragdoll>(); //ref do ragdoll
     }
 
     private void Start() {
@@ -34,6 +38,7 @@ public class Player : MonoBehaviour {
 
         if (IsDead) {
             print("Player " + Name + " diededdened.");
+            ragdoll.active = true; //ativa o ragdoll
             IsDead = false;
             StartCoroutine(StartRespawnPlayer());
             GameManager.Instance.StartRespawn();
@@ -48,6 +53,7 @@ public class Player : MonoBehaviour {
     }
 
     private void RespawnPlayer() {
+        ragdoll.active = false; //desativa o ragdoll
         Respawning = true;
         PlayerManagement.Instance.RespawnPlayer(this.ID);
     }
