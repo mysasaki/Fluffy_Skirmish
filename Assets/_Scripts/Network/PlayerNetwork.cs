@@ -14,7 +14,7 @@ public class PlayerNetwork : MonoBehaviour {
 
         PhotonNetwork.sendRate = 60; ///defaul = 20
         PhotonNetwork.sendRateOnSerialize = 30; //default = 10. Pode ficar muito pesado acima dos valores default
-
+      
         SceneManager.sceneLoaded += OnSceneFinishedLoading; //cria um delegate usando a scenemanager
     }
     

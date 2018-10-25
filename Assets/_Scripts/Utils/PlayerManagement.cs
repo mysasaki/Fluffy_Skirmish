@@ -57,7 +57,6 @@ public class PlayerManagement : MonoBehaviour {
             return true;
 
         return false;
-
     }
 
     public void RespawnPlayer(int id_player) {

@@ -6,8 +6,11 @@ public class LeaveCurrentMatch : MonoBehaviour {
 
 	public void OnClick_LeaveMatch() {
         print("leave match");
-        Destroy(PlayerManagement.Instance.gameObject);
-        Destroy(PlayerNetwork.Instance.gameObject);
+
+        DDOL ddol = PlayerManagement.Instance.GetComponentInParent<DDOL>();
+        PhotonNetwork.Destroy(PlayerManagement.Instance.gameObject);
+        PhotonNetwork.Destroy(PlayerNetwork.Instance.gameObject);
+        Destroy(ddol.gameObject);
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel(1);
     }
