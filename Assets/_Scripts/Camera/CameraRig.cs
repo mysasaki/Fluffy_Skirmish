@@ -117,7 +117,7 @@ public class CameraRig : MonoBehaviour {
     }
 
     public float GetAngle() {
-        Debug.Log("Cam Angle: " + CheckAngle(m_pivot.eulerAngles.x));
+        //Debug.Log("Cam Angle: " + CheckAngle(m_pivot.eulerAngles.x));
         return CheckAngle(m_pivot.eulerAngles.x);
     }
 

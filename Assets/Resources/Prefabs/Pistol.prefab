@@ -69,41 +69,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1989580021495360}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalRotation: {x: 0.41076365, y: -0.3600623, z: 0.5446957, w: -0.636345}
   m_LocalPosition: {x: 0.051, y: 0.051, z: 0.227}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 4775186218419350}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 90}
+  m_LocalEulerAnglesHint: {x: 187.5, y: -114, z: 94}
 --- !u!4 &4469031926780618
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1854135884385452}
-  m_LocalRotation: {x: 0.5796344, y: -0.40499875, z: -0.40499875, w: 0.5796344}
-  m_LocalPosition: {x: -0.316, y: -0.118, z: 0.43}
-  m_LocalScale: {x: 0.90909094, y: 0.90909094, z: 0.90909094}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.025, y: 0.235, z: 0.635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4775186218419350}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 20.115002, y: -90.00001, z: -90.00001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4775186218419350
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1879005513744178}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 67.89, y: 1.17, z: 77.61}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 107.3, y: 1.122, z: 59.3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4469031926780618}
   - {fileID: 4396487572828382}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23413796908857328
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -201,12 +201,12 @@ MonoBehaviour:
     reloadDuration: 2
     crosshairPrefab: {fileID: 1374720585793836, guid: 5356494b2c6a58f4a8ad0bcb92d2fb97,
       type: 2}
-    equipPosition: {x: -1, y: 1.1, z: 0.05}
-    equipRotation: {x: 90, y: 20, z: -1}
+    equipPosition: {x: -0.15, y: 0.25, z: -0.2}
+    equipRotation: {x: 0, y: 0, z: 0}
     unequipPosition: {x: 0, y: 0, z: 0}
     unequipRotation: {x: 0, y: 0, z: 0}
   ammo:
-    clipAmmo: 6
+    clipAmmo: 1
     maxClipAmmo: 6
   owner: {fileID: 0}
   m_player: {fileID: 0}

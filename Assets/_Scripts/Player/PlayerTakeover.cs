@@ -24,6 +24,7 @@ public class PlayerTakeover : MonoBehaviour {
     }
 
     public void PickupWeapon() {
+        print("Player takeover");
         if (!m_photonView.isMine)
             return;
 
@@ -95,6 +96,7 @@ public class PlayerTakeover : MonoBehaviour {
 
     [PunRPC]
     private void RPC_WeaponDrop(int playerID) {
+        print("rpc weapon drop");
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
         if (players.Length > 0) {
