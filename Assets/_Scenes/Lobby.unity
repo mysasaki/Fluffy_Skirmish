@@ -146,7 +146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000020709427}
+  m_AnchoredPosition: {x: 0, y: 0.000005187309}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &45179852
@@ -200,6 +200,8 @@ MonoBehaviour:
   m_roomState: {fileID: 734648141}
   m_roomName: {fileID: 1940723981}
   m_numberPlayers: {fileID: 715566660}
+  m_startButton: {fileID: 632955582}
+  m_stateButton: {fileID: 1169265706}
 --- !u!1 &77412578
 GameObject:
   m_ObjectHideFlags: 0

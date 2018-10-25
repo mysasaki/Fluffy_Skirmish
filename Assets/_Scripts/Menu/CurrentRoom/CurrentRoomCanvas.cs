@@ -2,12 +2,12 @@
 
 public class CurrentRoomCanvas : MonoBehaviour {
 
-    public void OnClick_StartSync() {
-        if (!PhotonNetwork.isMasterClient) //só o masterclient consegue iniciar a partida
-            return;
+    //public void OnClick_StartSync() {
+    //    if (!PhotonNetwork.isMasterClient) //só o masterclient consegue iniciar a partida
+    //        return;
 
-        PhotonNetwork.LoadLevel(1);
-    }
+    //    PhotonNetwork.LoadLevel(1);
+    //}
 
     public void OnClick_StartDelayed() {
 
@@ -16,6 +16,6 @@ public class CurrentRoomCanvas : MonoBehaviour {
 
         PhotonNetwork.room.IsOpen = false; //impede pessoas entrarem no jogo enquanto ta rolando
         PhotonNetwork.room.IsVisible = false;
-        PhotonNetwork.LoadLevel(2);
+        PhotonNetwork.LoadLevel("Game");
     }
 }

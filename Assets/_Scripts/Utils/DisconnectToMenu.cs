@@ -12,6 +12,6 @@ public class DisconnectToMenu : MonoBehaviour {
         PhotonNetwork.Destroy(PlayerNetwork.Instance.gameObject);
         Destroy(ddol);
         PhotonNetwork.Disconnect();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Menu");
     }
 }

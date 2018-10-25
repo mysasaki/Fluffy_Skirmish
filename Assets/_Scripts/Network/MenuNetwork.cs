@@ -65,7 +65,7 @@ public class MenuNetwork : MonoBehaviour {
         //}
 
         ToggleLoadingScreen(false);
-        PhotonNetwork.LoadLevel(1);
+        PhotonNetwork.LoadLevel("Lobby");
     }
 
     private void OnConnectionFail() {

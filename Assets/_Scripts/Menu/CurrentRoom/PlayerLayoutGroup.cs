@@ -29,6 +29,18 @@ public class PlayerLayoutGroup : MonoBehaviour {
         get { return m_numberPlayers; }
     }
 
+    [SerializeField]
+    private GameObject m_startButton;
+    private GameObject startButton {
+        get { return m_startButton; }
+    }
+
+    [SerializeField]
+    private GameObject m_stateButton;
+    private GameObject stateButton {
+        get { return m_stateButton; }
+    }
+
     private List<PlayerListing> m_playerListings = new List<PlayerListing>();
     private List<PlayerListing> PlayerListings {
         get { return m_playerListings; }
@@ -56,6 +68,18 @@ public class PlayerLayoutGroup : MonoBehaviour {
 
         for (int i = 0; i < photonPlayers.Length; i++) {
             PlayerJoinedRoom(photonPlayers[i]);
+        }
+
+        if (!PhotonNetwork.isMasterClient) {
+            startButton.SetActive(false);
+            stateButton.SetActive(false);
+        }
+    }
+
+    private void OnMasterClientSwitched() {
+        if (PhotonNetwork.isMasterClient) {
+            startButton.SetActive(true);
+            stateButton.SetActive(true);
         }
     }
 
@@ -88,6 +112,7 @@ public class PlayerLayoutGroup : MonoBehaviour {
     }
 
     private void PlayerLeftRoom(PhotonPlayer photonPlayer) {
+        numberPlayers.text = PhotonNetwork.room.PlayerCount.ToString() + "/9";
         int index = PlayerListings.FindIndex(x => x.m_photonPlayer == photonPlayer);
 
         if (index != -1) { //encontro o player na lista
