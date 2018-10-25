@@ -107,7 +107,6 @@ public class MatchTimeControl : MonoBehaviour {
     }
 
     public void CountDown() {
-        Debug.Log("Deu certo o evento mano");
         StartCoroutine("CountDownRoutine");
         // m_currentTime += Time.deltaTime;
     }

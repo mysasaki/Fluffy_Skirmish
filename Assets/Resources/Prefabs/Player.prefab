@@ -353,6 +353,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1753057000276562
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4268804390086722}
+  m_Layer: 9
+  m_Name: HandPistol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1778908841477410
 GameObject:
   m_ObjectHideFlags: 1
@@ -442,7 +457,8 @@ Transform:
   m_LocalRotation: {x: 0.2645356, y: -0.14540452, z: -0.07691104, w: 0.9502438}
   m_LocalPosition: {x: -0.8814102, y: 0.00000008940697, z: 0.00000020861626}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4268804390086722}
   m_Father: {fileID: 4476890943700444}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -486,6 +502,19 @@ Transform:
   m_Children:
   - {fileID: 4775981371097258}
   m_Father: {fileID: 4343890575633480}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4268804390086722
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1753057000276562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4034807064552976}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4310487915622514
@@ -623,7 +652,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1069429208874228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.9, z: -10.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4783001422224364}
@@ -1139,7 +1168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userSettings:
-    rightHand: {fileID: 4633144490590770}
+    rightHand: {fileID: 4268804390086722}
     pistolUnequipSpot: {fileID: 0}
   m_photonView: {fileID: 0}
   currentWeapon: {fileID: 0}

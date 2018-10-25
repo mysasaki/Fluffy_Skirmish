@@ -189,7 +189,7 @@ MonoBehaviour:
     leftHandIKTarget: {fileID: 0}
     spineRotation: {x: 0, y: 0, z: 0}
   weaponSettings:
-    bulletSpawn: {fileID: 4469031926780618}
+    bulletSpawn: {fileID: 0}
     damage: 5
     fireRate: 1
     bulletLayers:
@@ -201,8 +201,8 @@ MonoBehaviour:
     reloadDuration: 2
     crosshairPrefab: {fileID: 1374720585793836, guid: 5356494b2c6a58f4a8ad0bcb92d2fb97,
       type: 2}
-    equipPosition: {x: -0.15, y: 0.25, z: -0.2}
-    equipRotation: {x: 0, y: 0, z: 0}
+    equipPosition: {x: -0.75, y: 0.25, z: -0.3}
+    equipRotation: {x: 7.2, y: -90, z: -15}
     unequipPosition: {x: 0, y: 0, z: 0}
     unequipRotation: {x: 0, y: 0, z: 0}
   ammo:

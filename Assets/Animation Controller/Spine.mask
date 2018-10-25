@@ -15,7 +15,7 @@ AvatarMask:
   - m_Path: Armature/Quadril
     m_Weight: 0
   - m_Path: Armature/Quadril/Barriga
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Quadril/Barriga/Torax
     m_Weight: 1
   - m_Path: Armature/Quadril/Barriga/Torax/Ombro_l
@@ -31,9 +31,9 @@ AvatarMask:
   - m_Path: Armature/Quadril/Barriga/Torax/Ombro_r/Bra_o_r/Mao_r
     m_Weight: 1
   - m_Path: Armature/Quadril/Barriga/Torax/Pesco_o
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Quadril/Barriga/Torax/Pesco_o/Cabe_a
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Quadril/Perna_l
     m_Weight: 0
   - m_Path: Armature/Quadril/Perna_l/Calcanhar_l
