@@ -209,7 +209,7 @@ public class PlayerManagement : MonoBehaviour {
             Player player = p.GetComponent<Player>();
 
             if (player.ID == id) {
-                p.transform.position = new Vector3(newX, 5, newZ);
+                p.transform.position = new Vector3(newX, 25, newZ);
                 player.ToggleMesh(true);
                 player.Health = 100;
                 m_playerStatsList[index].Health = 100;
