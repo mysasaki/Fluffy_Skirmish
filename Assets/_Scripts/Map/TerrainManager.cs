@@ -84,7 +84,6 @@ public class TerrainManager : MonoBehaviour {
     }
 
     IEnumerator MoveObject(Vector3 source, Vector3 target, float overTime, GameObject go_aux) {
-        print("move object");
         float startTime = Time.time;
         while (Time.time < startTime + overTime) {
             go_aux.transform.position = Vector3.Lerp(source, target, (Time.time - startTime) / overTime);
@@ -197,6 +196,7 @@ public class TerrainManager : MonoBehaviour {
     private void RPC_DisableSectors(int[] ids) {
         List<int> aux = new List<int>();
         timeToNextClose = timeToNextClosePB;
+        print("ROUND " + m_round);
         m_round++;
 
         print("RPC DISABLE SECTOR " + ids.Length);
