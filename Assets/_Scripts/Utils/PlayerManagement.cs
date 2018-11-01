@@ -32,6 +32,16 @@ public class PlayerManagement : MonoBehaviour {
 
     //}
 
+    private void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer) {
+        int index = m_playerStatsList.FindIndex(x => x.ID == otherPlayer.ID);
+
+        if (index != -1)
+            m_playerStatsList.RemoveAt(index);
+
+        print("plauer saiu " + m_playerStatsList.Count + ", " + otherPlayer.name);
+
+    }
+
     public void DealDamage(int id_owner, int id_other, int value) {
         print("Deal damage called");
         m_photonView.RPC("RPC_DealDamage", PhotonTargets.All, id_owner, id_other, value);
