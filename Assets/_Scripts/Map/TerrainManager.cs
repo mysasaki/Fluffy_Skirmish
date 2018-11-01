@@ -15,6 +15,7 @@ public class TerrainManager : MonoBehaviour {
 
     [SerializeField]
     public static float timeToNextClose; //tempo para o primeiro fechamento de setor de uma partida
+    public float timeToNextClosePB;
 
     private GameObject go_aux; //gameObject auxiliar para armazenar setor que irá fechar
 
@@ -38,13 +39,23 @@ public class TerrainManager : MonoBehaviour {
     private List<int> idsToBeClosed = new List<int>();
     private List<int> idsToBeOpened = new List<int>();
 
+    private bool flagStart;
+
     // *** FUNCTIONS *** //
     void Start() {
         if (!PhotonNetwork.isMasterClient)
             return;
 
+        timeToNextClose = timeToNextClosePB;
         print("xablau");
         m_photonView = GetComponent<PhotonView>();
+        MatchTimeControl.OnMinimumPlayersReached += StartMapMovement;
+        //StartCoroutine("Routine");
+    }
+
+    public void StartMapMovement() {
+        //flagStart = true;
+        Debug.Log("CU DE URSO");
         StartCoroutine("Routine");
     }
 
@@ -83,6 +94,10 @@ public class TerrainManager : MonoBehaviour {
     }
 
     void Update() {
+
+        if (flagStart) {
+
+        }
         if (m_round >= 9) //sai do update
             return;
 
@@ -181,7 +196,7 @@ public class TerrainManager : MonoBehaviour {
     [PunRPC]
     private void RPC_DisableSectors(int[] ids) {
         List<int> aux = new List<int>();
-        timeToNextClose = 20f;
+        timeToNextClose = timeToNextClosePB;
         m_round++;
 
         print("RPC DISABLE SECTOR " + ids.Length);
@@ -223,5 +238,10 @@ public class TerrainManager : MonoBehaviour {
         }
         
         ActivateSector();
+    }
+
+    private void OnDisable() {
+        MatchTimeControl.OnMinimumPlayersReached -= StartMapMovement;
+        StopAllCoroutines();
     }
 }
