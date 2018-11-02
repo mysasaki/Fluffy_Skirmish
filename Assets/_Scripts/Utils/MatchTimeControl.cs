@@ -122,7 +122,9 @@ public class MatchTimeControl : MonoBehaviour {
         OnMinimumPlayersReached -= CountDown;
         endText.enabled = true;
         if (waitToNextScene <= 0) {
-            PhotonNetwork.LoadLevel(nextScene);
+            //SceneManager.LoadScene(nextScene);
+            PhotonNetwork.LoadLevel("GameOver");
+            //OnTimeOver -= HandleEndMatch;
         }
         Debug.Log("ACABOU");
     }

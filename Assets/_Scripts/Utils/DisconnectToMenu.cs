@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class DisconnectToMenu : MonoBehaviour {
 
-    public GameObject ddol;
+    private GameObject ddol;
 
 	public void OnClick_BackMenu() {
+        ddol = GameObject.FindObjectOfType<DDOL>().gameObject;
         PhotonNetwork.Destroy(PlayerManagement.Instance.gameObject);
         PhotonNetwork.Destroy(PlayerNetwork.Instance.gameObject);
         Destroy(ddol);

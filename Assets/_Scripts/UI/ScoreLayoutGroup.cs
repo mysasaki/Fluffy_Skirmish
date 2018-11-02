@@ -35,6 +35,18 @@ public class ScoreLayoutGroup : MonoBehaviour {
         UpdateList();
         m_playerStats.Sort(SortByScore);
 
+        List<PlayerStats> aux = PlayerManagement.Instance.m_playerStatsList;
+
+        if (aux.Count < m_playerStats.Count) { //Algum fdp saiu da sala
+            foreach (PlayerStats p in m_playerStats) {
+                int index = aux.FindIndex(x => x.ID == p.ID);
+
+                if(index == -1) {
+                    DeleteScore(p);
+                }
+            }
+        }
+
         foreach (PlayerStats p in m_playerStats) {
             int index = m_scoreListingList.FindIndex(x => x.id == p.ID);
             
@@ -46,6 +58,16 @@ public class ScoreLayoutGroup : MonoBehaviour {
                 AddScore(p);
                 UpdateScoreboard();
                 return;
+            }
+        }
+    }
+
+    private void DeleteScore(PlayerStats p) {
+        m_playerStats.Remove(p);
+
+        foreach (ScoreListing s in m_scoreListingList) {
+            if(s.id == p.ID) {
+                m_scoreListingList.Remove(s);
             }
         }
     }
