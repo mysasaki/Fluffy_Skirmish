@@ -167,16 +167,24 @@ public class PlayerInput : MonoBehaviour {
             if (Input.GetButton(input.reloadButton))
                 m_playerWeapon.Reload();
 
-            if (m_aiming) {
+            /*if (m_aiming) {
                 m_crosshair.ToggleCrosshair(true);
 
             } else
-                m_crosshair.ToggleCrosshair(false);
+                m_crosshair.ToggleCrosshair(false);*/
             
+        /* DESCOMENTAR  170 - 180 PRA VOLTAR A FNCIONAR DO JEITO QUE TAVA */
 
-        } else {
+        } /*else {
             m_crosshair.ToggleCrosshair(false);
-        }
+        }*/
+
+        /* DELETAR 4 LINHAS ABAIXO PRA QUANDO TERMINAR DEBUG. FAZ O CROSSHAIR APARECER SEM ARMA */
+        if (m_aiming) {
+            m_crosshair.ToggleCrosshair(true);
+
+        } else
+            m_crosshair.ToggleCrosshair(false);
     }
 
     //Maker player look at a forward point from the camera

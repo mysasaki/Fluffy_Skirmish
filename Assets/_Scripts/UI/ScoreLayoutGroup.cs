@@ -12,7 +12,6 @@ public class ScoreLayoutGroup : MonoBehaviour {
     private List<ScoreListing> m_scoreListingList = new List<ScoreListing>();
 
     public void InitializeScoreboard() {
-        print("Initialize scoreboard");
         foreach (PlayerStats p in m_playerStats) {
 
             int index = m_scoreListingList.FindIndex(x => x.id == p.ID);
@@ -24,7 +23,6 @@ public class ScoreLayoutGroup : MonoBehaviour {
     }
 
     public void UpdateList() {
-        print("Update scoreboard");
         m_playerStats = PlayerManagement.Instance.m_playerStatsList;
 
         if (m_scoreListingList.Count == 0)
@@ -35,9 +33,7 @@ public class ScoreLayoutGroup : MonoBehaviour {
         UpdateList();
         m_playerStats.Sort(SortByScore);
 
-        print("count " + m_playerStats.Count + ", " + m_scoreListingList.Count);
         if (m_playerStats.Count < m_scoreListingList.Count) { //Algum fdp saiu da sala
-            print("Älgum fdp saiu da sala");
             foreach (ScoreListing s in m_scoreListingList) {
                 print(s.playerText.text);
                 int index = m_playerStats.FindIndex(x => x.Name == s.playerText.text);

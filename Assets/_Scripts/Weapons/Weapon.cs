@@ -37,7 +37,6 @@ public class Weapon : MonoBehaviour {
 
         [Header("-Other-")]
         public float reloadDuration = 2.0f;
-        public GameObject crosshairPrefab;
 
         [Header("-Positioning-")]
         public Vector3 equipPosition;

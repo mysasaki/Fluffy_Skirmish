@@ -38,8 +38,6 @@ public class PlayerManagement : MonoBehaviour {
         if (index != -1)
             m_playerStatsList.RemoveAt(index);
 
-        print("plauer saiu " + m_playerStatsList.Count + ", " + otherPlayer.name);
-
     }
 
     public void DealDamage(int id_owner, int id_other, int value) {

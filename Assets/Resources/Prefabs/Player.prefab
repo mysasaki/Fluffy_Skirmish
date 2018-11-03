@@ -1063,7 +1063,7 @@ MonoBehaviour:
   m_debugAim: 0
   m_spine: {fileID: 0}
   tpsCamera: {fileID: 0}
-  crosshairPrefab: {fileID: 1374720585793836, guid: 5356494b2c6a58f4a8ad0bcb92d2fb97,
+  crosshairPrefab: {fileID: 1765775779877684, guid: 0ca92476f49334947a90c5e9185ab098,
     type: 2}
 --- !u!114 &114190309865936774
 MonoBehaviour:
