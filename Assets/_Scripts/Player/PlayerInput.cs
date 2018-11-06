@@ -42,9 +42,10 @@ public class PlayerInput : MonoBehaviour {
     private bool m_aiming;
 
     public Camera tpsCamera;
-
+    public Camera aimCamera;
     public GameObject crosshairPrefab;
     private Crosshair m_crosshair;
+
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
@@ -60,6 +61,8 @@ public class PlayerInput : MonoBehaviour {
         m_player = GetComponent<Player>();
 
         tpsCamera = Camera.main;
+        aimCamera = GameObject.FindGameObjectWithTag("AimCamera").GetComponent<Camera>();
+        
 
         if (crosshairPrefab != null) {
             crosshairPrefab = Instantiate(crosshairPrefab);
@@ -189,19 +192,30 @@ public class PlayerInput : MonoBehaviour {
 
     //Maker player look at a forward point from the camera
     private void PlayerLook() {
-        Transform mainCameraT = tpsCamera.transform;
-        Transform pivotT = mainCameraT.parent;
-        Vector3 pivotPos = pivotT.position;
-        Vector3 lookTarget = pivotPos + (pivotT.forward * otherSettings.lookDistance);
+        if (!m_aiming) {
+            Transform mainCameraT = tpsCamera.transform;
+            Transform pivotT = mainCameraT.parent;
+            Vector3 pivotPos = pivotT.position;
+            Vector3 lookTarget = pivotPos + (pivotT.forward * otherSettings.lookDistance);
 
-        Vector3 thisPos = transform.position;
-        Vector3 lookDir = lookTarget - thisPos;
-        Quaternion lookRot = Quaternion.LookRotation(lookDir);
-        lookRot.x = 0;
-        lookRot.z = 0;
+            Vector3 thisPos = transform.position;
+            Vector3 lookDir = lookTarget - thisPos;
+            Quaternion lookRot = Quaternion.LookRotation(lookDir);
+            lookRot.x = 0;
+            lookRot.z = 0;
 
-        Quaternion newRotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * otherSettings.lookSpeed);
-        transform.rotation = newRotation;
+            Quaternion newRotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * otherSettings.lookSpeed);
+            transform.rotation = newRotation;
+
+        } else {
+            float x = Screen.width / 2;
+            float y = Screen.height / 2;
+            Ray r = aimCamera.ScreenPointToRay(new Vector3(x, y, 0));
+            Debug.DrawLine(r.origin, r.GetPoint(200));
+
+            transform.LookAt(r.GetPoint(200));
+
+        }
     }
 
     private void PlayerLogic() {
@@ -235,10 +249,10 @@ public class PlayerInput : MonoBehaviour {
         }
     }
 
-    //private void OnDrawGizmosSelected() {
-    //    Gizmos.color = Color.red;
-    //    float x = Screen.width / 2;
-    //    float y = Screen.height / 2;
-    //    Gizmos.DrawRay(tpsCamera.ScreenPointToRay(new Vector3(x, y, 0)));
-    //}
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        float x = Screen.width / 2;
+        float y = Screen.height / 2;
+        Gizmos.DrawRay(tpsCamera.ScreenPointToRay(new Vector2(0.5f, 0.5f)));
+    }
 }
