@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 114429517195108118}
   - component: {fileID: 114853780227768616}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -788,7 +788,8 @@ MonoBehaviour:
   m_debugAim: 0
   m_spine: {fileID: 0}
   tpsCamera: {fileID: 0}
-  crosshairPrefab: {fileID: 1374720585793836, guid: 5356494b2c6a58f4a8ad0bcb92d2fb97,
+  aimCamera: {fileID: 0}
+  crosshairPrefab: {fileID: 1765775779877684, guid: 0ca92476f49334947a90c5e9185ab098,
     type: 2}
 --- !u!114 &114190309865936774
 MonoBehaviour:
@@ -968,6 +969,7 @@ MonoBehaviour:
   RespawnTime: 10
   Mesh: {fileID: 1122868640370228}
   playerAim: {fileID: 0}
+  ragdoll: {fileID: 0}
 --- !u!136 &136077847775714884
 CapsuleCollider:
   m_ObjectHideFlags: 1
