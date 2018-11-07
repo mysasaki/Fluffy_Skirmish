@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour {
     }
 
     private IEnumerator DestroyOnTime() {
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(8);
         Destroy(gameObject);
     }
 

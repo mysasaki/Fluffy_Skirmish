@@ -8,6 +8,8 @@ TagManager:
   - Weapon
   - DamangeDealer
   - Compass
+  - Crosshair
+  - AimCamera
   layers:
   - Default
   - TransparentFX

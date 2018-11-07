@@ -5,13 +5,13 @@ using UnityEngine;
 public class Crosshair : MonoBehaviour {
 
     
-    public void PositionCrosshair(Transform bulletSpawn, Quaternion rotation) {
+    //public void PositionCrosshair(Transform bulletSpawn, Quaternion rotation) {
 
-        transform.position = bulletSpawn.position + bulletSpawn.forward * 50;
-        transform.rotation = bulletSpawn.rotation;
+    //    transform.position = bulletSpawn.position + bulletSpawn.forward * 50;
+    //    transform.rotation = bulletSpawn.rotation;
 
-        transform.LookAt(Camera.main.transform);       
-    }
+    //    transform.LookAt(Camera.main.transform);       
+    //}
 
     public void ToggleCrosshair(bool enabled) {
         gameObject.SetActive(enabled);
