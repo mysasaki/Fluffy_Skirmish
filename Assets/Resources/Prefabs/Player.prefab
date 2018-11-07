@@ -1154,8 +1154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3185a5466ff814f479dc9666a0d8020f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 6
-  m_runSpeed: 7
+  m_moveSpeed: 8
+  m_runSpeed: 12
   m_sprint: 0
 --- !u!114 &114728228290506088
 MonoBehaviour:
@@ -1196,8 +1196,8 @@ MonoBehaviour:
   - {fileID: 114701857075122604}
   - {fileID: 114814498844648182}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114814498844648182
