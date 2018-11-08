@@ -208,12 +208,16 @@ public class PlayerInput : MonoBehaviour {
             transform.rotation = newRotation;
 
         } else {
+
             float x = Screen.width / 2;
             float y = Screen.height / 2;
+            
             Ray r = aimCamera.ScreenPointToRay(new Vector3(x, y, 0));
+            Vector3 point = r.GetPoint(80);
+            point.y = 0;
             Debug.DrawLine(r.origin, r.GetPoint(80));
 
-            transform.LookAt(r.GetPoint(80));
+            transform.LookAt(point);
 
         }
     }
