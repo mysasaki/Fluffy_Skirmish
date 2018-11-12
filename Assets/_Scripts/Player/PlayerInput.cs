@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour {
 
     public PlayerWeapon m_playerWeapon { get; protected set; }
     public PlayerMovement m_playerMovement { get; protected set; }
+    public PlayerAim m_playerAim;
     private PlayerTakeover m_playerTakeover;
     private PhotonView m_photonView;
     private Player m_player;
@@ -59,6 +60,7 @@ public class PlayerInput : MonoBehaviour {
         m_playerWeapon = GetComponent<PlayerWeapon>();
         m_playerTakeover = GetComponent<PlayerTakeover>();
         m_player = GetComponent<Player>();
+        m_playerAim = GetComponent<PlayerAim>();
 
         tpsCamera = Camera.main;
         aimCamera = GameObject.FindGameObjectWithTag("AimCamera").GetComponent<Camera>();

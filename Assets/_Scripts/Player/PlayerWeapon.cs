@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour {
     //TODO: Colocar animator aqui
+    private PlayerAnimation m_playerAnimation; //AQUI MYLLA
 	[System.Serializable]
     public class UserSettings {
         public Transform rightHand;
@@ -25,11 +26,14 @@ public class PlayerWeapon : MonoBehaviour {
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
         m_player = GetComponent<Player>();
+        m_playerAnimation = GetComponent<PlayerAnimation>();
     }
 
     private void Update() {
         if (!m_photonView.isMine)
             return;
+
+        m_playerAnimation.animationParameters.isAiming = m_aim; //AQUI MYLLA
 
         if(currentWeapon) {
             currentWeapon.SetEquipped(true);

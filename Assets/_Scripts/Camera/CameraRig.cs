@@ -207,6 +207,7 @@ public class CameraRig : MonoBehaviour {
                 cameraSettings.UICamera.fieldOfView = newFieldOfView;
             }
 
+
         } else {
             float originalFieldOfView = Mathf.Lerp(m_mainCamera.fieldOfView, cameraSettings.FieldOfView, Time.deltaTime * cameraSettings.ZoomSpeed);
             m_mainCamera.fieldOfView = originalFieldOfView;
