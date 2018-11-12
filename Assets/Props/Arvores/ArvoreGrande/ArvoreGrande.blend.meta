@@ -1,58 +1,15 @@
 fileFormatVersion: 2
-guid: 1baddf228abb5a142935ca7d6834854e
+guid: afcd7845e2a5d7646a7f0aca906e61ee
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Mesh1
-    100002: //RootNode
-    100004: Well_01 1
-    400000: Mesh1
-    400002: //RootNode
-    400004: Well_01 1
-    2300000: Mesh1
-    2300002: Well_01 1
-    3300000: Mesh1
-    3300002: Well_01 1
-    4300000: Mesh1
-    4300002: Well_01
-    6400000: Mesh1
-    6400002: Well_01 1
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Color_B25
-    second: {fileID: 2100000, guid: 4b0b5a1481bef4042bbe4f78da58fb99, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Color_C08
-    second: {fileID: 2100000, guid: f8c12d0edd18f064f96c3ec04a439fd1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Color_C12
-    second: {fileID: 2100000, guid: 4afaf61dba115ab40b91ed4b5a0a17c8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: _Color_003_2
-    second: {fileID: 2100000, guid: 4d13b299f1dd9b748a00ada97ee3e26d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: _Color_006_1
-    second: {fileID: 2100000, guid: ee297d6744dd993428d53d2bf64b8474, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: _Color_I03_2
-    second: {fileID: 2100000, guid: c5c75e3e4864903428589ef308dffdff, type: 2}
+    2186277476908879412: ImportLogs
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -80,11 +37,11 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
-    importVisibility: 0
+    addColliders: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -92,7 +49,7 @@ ModelImporter:
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    indexFormat: 1
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -104,7 +61,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 0
+    normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -122,9 +79,9 @@ ModelImporter:
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
-    skeletonHasParents: 0
+    skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
