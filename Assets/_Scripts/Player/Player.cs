@@ -19,11 +19,11 @@ public class Player : MonoBehaviour {
 
     public PlayerAim playerAim;
 
-    //public Ragdoll ragdoll;
+    public Ragdoll ragdoll;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
-        //ragdoll = GetComponentInChildren<Ragdoll>(); //ref do ragdoll
+        ragdoll = GetComponentInChildren<Ragdoll>(); //ref do ragdoll
     }
 
     private void Start() {
@@ -33,15 +33,18 @@ public class Player : MonoBehaviour {
     }
 
     public void Update() {
-        if (!m_photonView.isMine)
-            return;
+        /*if (!m_photonView.isMine)
+            return;*/
 
         if (IsDead) {
+            if (m_photonView.isMine) {
+                IsDead = false;
+                StartCoroutine(StartRespawnPlayer());
+                GameManager.Instance.StartRespawn();
+            }
             print("Player " + Name + " diededdened.");
-            //ragdoll.active = true; //ativa o ragdoll
-            IsDead = false;
-            StartCoroutine(StartRespawnPlayer());
-            GameManager.Instance.StartRespawn();
+            ragdoll.active = true; //ativa o ragdoll
+            
         }
     }
 
@@ -53,7 +56,7 @@ public class Player : MonoBehaviour {
     }
 
     private void RespawnPlayer() {
-        //ragdoll.active = false; //desativa o ragdoll
+        ragdoll.active = false; //desativa o ragdoll
         Respawning = true;
         PlayerManagement.Instance.RespawnPlayer(this.ID);
     }

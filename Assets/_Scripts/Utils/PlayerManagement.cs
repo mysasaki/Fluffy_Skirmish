@@ -8,6 +8,7 @@ public class PlayerManagement : MonoBehaviour {
     private PhotonView m_photonView;
     private KillFeed m_killFeed;
     private ScoreLayoutGroup m_scoreLayoutGroup;
+    public Ragdoll ragdoll;
 
     public List<PlayerStats> m_playerStatsList = new List<PlayerStats>();
 
@@ -291,6 +292,7 @@ public class PlayerManagement : MonoBehaviour {
             if (player.ID == id_player) {
                 player.UpdateDeath(m_playerStatsList[index_player].Death);
                 player.IsDead = true;
+                
             }
 
         }
