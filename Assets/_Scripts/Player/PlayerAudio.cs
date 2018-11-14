@@ -56,14 +56,12 @@ public class PlayerAudio : MonoBehaviour {
 
     [PunRPC]
     private void PlayMove(int id) {
-        print("Play move");
         if (id != m_player.ID)
             return;
 
         if (!m_audioSource)
             m_audioSource = GetComponent<AudioSource>();
 
-        print("playing");
         m_audioSource.clip = moveAudio;
         m_audioSource.loop = true;
         m_audioSource.volume = 0.05f;
@@ -72,7 +70,6 @@ public class PlayerAudio : MonoBehaviour {
 
     [PunRPC]
     private void StopMove(int id) {
-        print("stop move");
         if (id != m_player.ID)
             return;
 

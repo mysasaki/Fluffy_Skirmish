@@ -47,9 +47,9 @@ public class Player : MonoBehaviour {
                 StartCoroutine(StartRespawnPlayer());
                 GameManager.Instance.StartRespawn();
             }
+
             print("Player " + Name + " diededdened.");
-            ragdoll.active = true; //ativa o ragdoll
-            
+            ragdoll.active = true; //ativa o ragdoll           
         }
     }
 
@@ -90,6 +90,7 @@ public class Player : MonoBehaviour {
     }
 
     public void ToggleMesh(bool activate) {
+        print("Toggle mesh " + activate);
         Mesh.SetActive(activate);
     }
 

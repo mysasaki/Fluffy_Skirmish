@@ -79,14 +79,12 @@ public class PlayerMovement : Photon.MonoBehaviour {
 
         if (horizontal == 0 && vertical == 0) {
             if (m_playerAudio.moveAudioActive) {
-                print("stahp movingggg");
                 m_playerAudio.StopMoveAudio();
             }
 
         } else {
             if (!m_playerAudio.moveAudioActive) {
                 m_playerAudio.moveAudioActive = true;
-                print("movinggggg");
                 m_playerAudio.StartMoveAudio();
             }
         }
