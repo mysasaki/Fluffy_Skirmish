@@ -15,15 +15,19 @@ public class Player : MonoBehaviour {
     public float RespawnTime = 10;
     public GameObject Mesh;
 
-    private PhotonView m_photonView;
-
     public PlayerAim playerAim;
-
     public Ragdoll ragdoll;
+
+    private PhotonView m_photonView;
+    private PlayerAudio m_playerAudio;
+    private GameObject canvas;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
         ragdoll = GetComponentInChildren<Ragdoll>(); //ref do ragdoll
+        m_playerAudio = GetComponent<PlayerAudio>();
+        canvas = GameObject.Find("Canvas");
+
     }
 
     private void Start() {
@@ -38,6 +42,7 @@ public class Player : MonoBehaviour {
 
         if (IsDead) {
             if (m_photonView.isMine) {
+                m_playerAudio.DeathAudio();
                 IsDead = false;
                 StartCoroutine(StartRespawnPlayer());
                 GameManager.Instance.StartRespawn();
@@ -62,6 +67,13 @@ public class Player : MonoBehaviour {
     }
 
     public void UpdateHealth(int health) {
+        if (this.Health > health) { //recebeu dano
+            if (m_photonView.isMine) {
+                DeathScreen ds = canvas.GetComponent<DeathScreen>();
+                ds.ActivateDeathScreen();
+            }
+        }
+
         this.Health = health;
     }
 

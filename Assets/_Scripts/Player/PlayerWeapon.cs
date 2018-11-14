@@ -68,6 +68,7 @@ public class PlayerWeapon : MonoBehaviour {
             return;
 
         m_reload = true;
+        currentWeapon.Reload();
         StartCoroutine(StartReload());
     }
 

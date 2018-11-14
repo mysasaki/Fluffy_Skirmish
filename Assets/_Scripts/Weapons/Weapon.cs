@@ -65,10 +65,12 @@ public class Weapon : MonoBehaviour {
     private PlayerShoot m_playerShoot;
     public Player m_player;
 
+    private WeaponAudio m_weaponAudio;
 
     private void Start() {
         collider = GetComponent<Collider>();
         rigidBody = GetComponent<Rigidbody>();
+        m_weaponAudio = GetComponent<WeaponAudio>();
     }  
 
     private void Update() {
@@ -105,6 +107,7 @@ public class Weapon : MonoBehaviour {
 
         Transform bulletSpawn = weaponSettings.bulletSpawn;
         m_playerShoot.InstantiateBullet(bulletSpawn.position);
+        m_weaponAudio.FireAudio();
 
         ammo.clipAmmo--;
         m_resettingCartridge = true;
@@ -142,6 +145,10 @@ public class Weapon : MonoBehaviour {
             collider.enabled = true;
 
         }
+    }
+
+    public void Reload() {
+        m_weaponAudio.ReloadAudio();
     }
 
     //Equip this weapon to the hand

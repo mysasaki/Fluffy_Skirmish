@@ -9,6 +9,7 @@ public class PlayerMovement : Photon.MonoBehaviour {
     private Quaternion m_targetRotation;
     private PlayerAnimation m_playerAnimation;
     private Player m_player;
+    private PlayerAudio m_playerAudio;
 
     public float m_moveSpeed = 10;
     public float m_runSpeed = 15;
@@ -18,6 +19,7 @@ public class PlayerMovement : Photon.MonoBehaviour {
         m_photonView = GetComponent<PhotonView>();
         m_playerAnimation = GetComponent<PlayerAnimation>();
         m_player = GetComponent<Player>();
+        m_playerAudio = GetComponent<PlayerAudio>();
     }
 
     private void FixedUpdate() {
@@ -75,12 +77,27 @@ public class PlayerMovement : Photon.MonoBehaviour {
         Vector3 moveVertical = transform.forward * vertical;
         Vector3 moveHorizontal = transform.right * horizontal;
 
-        if(!m_sprint)
-            transform.position += (moveHorizontal + moveVertical) * (m_moveSpeed * Time.deltaTime);           
+        if (horizontal == 0 && vertical == 0) {
+            if (m_playerAudio.moveAudioActive) {
+                print("stahp movingggg");
+                m_playerAudio.StopMoveAudio();
+            }
+
+        } else {
+            if (!m_playerAudio.moveAudioActive) {
+                m_playerAudio.moveAudioActive = true;
+                print("movinggggg");
+                m_playerAudio.StartMoveAudio();
+            }
+        }
+
+        if (!m_sprint)
+            transform.position += (moveHorizontal + moveVertical) * (m_moveSpeed * Time.deltaTime);
         else
             transform.position += (moveHorizontal + moveVertical) * (m_runSpeed * Time.deltaTime);
 
         m_playerAnimation.AnimateMovement(horizontal, vertical, m_sprint);
+
     }
 
 }

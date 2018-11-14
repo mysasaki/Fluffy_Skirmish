@@ -22,6 +22,8 @@ public class PlayerManagement : MonoBehaviour {
     private void Start() {
         m_killFeed = FindObjectOfType<KillFeed>();
         m_scoreLayoutGroup = FindObjectOfType<ScoreLayoutGroup>();
+
+        DamageTextController.Initialize();
     }
 
     public void AddPlayer(int id, string name, int health, int ammo) {
@@ -41,8 +43,9 @@ public class PlayerManagement : MonoBehaviour {
 
     }
 
-    public void DealDamage(int id_owner, int id_other, int value) {
+    public void DealDamage(int id_owner, int id_other, int value, Transform otherTransform) {
         print("Deal damage called");
+        DamageTextController.CreateDamageText(value.ToString(), otherTransform); //popup de texto
         m_photonView.RPC("RPC_DealDamage", PhotonTargets.All, id_owner, id_other, value);
 
         /*if (CheckDeath(id_other)) {

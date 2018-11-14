@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour {
             Destroy(gameObject);
             Player player = other.GetComponent<Player>();
             if(!player.IsDead && !player.Respawning)
-                PlayerManagement.Instance.DealDamage(m_owner.ID, player.ID, 20);
+                PlayerManagement.Instance.DealDamage(m_owner.ID, player.ID, 20, other.transform);
         }
     }
 }

@@ -56,4 +56,9 @@ MonoBehaviour:
   - RPC_ChoseSectorsToClose
   - RPC_InstantDeath
   - RPC_StartCountdown
+  - PlayDeath
+  - PlayMove
+  - StopMove
+  - PlayFire
+  - PlayReload
   DisableAutoOpenWizard: 1
