@@ -255,10 +255,10 @@ public class PlayerInput : MonoBehaviour {
         }
     }
 
-    private void OnDrawGizmosSelected() {
-        Gizmos.color = Color.red;
-        float x = Screen.width / 2;
-        float y = Screen.height / 2;
-        Gizmos.DrawRay(tpsCamera.ScreenPointToRay(new Vector2(0.5f, 0.5f)));
-    }
+    //private void OnDrawGizmosSelected() {
+    //    Gizmos.color = Color.red;
+    //    float x = Screen.width / 2;
+    //    float y = Screen.height / 2;
+    //    Gizmos.DrawRay(tpsCamera.ScreenPointToRay(new Vector2(0.5f, 0.5f)));
+    //}
 }

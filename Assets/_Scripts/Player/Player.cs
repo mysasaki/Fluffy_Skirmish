@@ -61,7 +61,7 @@ public class Player : MonoBehaviour {
     }
 
     private void RespawnPlayer() {
-        ragdoll.active = false; //desativa o ragdoll
+        //ragdoll.active = false; //desativa o ragdoll
         Respawning = true;
         PlayerManagement.Instance.RespawnPlayer(this.ID);
     }
@@ -97,6 +97,7 @@ public class Player : MonoBehaviour {
     public void FinishRespawn() {
         this.IsDead = false;
         this.Respawning = false;
+        this.ragdoll.active = false;
     }
 
     [PunRPC]
