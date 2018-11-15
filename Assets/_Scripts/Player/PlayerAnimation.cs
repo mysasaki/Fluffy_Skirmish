@@ -40,17 +40,18 @@ public class PlayerAnimation : Photon.MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (!m_photonView || !animator)
+        if (!m_photonView || !animator )
             return;
 
-        animationParameters.aimAngle = camRig.GetAngle();
+        if(m_photonView.isMine)
+            animationParameters.aimAngle = camRig.GetAngle();
+
         animator.SetFloat(animationSettings.verticalParamater, animationParameters.verticalMovement);
         animator.SetFloat(animationSettings.horizontalParamater, animationParameters.horizontalMovement);
         animator.SetFloat(animationSettings.aimAngleParamater, animationParameters.aimAngle);
         animator.SetBool(animationSettings.walkingParamater, animationParameters.isWalking);
         animator.SetBool(animationSettings.sprintingParamater, animationParameters.isSprinting);
         animator.SetBool(animationSettings.aimingParamater, animationParameters.isAiming);
-
     }
 
     public void AnimateMovement(float horizontal, float vertical, bool isSprinting) {

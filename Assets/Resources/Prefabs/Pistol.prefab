@@ -301,7 +301,7 @@ MonoBehaviour:
     unequipPosition: {x: 0, y: 0, z: 0}
     unequipRotation: {x: 0, y: 0, z: 0}
   ammo:
-    clipAmmo: 1
+    clipAmmo: 6
     maxClipAmmo: 6
   owner: {fileID: 0}
   m_player: {fileID: 0}
