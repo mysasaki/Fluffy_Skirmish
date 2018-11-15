@@ -15,6 +15,9 @@ public class PlayerMovement : Photon.MonoBehaviour {
     public float m_runSpeed = 15;
     public bool m_sprint;
 
+    public float runDelay;
+    public float sprintDelay;
+
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
         m_playerAnimation = GetComponent<PlayerAnimation>();
@@ -89,10 +92,13 @@ public class PlayerMovement : Photon.MonoBehaviour {
             }
         }
 
-        if (!m_sprint)
+        if (!m_sprint) {
             transform.position += (moveHorizontal + moveVertical) * (m_moveSpeed * Time.deltaTime);
-        else
+            m_playerAudio.delayBetweenSteps = runDelay;
+        } else {
             transform.position += (moveHorizontal + moveVertical) * (m_runSpeed * Time.deltaTime);
+            m_playerAudio.delayBetweenSteps = sprintDelay;
+        }
 
         m_playerAnimation.AnimateMovement(horizontal, vertical, m_sprint);
 

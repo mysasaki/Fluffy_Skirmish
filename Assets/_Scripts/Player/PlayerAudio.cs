@@ -14,6 +14,13 @@ public class PlayerAudio : MonoBehaviour {
 
     public bool moveAudioActive;
 
+    public float delayRun;
+    public float delaySprint;
+
+    public float delayBetweenSteps;
+
+    public bool canPlay;
+
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
         m_player = GetComponent<Player>();
@@ -44,7 +51,7 @@ public class PlayerAudio : MonoBehaviour {
         if (id != m_player.ID)
             return;
 
-        if(!m_audioSource) 
+        if (!m_audioSource)
             m_audioSource = GetComponent<AudioSource>();
 
         m_audioSource.clip = deathAudio;
@@ -58,21 +65,36 @@ public class PlayerAudio : MonoBehaviour {
     private void PlayMove(int id) {
         if (id != m_player.ID)
             return;
-
-        if (!m_audioSource)
+        canPlay = true;
+        /*if (!m_audioSource)
             m_audioSource = GetComponent<AudioSource>();
 
         m_audioSource.clip = moveAudio;
         m_audioSource.loop = true;
         m_audioSource.volume = 0.05f;
-        m_audioSource.Play();
+        m_audioSource.Play();*/
+        StartCoroutine("PlayAudio");
+    }
+
+    IEnumerator PlayAudio() {
+        while (canPlay) {
+            yield return new WaitForSeconds(delayBetweenSteps);
+            if (!m_audioSource)
+                m_audioSource = GetComponent<AudioSource>();
+
+            m_audioSource.clip = moveAudio;
+            m_audioSource.loop = false;
+            m_audioSource.volume = 0.05f;
+            m_audioSource.Play();
+        }
+        m_audioSource.Stop();
     }
 
     [PunRPC]
     private void StopMove(int id) {
         if (id != m_player.ID)
             return;
-
+        canPlay = false;
         if (!m_audioSource)
             m_audioSource = GetComponent<AudioSource>();
 

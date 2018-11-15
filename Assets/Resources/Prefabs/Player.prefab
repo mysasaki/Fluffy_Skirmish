@@ -1240,6 +1240,8 @@ MonoBehaviour:
   m_moveSpeed: 8
   m_runSpeed: 12
   m_sprint: 0
+  runDelay: 0.45
+  sprintDelay: 0.39
 --- !u!114 &114728228290506088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1356,6 +1358,10 @@ MonoBehaviour:
   deathAudio: {fileID: 8300000, guid: da1537d7039a56842ae1d00c0e525822, type: 3}
   moveAudio: {fileID: 8300000, guid: a5e9e940660f0f24599714daa25a9a07, type: 3}
   moveAudioActive: 0
+  delayRun: 0
+  delaySprint: 0
+  delayBetweenSteps: 0
+  canPlay: 0
 --- !u!135 &135716090908484952
 SphereCollider:
   m_ObjectHideFlags: 1
