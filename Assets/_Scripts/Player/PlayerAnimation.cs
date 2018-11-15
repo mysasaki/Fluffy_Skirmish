@@ -44,7 +44,6 @@ public class PlayerAnimation : Photon.MonoBehaviour {
             return;
 
         animationParameters.aimAngle = camRig.GetAngle();
-
         animator.SetFloat(animationSettings.verticalParamater, animationParameters.verticalMovement);
         animator.SetFloat(animationSettings.horizontalParamater, animationParameters.horizontalMovement);
         animator.SetFloat(animationSettings.aimAngleParamater, animationParameters.aimAngle);
@@ -88,7 +87,6 @@ public class PlayerAnimation : Photon.MonoBehaviour {
             animationParameters.isWalking = (bool)stream.ReceiveNext(); 
             animationParameters.isSprinting = (bool)stream.ReceiveNext(); 
             animationParameters.isAiming = (bool)stream.ReceiveNext(); 
-            
         }
     }
 }

@@ -216,8 +216,7 @@ public class PlayerInput : MonoBehaviour {
             
             Ray r = aimCamera.ScreenPointToRay(new Vector3(x, y, 0));
             Vector3 point = r.GetPoint(80);
-            point.y = 0;
-            Debug.DrawLine(r.origin, r.GetPoint(80));
+            point.y = 0;           
 
             transform.LookAt(point);
 

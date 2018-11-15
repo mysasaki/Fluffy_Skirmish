@@ -18,17 +18,23 @@ public class PlayerShoot : MonoBehaviour {
             return;
 
         Camera camera = Camera.main;
-        Quaternion rotation = Quaternion.LookRotation(gameObject.transform.forward);
-        m_photonView.RPC("RPC_InstantiateBullet", PhotonTargets.All, position, rotation);
+        Ray r = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
+        Vector3 point = r.GetPoint(100);
+        Debug.DrawLine(transform.position, point);
+
+        m_photonView.RPC("RPC_InstantiateBullet", PhotonTargets.All, position, point);
     }
 
     [PunRPC]
-    private void RPC_InstantiateBullet(Vector3 position, Quaternion rotation) {
+    private void RPC_InstantiateBullet(Vector3 position, Vector3 target) {
        
-        GameObject bulletGameObject = Instantiate(bulletPrefab, position, rotation);
+        GameObject bulletGameObject = Instantiate(bulletPrefab);
+        bulletGameObject.transform.position = position;
+        bulletGameObject.transform.LookAt(target);
         Bullet bullet = bulletGameObject.GetComponent<Bullet>();
         bullet.m_owner = GetComponent<Player>();
         Rigidbody bulleRb = bulletGameObject.GetComponent<Rigidbody>();
-        bulleRb.AddForce(bulletGameObject.transform.forward * 100, ForceMode.Impulse);
+        bulleRb.AddForce(bulletGameObject.transform.forward * 120, ForceMode.Impulse);
     }
 }
