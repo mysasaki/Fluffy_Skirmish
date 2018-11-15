@@ -79,6 +79,7 @@ public class PlayerManagement : MonoBehaviour {
     }
 
     public void RespawnPlayer(int id_player) {
+        print("5 - respawnplayer playermanager");
         if (PhotonNetwork.player.ID != id_player)
             return;
 
@@ -147,6 +148,7 @@ public class PlayerManagement : MonoBehaviour {
 
     [PunRPC]
     private void RPC_PlayerDie(int id_owner, int id_other) {
+        print("1 - rpc player die");
 
         print("RPC PLAUER DIE. MY ID: " + PhotonNetwork.player.ID);
         if (!m_killFeed)
@@ -209,6 +211,7 @@ public class PlayerManagement : MonoBehaviour {
 
     [PunRPC]
     private void RPC_RespawnPlayer(int id, float newX, float newZ) {
+        print("6 - rpc respawn");
         int index = m_playerStatsList.FindIndex(x => x.ID == id);
         if (index != -1) {
             PlayerStats playerStats = m_playerStatsList[index];

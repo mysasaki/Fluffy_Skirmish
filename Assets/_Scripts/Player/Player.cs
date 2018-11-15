@@ -41,29 +41,42 @@ public class Player : MonoBehaviour {
             return;*/
 
         if (IsDead) {
+            print("2- player update");
+            IsDead = false;
+            ragdoll.active = true; //ativa o ragdoll             
+            //ToggleMesh(false);
+            StartCoroutine(StartRespawnPlayer());
+
             if (m_photonView.isMine) {
                 m_playerAudio.DeathAudio();
-                IsDead = false;
-                StartCoroutine(StartRespawnPlayer());
+                
                 GameManager.Instance.StartRespawn();
             }
-
             print("Player " + Name + " diededdened.");
-            ragdoll.active = true; //ativa o ragdoll           
+                     
         }
     }
 
-    private IEnumerator StartRespawnPlayer() {
-        print("startRespawnPlayer called");
-        yield return new WaitForSeconds(RespawnTime);
+    private void ToggleFalse() {
         ToggleMesh(false);
-        RespawnPlayer();
+    }
+
+    private IEnumerator StartRespawnPlayer() {
+        print("3 - startRespawnPlayer");
+        Invoke("ToggleFalse", 5);
+        yield return new WaitForSeconds(RespawnTime);
+        ToggleMesh(true);
+
+        if (m_photonView.isMine)
+            RespawnPlayer();
     }
 
     private void RespawnPlayer() {
+        print("4 - respawnplayer");
         //ragdoll.active = false; //desativa o ragdoll
         Respawning = true;
         PlayerManagement.Instance.RespawnPlayer(this.ID);
+        
     }
 
     public void UpdateHealth(int health) {
@@ -90,14 +103,17 @@ public class Player : MonoBehaviour {
     }
 
     public void ToggleMesh(bool activate) {
-        print("Toggle mesh " + activate);
+        print("==-=-=-=-=-=- Toggle mesh " + activate);
         Mesh.SetActive(activate);
     }
 
     public void FinishRespawn() {
+        print("7 - finish respawn");
+        ToggleMesh(true);
         this.IsDead = false;
         this.Respawning = false;
         this.ragdoll.active = false;
+       
     }
 
     [PunRPC]
