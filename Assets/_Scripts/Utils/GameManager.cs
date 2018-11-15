@@ -58,8 +58,6 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         GetPlayerComponents();
-
-        HideHelper();
     }
 
     private void Update() {
@@ -157,6 +155,10 @@ public class GameManager : MonoBehaviour {
 
     public void HideHelper() {
         m_helperUI.HideHelper();
+    }
+
+    public bool IsHelperActive() {
+        return (m_helperUI.isActiveAndEnabled);
     }
 
     #endregion

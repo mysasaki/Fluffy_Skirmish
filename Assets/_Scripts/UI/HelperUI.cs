@@ -8,6 +8,10 @@ public class HelperUI : MonoBehaviour {
     public GameObject container;
     public Text helperText;
 
+    private void Start() {
+        HideHelper();
+    }
+
     private void SetText(string txt) {
         helperText.text = txt;
     }
