@@ -20,7 +20,7 @@ public class PlayerShoot : MonoBehaviour {
         Camera camera = Camera.main;
         Ray r = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
-        Vector3 point = r.GetPoint(100);
+        Vector3 point = r.GetPoint(50);
         Debug.DrawLine(transform.position, point);
 
         m_photonView.RPC("RPC_InstantiateBullet", PhotonTargets.All, position, point);
@@ -35,6 +35,6 @@ public class PlayerShoot : MonoBehaviour {
         Bullet bullet = bulletGameObject.GetComponent<Bullet>();
         bullet.m_owner = GetComponent<Player>();
         Rigidbody bulleRb = bulletGameObject.GetComponent<Rigidbody>();
-        bulleRb.AddForce(bulletGameObject.transform.forward * 120, ForceMode.Impulse);
+        bulleRb.AddForce(bulletGameObject.transform.forward * 150, ForceMode.Impulse);
     }
 }

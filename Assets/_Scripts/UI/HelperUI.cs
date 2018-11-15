@@ -12,33 +12,17 @@ public class HelperUI : MonoBehaviour {
         helperText.text = txt;
     }
 
-    public void DisableHelper() {
+    public void HideHelper() {
         container.SetActive(false);
     }
 
-    public void EnableHelper(HelperType type) {
-        string txt = "";
-
-        switch (type) {
-            case HelperType.PickWeapon:
-                break;
-
-            case HelperType.DropWeapon:
-                break;
-
-            case HelperType.PickAmmo:
-                break;
-
-            default:
-                Debug.Log("Error happened in EnableHelper");
-                break;
-        }
-
+    public void ShowHelper() {
         container.SetActive(true);
-        SetText(txt);
+        SetText("Press 'E' to equip weapon");
     }
 }
 
-public enum HelperType {
-    PickWeapon, DropWeapon, PickAmmo
-}
+// Nao vai precisar mas vai que
+/*public enum HelperType {
+    PickWeapon, PickAmmo
+}*/

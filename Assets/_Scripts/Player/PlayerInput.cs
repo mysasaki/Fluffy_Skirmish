@@ -129,8 +129,15 @@ public class PlayerInput : MonoBehaviour {
             m_playerMovement.m_sprint = false;
 
 
-        if (Input.GetButtonDown(input.pickupWeapon)) 
+        if (Input.GetButtonDown(input.pickupWeapon)) {
+            PlayerTrigger pt = GetComponentInChildren<PlayerTrigger>();
+            if(pt.m_isHelperActive) {
+                pt.m_isHelperActive = false;
+                GameManager.Instance.HideHelper();
+            }
+                
             m_playerTakeover.PickupWeapon();
+        }
 
         #region DropWeapon
         if (Input.GetButtonDown(input.dropWeaponButton)) 

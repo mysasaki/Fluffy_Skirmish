@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour {
         set { m_mapmenu = value; }
     }
 
+    private HelperUI m_helperUI {
+        get { return FindObjectOfType<HelperUI>(); }
+        set { m_helperUI = value; }
+    }
+
     private PlayerWeapon m_playerWeapon;
     private PlayerInput m_playerInput;
     private Player m_player;
@@ -53,7 +58,8 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         GetPlayerComponents();
-        
+
+        HideHelper();
     }
 
     private void Update() {
@@ -64,6 +70,7 @@ public class GameManager : MonoBehaviour {
             if(m_playerUI)
                 if(m_playerWeapon)
                     m_playerUI.UpdateUI(m_playerWeapon, m_player);
+ 
     }
 
     private void GetPlayerComponents() {
@@ -141,6 +148,17 @@ public class GameManager : MonoBehaviour {
     public bool IsMapActive() {
         return m_mapmenu.m_isActive;
     }
+    #endregion
+
+    #region HelperUI
+    public void ShowHelper() {
+        m_helperUI.ShowHelper();
+    }
+
+    public void HideHelper() {
+        m_helperUI.HideHelper();
+    }
+
     #endregion
 }
 
