@@ -41,6 +41,7 @@ public class Player : MonoBehaviour {
 
         if (IsDead) {
             IsDead = false;
+            Respawning = true;
             ragdoll.active = true; //ativa o ragdoll             
             //ToggleMesh(false);
             StartCoroutine(StartRespawnPlayer());
@@ -70,7 +71,7 @@ public class Player : MonoBehaviour {
 
     private void RespawnPlayer() {
         //ragdoll.active = false; //desativa o ragdoll
-        Respawning = true;
+        
         PlayerManagement.Instance.RespawnPlayer(this.ID);
         
     }

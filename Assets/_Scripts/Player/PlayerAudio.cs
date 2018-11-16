@@ -49,7 +49,7 @@ public class PlayerAudio : MonoBehaviour {
 
         m_audioSource.clip = deathAudio;
         m_audioSource.loop = false;
-        m_audioSource.volume = 0.3f;
+        m_audioSource.volume = 0.2f;
         m_audioSource.Play();
 
     }

@@ -24,8 +24,9 @@ public class Bullet : MonoBehaviour {
         if (other.CompareTag("Player")) {
             Destroy(gameObject);
             Player player = other.GetComponent<Player>();
-            if (!player.IsDead || !player.Respawning) {
-                print("ouchie");
+            if (!player.IsDead && !player.Respawning) {
+                print("ISDEAD " + player.IsDead);
+                print("RESPAWNING " + player.Respawning);
                 PlayerManagement.Instance.DealDamage(m_owner.ID, player.ID, 20, other.transform);
             }
         }

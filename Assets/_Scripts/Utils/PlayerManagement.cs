@@ -151,7 +151,7 @@ public class PlayerManagement : MonoBehaviour {
         if (!m_scoreLayoutGroup)
             m_scoreLayoutGroup = FindObjectOfType<ScoreLayoutGroup>();
 
-        int index_other = m_playerStatsList.FindIndex(x => x.ID == id_other);
+        int index_other = m_playerStatsList.FindIndex(x => x.ID == id_other); //atualiza o placar
         Kill kill = new Kill();
         if (index_other != -1) {
             PlayerStats other = m_playerStatsList[index_other];
