@@ -52,6 +52,11 @@ public class PlayerManagement : MonoBehaviour {
         }*/
     }
 
+    public void RestoreHealth(int id_player, int value) {
+        print("restore health");
+        m_photonView.RPC("RPC_RestoreHealth", PhotonTargets.All, id_player, value);
+    }
+
     public void InstantDeath(int id_player) {
         print("Instant death");
         m_photonView.RPC("RPC_InstantDeath", PhotonTargets.All, id_player);
@@ -138,6 +143,29 @@ public class PlayerManagement : MonoBehaviour {
 
                 if (CheckDeath(id_other))
                     m_photonView.RPC("RPC_PlayerDie", PhotonTargets.Others, id_owner, id_other);
+            }
+        }
+    }
+
+    [PunRPC]
+    private void RPC_RestoreHealth(int id_player, int value) {
+        print("RPC Restore health " + value);
+        int index = m_playerStatsList.FindIndex(x => x.ID == id_player);
+
+        if(index != -1) {
+            PlayerStats playerStats = m_playerStatsList[index];
+
+            if (playerStats.Health + value > 100)
+                playerStats.Health = 100;
+            else
+                playerStats.Health += value;
+        }
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players) {
+            Player player = p.GetComponent<Player>();
+            if(player.ID == id_player) {
+                player.UpdateHealth(m_playerStatsList[index].Health);
             }
         }
     }

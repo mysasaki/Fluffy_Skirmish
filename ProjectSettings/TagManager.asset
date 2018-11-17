@@ -10,6 +10,8 @@ TagManager:
   - Compass
   - Crosshair
   - AimCamera
+  - PickupHealth
+  - PickupDamage
   layers:
   - Default
   - TransparentFX

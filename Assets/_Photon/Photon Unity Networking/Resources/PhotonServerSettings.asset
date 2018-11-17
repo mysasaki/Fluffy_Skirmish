@@ -61,4 +61,6 @@ MonoBehaviour:
   - StopMove
   - PlayFire
   - PlayReload
+  - RPC_RestoreHealth
+  - RPC_RespawnPickupHealth
   DisableAutoOpenWizard: 1

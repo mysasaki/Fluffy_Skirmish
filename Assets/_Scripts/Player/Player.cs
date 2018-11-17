@@ -82,7 +82,7 @@ public class Player : MonoBehaviour {
                 DeathScreen ds = canvas.GetComponent<DeathScreen>();
                 ds.ActivateDeathScreen();
             }
-        }
+        } 
 
         this.Health = health;
     }
