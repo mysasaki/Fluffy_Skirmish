@@ -13,6 +13,30 @@ public class PickupManager : MonoBehaviour {
         m_photonView = GetComponent<PhotonView>();
     }
 
+    private void Start() {
+        InitializeAllPickups();
+    }
+
+    private void InitializeAllPickups() {
+        GameObject[] healthList = GameObject.FindGameObjectsWithTag("PickupHealth");
+        foreach (GameObject g in healthList) {
+            PickupHealth puh = g.GetComponentInChildren<PickupHealth>();
+            RespawnPickupHealth(puh.ID);
+        }
+
+        GameObject[] ammoList = GameObject.FindGameObjectsWithTag("PickupAmmo");
+        foreach (GameObject g in ammoList) {
+            PickupAmmo pua = g.GetComponentInChildren<PickupAmmo>();
+            RespawnPickupAmmo(pua.ID);
+        }
+
+        GameObject[] pistolList = GameObject.FindGameObjectsWithTag("Weapon");
+        foreach (GameObject g in pistolList) {
+            PistolTrigger p = g.GetComponentInChildren<PistolTrigger>();
+            RespawnPistol(p.ID);
+        }
+    }
+
     public void RespawnPickupHealth(int id) {
         float randomZ = Random.Range(0f, 150f); //TODO: arrumar o range depois
         float randomX = Random.Range(0f, 150f);
