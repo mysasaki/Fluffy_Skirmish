@@ -38,7 +38,7 @@ public class PlayerAudio : MonoBehaviour {
     }
 
     public void StartMoveAudio() {
-        m_photonView.RPC("PlayMove", PhotonTargets.All, m_player.ID);
+        m_photonView.RPC("PlayMove", PhotonTargets.Others, m_player.ID);
     }
 
     public void StopMoveAudio() {
@@ -65,26 +65,30 @@ public class PlayerAudio : MonoBehaviour {
     private void PlayMove(int id) {
         if (id != m_player.ID)
             return;
-        canPlay = true;
-        /*if (!m_audioSource)
+        if (!m_audioSource)
             m_audioSource = GetComponent<AudioSource>();
 
-        m_audioSource.clip = moveAudio;
-        m_audioSource.loop = true;
-        m_audioSource.volume = 0.05f;
-        m_audioSource.Play();*/
-        StartCoroutine("PlayAudio");
+        if (!m_photonView.isMine) {
+            m_audioSource.clip = moveAudio;
+            m_audioSource.loop = true;
+            m_audioSource.volume = 0.05f;
+            m_audioSource.Play();
+        } else {
+            canPlay = true;
+            StartCoroutine("PlayAudio");
+        }
     }
 
     IEnumerator PlayAudio() {
-        while (canPlay) {
-            yield return new WaitForSeconds(delayBetweenSteps);
-            if (!m_audioSource)
-                m_audioSource = GetComponent<AudioSource>();
+        if (!m_audioSource)
+            m_audioSource = GetComponent<AudioSource>();
 
-            m_audioSource.clip = moveAudio;
-            m_audioSource.loop = false;
-            m_audioSource.volume = 0.05f;
+        m_audioSource.clip = moveAudio;
+        m_audioSource.loop = false;
+        m_audioSource.volume = 0.05f;
+
+        while (canPlay) {
+            yield return new WaitForSeconds(delayBetweenSteps);            
             m_audioSource.Play();
         }
         m_audioSource.Stop();
@@ -97,7 +101,7 @@ public class PlayerAudio : MonoBehaviour {
         canPlay = false;
         if (!m_audioSource)
             m_audioSource = GetComponent<AudioSource>();
-
+        StopCoroutine("PlayAudio");
         moveAudioActive = false;
         m_audioSource.Stop();
     }

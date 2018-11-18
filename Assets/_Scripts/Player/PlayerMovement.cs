@@ -76,7 +76,6 @@ public class PlayerMovement : Photon.MonoBehaviour {
     }
 
     public void Move(float vertical, float horizontal) { //Handle player movement
-
         Vector3 moveVertical = transform.forward * vertical;
         Vector3 moveHorizontal = transform.right * horizontal;
 
@@ -85,11 +84,11 @@ public class PlayerMovement : Photon.MonoBehaviour {
                 m_playerAudio.StopMoveAudio();
             }
 
-        } else {
+        } else {            
             if (!m_playerAudio.moveAudioActive) {
                 m_playerAudio.moveAudioActive = true;
                 m_playerAudio.StartMoveAudio();
-            }
+            }           
         }
 
         if (!m_sprint) {

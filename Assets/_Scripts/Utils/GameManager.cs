@@ -38,11 +38,21 @@ public class GameManager : MonoBehaviour {
         set { m_mapmenu = value; }
     }
 
+    private Timer m_timer;
+    public Timer Timer {
+        get {
+            if (!m_timer)
+                m_timer = GetComponent<Timer>();
+            return m_timer;
+        }
+    }
+
     private PlayerWeapon m_playerWeapon;
     private PlayerInput m_playerInput;
     private Player m_player;
 
     private void Awake() {
+        this.gameObject.AddComponent<Timer>();
         if (Instance == null)
             Instance = this;
         else if (Instance != this)
