@@ -19,8 +19,8 @@ public class PickupHealth : MonoBehaviour {
             return;
 
         Player player = other.GetComponent<Player>();
-        print("EITCH PLAYER " + player.ID);
         PlayerManagement.Instance.RestoreHealth(player.ID, 10);
+        PickupManager.Instance.GetPickupHealth(this.ID);
     }
 
     public void ToggleMesh(bool active) {
