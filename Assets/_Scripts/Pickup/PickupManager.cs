@@ -64,7 +64,7 @@ public class PickupManager : MonoBehaviour {
     private void RPC_RespawnPistol(int id, float posX, float posZ) {
         GameObject[] pistols = GameObject.FindGameObjectsWithTag("Weapon");
         foreach (GameObject g in pistols) {
-            PistolTrigger pt = g.GetComponent<PistolTrigger>();
+            PistolTrigger pt = g.GetComponentInChildren<PistolTrigger>();
             if(pt.ID == id) {
                 pt.ToggleMesh(false);
                 pt.RespawnPistol(posX, posZ);
