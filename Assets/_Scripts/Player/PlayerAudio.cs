@@ -42,7 +42,7 @@ public class PlayerAudio : MonoBehaviour {
         if (m_photonView.isMine) {
             m_photonView.RPC("PlayLocalMove", PhotonTargets.All, m_player.ID);
         } else {
-            m_photonView.RPC("PlayMove", PhotonTargets.Others, m_player.ID);
+            m_photonView.RPC("PlayMove", PhotonTargets.All, m_player.ID);
         }
     }
 
