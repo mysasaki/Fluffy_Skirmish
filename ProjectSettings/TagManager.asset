@@ -11,7 +11,8 @@ TagManager:
   - Crosshair
   - AimCamera
   - PickupHealth
-  - PickupDamage
+  - Lava
+  - PickupAmmo
   layers:
   - Default
   - TransparentFX

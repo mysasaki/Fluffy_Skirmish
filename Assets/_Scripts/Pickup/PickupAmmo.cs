@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupHealth : MonoBehaviour {
+public class PickupAmmo : MonoBehaviour {
 
     public int ID;
     public GameObject mesh;
 
     private PhotonView m_photonView;
-    
+
     private void Start() {
         m_photonView = GetComponentInParent<PhotonView>();
-        ID = m_photonView.viewID; //id que vai ser usado pro pickup manager futuramente pra controlar qual pickup ja foi coletado e pa
+        ID = m_photonView.viewID;
     }
 
-    public void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
             Player player = other.GetComponent<Player>();
-            PlayerManagement.Instance.RestoreHealth(player.ID, 10);
-            PickupManager.Instance.RespawnPickupHealth(this.ID);
+            PlayerManagement.Instance.ModifyAmmo(player.ID, 12);
+            PickupManager.Instance.RespawnPickupAmmo(this.ID);
 
-        } else if (other.CompareTag("Lava")) {
-            PickupManager.Instance.RespawnPickupHealth(this.ID);
+        } else if(other.CompareTag("Lava")) {
+            PickupManager.Instance.RespawnPickupAmmo(this.ID);
         }
     }
 
@@ -29,7 +29,7 @@ public class PickupHealth : MonoBehaviour {
         mesh.SetActive(active);
     }
 
-    public void RespawnHealth(float posX, float posZ) {
+    public void RespawnAmmo(float posX, float posZ) {
 
         GameObject go = transform.parent.gameObject;
         go.transform.position = new Vector3(posX, 25, posZ);

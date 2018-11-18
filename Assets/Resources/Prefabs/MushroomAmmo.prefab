@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4911788313069762}
   - component: {fileID: 136898879886982944}
+  - component: {fileID: 114131521890469574}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -58,7 +59,7 @@ GameObject:
   - component: {fileID: 54772185096268276}
   m_Layer: 0
   m_Name: MushroomAmmo
-  m_TagString: Untagged
+  m_TagString: PickupAmmo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,6 +180,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114131521890469574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1131675843687988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7b21ecd080ef04eb63a37360f9095d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
+  mesh: {fileID: 1369285223203584}
 --- !u!114 &114684153658325834
 MonoBehaviour:
   m_ObjectHideFlags: 1

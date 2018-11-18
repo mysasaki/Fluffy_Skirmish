@@ -41,3 +41,5 @@ ehthumbs.db
 Thumbs.db
 Assets/Materials/Lava.mat
 Assets/Materials/Lava.mat
+.vs/
+*.ide
