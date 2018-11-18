@@ -38,7 +38,12 @@ public class PlayerAudio : MonoBehaviour {
     }
 
     public void StartMoveAudio() {
-        m_photonView.RPC("PlayMove", PhotonTargets.Others, m_player.ID);
+
+        if (m_photonView.isMine) {
+            m_photonView.RPC("PlayLocalMove", PhotonTargets.All, m_player.ID);
+        } else {
+            m_photonView.RPC("PlayMove", PhotonTargets.Others, m_player.ID);
+        }
     }
 
     public void StopMoveAudio() {
@@ -68,15 +73,20 @@ public class PlayerAudio : MonoBehaviour {
         if (!m_audioSource)
             m_audioSource = GetComponent<AudioSource>();
 
-        if (!m_photonView.isMine) {
-            m_audioSource.clip = moveAudio;
-            m_audioSource.loop = true;
-            m_audioSource.volume = 0.05f;
-            m_audioSource.Play();
-        } else {
-            canPlay = true;
-            StartCoroutine("PlayAudio");
-        }
+        m_audioSource.clip = moveAudio;
+        m_audioSource.loop = true;
+        m_audioSource.volume = 0.05f;
+        m_audioSource.Play();
+
+    }
+
+    [PunRPC]
+    public void PlayLocalMove(int id) {
+        if (id != m_player.ID)
+            return;
+
+        canPlay = true;
+        StartCoroutine("PlayAudio");
     }
 
     IEnumerator PlayAudio() {
@@ -85,13 +95,12 @@ public class PlayerAudio : MonoBehaviour {
 
         m_audioSource.clip = moveAudio;
         m_audioSource.loop = false;
-        m_audioSource.volume = 0.05f;
+        m_audioSource.volume = 0.1f;
 
         while (canPlay) {
-            yield return new WaitForSeconds(delayBetweenSteps);            
+            yield return new WaitForSeconds(delayBetweenSteps);
             m_audioSource.Play();
         }
-        m_audioSource.Stop();
     }
 
     [PunRPC]

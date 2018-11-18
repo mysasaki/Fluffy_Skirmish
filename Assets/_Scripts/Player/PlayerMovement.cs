@@ -88,7 +88,8 @@ public class PlayerMovement : Photon.MonoBehaviour {
             if (!m_playerAudio.moveAudioActive) {
                 m_playerAudio.moveAudioActive = true;
                 m_playerAudio.StartMoveAudio();
-            }           
+                
+            }
         }
 
         if (!m_sprint) {

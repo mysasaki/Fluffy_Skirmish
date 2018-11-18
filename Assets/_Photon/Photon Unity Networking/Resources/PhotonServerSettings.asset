@@ -61,4 +61,5 @@ MonoBehaviour:
   - StopMove
   - PlayFire
   - PlayReload
+  - PlayLocalMove
   DisableAutoOpenWizard: 1
