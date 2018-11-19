@@ -65,4 +65,5 @@ MonoBehaviour:
   - RPC_RespawnPickupHealth
   - RPC_RespawnPickupAmmo
   - RPC_RespawnPistol
+  - PlayTakeDamage
   DisableAutoOpenWizard: 1

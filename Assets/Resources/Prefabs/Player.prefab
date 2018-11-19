@@ -1398,6 +1398,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathAudio: {fileID: 8300000, guid: da1537d7039a56842ae1d00c0e525822, type: 3}
   moveAudio: {fileID: 8300000, guid: a5e9e940660f0f24599714daa25a9a07, type: 3}
+  pickupAudio: {fileID: 8300000, guid: 14510c2d9939bfc44814adf29bee5584, type: 3}
+  damageAudio: {fileID: 8300000, guid: 69965186275ca044bba47fee6ba87d36, type: 3}
   moveAudioActive: 0
 --- !u!135 &135716090908484952
 SphereCollider:

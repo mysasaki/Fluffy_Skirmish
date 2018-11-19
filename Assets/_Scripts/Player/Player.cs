@@ -81,6 +81,7 @@ public class Player : MonoBehaviour {
             if (m_photonView.isMine) {
                 DeathScreen ds = canvas.GetComponent<DeathScreen>();
                 ds.ActivateDeathScreen();
+                m_playerAudio.TakeDamageAudio();
             }
         } 
 

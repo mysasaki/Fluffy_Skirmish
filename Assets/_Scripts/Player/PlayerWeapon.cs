@@ -112,6 +112,11 @@ public class PlayerWeapon : MonoBehaviour {
 
         Weapon pickupWeapon = pickup.GetComponent<Weapon>();
         currentWeapon = pickupWeapon;
+
+        if (currentWeapon.ammo.clipAmmo < currentWeapon.ammo.maxClipAmmo)
+            Reload();
+        else
+            currentWeapon.Reload(); //só toca o som
     }
 
     //private void OnAnimatorIK() {}

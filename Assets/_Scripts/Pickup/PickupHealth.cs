@@ -15,8 +15,14 @@ public class PickupHealth : MonoBehaviour {
     }
 
     public void OnTriggerEnter(Collider other) {
+        if (!PhotonNetwork.player.IsLocal)
+            return;
+
         if (other.CompareTag("Player")) {
+            print("get health");
             Player player = other.GetComponent<Player>();
+            PlayerAudio pa = player.GetComponent<PlayerAudio>();
+            pa.PickupAudio();
             PlayerManagement.Instance.RestoreHealth(player.ID, 10);
             PickupManager.Instance.RespawnPickupHealth(this.ID);
 
@@ -30,9 +36,10 @@ public class PickupHealth : MonoBehaviour {
     }
 
     public void RespawnHealth(float posX, float posZ) {
-
         GameObject go = transform.parent.gameObject;
         go.transform.position = new Vector3(posX, 25, posZ);
+        float rotY = Random.Range(0f, 360f);
+        go.transform.Rotate(0, rotY, 0);
         ToggleMesh(true);
     }
 }

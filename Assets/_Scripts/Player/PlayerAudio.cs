@@ -11,6 +11,8 @@ public class PlayerAudio : MonoBehaviour {
 
     public AudioClip deathAudio;
     public AudioClip moveAudio;
+    public AudioClip pickupAudio;
+    public AudioClip damageAudio;
 
     public bool moveAudioActive;
 
@@ -36,7 +38,17 @@ public class PlayerAudio : MonoBehaviour {
 
     public void StopMoveAudio() {
         m_photonView.RPC("StopMove", PhotonTargets.All, m_player.ID);
+    }
 
+    public void TakeDamageAudio() {
+        m_photonView.RPC("PlayTakeDamage", PhotonTargets.All, m_player.ID);
+    }
+
+    public void PickupAudio() {
+        m_audioSource.clip = pickupAudio;
+        m_audioSource.loop = false;
+        m_audioSource.volume = 0.1f;
+        m_audioSource.Play();
     }
 
     [PunRPC]
@@ -49,9 +61,23 @@ public class PlayerAudio : MonoBehaviour {
 
         m_audioSource.clip = deathAudio;
         m_audioSource.loop = false;
-        m_audioSource.volume = 0.2f;
+        m_audioSource.volume = 0.1f;
         m_audioSource.Play();
 
+    }
+
+    [PunRPC]
+    private void PlayTakeDamage(int id) {
+        if (id != m_player.ID)
+            return;
+
+        if (!m_audioSource)
+            m_audioSource = GetComponent<AudioSource>();
+
+        m_audioSource.clip = damageAudio;
+        m_audioSource.loop = false;
+        m_audioSource.volume = 0.08f;
+        m_audioSource.Play();
     }
 
     [PunRPC]
