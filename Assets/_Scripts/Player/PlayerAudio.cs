@@ -45,9 +45,11 @@ public class PlayerAudio : MonoBehaviour {
     }
 
     public void PickupAudio() {
+        float pitch = Random.Range(0.5f, 1.5f);
         m_audioSource.clip = pickupAudio;
         m_audioSource.loop = false;
         m_audioSource.volume = 0.1f;
+        m_audioSource.pitch = pitch;
         m_audioSource.Play();
     }
 
@@ -61,6 +63,7 @@ public class PlayerAudio : MonoBehaviour {
 
         m_audioSource.clip = deathAudio;
         m_audioSource.loop = false;
+        m_audioSource.pitch = 1.0f;
         m_audioSource.volume = 0.1f;
         m_audioSource.Play();
 
@@ -76,6 +79,7 @@ public class PlayerAudio : MonoBehaviour {
 
         m_audioSource.clip = damageAudio;
         m_audioSource.loop = false;
+        m_audioSource.pitch = 1.0f;
         m_audioSource.volume = 0.08f;
         m_audioSource.Play();
     }
@@ -90,6 +94,7 @@ public class PlayerAudio : MonoBehaviour {
 
         m_audioSource.clip = moveAudio;
         m_audioSource.loop = true;
+        m_audioSource.pitch = 1.0f;
         m_audioSource.volume = 0.05f;
         m_audioSource.Play();
     }
