@@ -254,10 +254,12 @@ public class PlayerInput : MonoBehaviour {
 
         if(Input.GetButton(input.map) && (!GameManager.Instance.IsScoreboardActive())) {
             GameManager.Instance.ShowMap();
+            GameManager.Instance.HideHUD();
         }
 
         if(Input.GetButtonUp(input.map)) {
             GameManager.Instance.HideMap();
+            GameManager.Instance.ShowHUD();
         }
     }
 
