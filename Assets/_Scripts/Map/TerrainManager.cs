@@ -39,15 +39,15 @@ public class TerrainManager : MonoBehaviour {
     private List<int> idsToBeClosed = new List<int>();
     private List<int> idsToBeOpened = new List<int>();
 
-    private bool flagStart;
+    private bool flagStart = false;
 
     // *** FUNCTIONS *** //
     void Start() {
         if (!PhotonNetwork.isMasterClient)
             return;
 
-        timeToNextClose = timeToNextClosePB;
-        print("xablau");
+        timeToNextClosePB = 15;
+        //timeToNextClose = timeToNextClosePB;
         m_photonView = GetComponent<PhotonView>();
         MatchTimeControl.OnMinimumPlayersReached += StartMapMovement;
         //StartCoroutine("Routine");
@@ -55,7 +55,6 @@ public class TerrainManager : MonoBehaviour {
 
     public void StartMapMovement() {
         //flagStart = true;
-        Debug.Log("CU DE URSO");
         StartCoroutine("Routine");
     }
 
@@ -94,13 +93,22 @@ public class TerrainManager : MonoBehaviour {
 
     void Update() {
 
-        if (flagStart) {
-
+        if (!flagStart) {
+            VerifyIfAllPlayersInRoom();
         }
+
         if (m_round >= 9) //sai do update
             return;
 
         timeToNextClose -= Time.deltaTime;
+    }
+
+    private void VerifyIfAllPlayersInRoom() {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        if(players.Length == PhotonNetwork.room.PlayerCount) {
+            m_photonView.RPC("RPC_StartTime", PhotonTargets.All);
+        }
     }
 
     void ChooseRandomSector() {
@@ -172,6 +180,12 @@ public class TerrainManager : MonoBehaviour {
 
             StartCoroutine(MoveObject(pos2, newPos2, 5f, go_aux));
         }
+    }
+
+    [PunRPC]
+    private void RPC_StartTime() {
+        flagStart = true;
+        timeToNextClose = timeToNextClosePB;
     }
 
     [PunRPC]
