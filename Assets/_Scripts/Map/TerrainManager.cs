@@ -46,10 +46,11 @@ public class TerrainManager : MonoBehaviour {
 
     // *** FUNCTIONS *** //
     void Start() {
+        timeToNextClosePB = 70f;
+
         if (!PhotonNetwork.isMasterClient)
             return;
 
-        timeToNextClosePB = 15;
         //timeToNextClose = timeToNextClosePB;
         m_photonView = GetComponent<PhotonView>();
         MatchTimeControl.OnMinimumPlayersReached += StartMapMovement;
