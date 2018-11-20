@@ -19,7 +19,22 @@ public class MainCanvasManager : MonoBehaviour {
         get { return m_currentRoomCanvas; }
     }
 
+    [SerializeField]
+    private GameObject m_controlCanvas;
+    private GameObject ControlCanvas {
+        get { return m_controlCanvas; }
+    }
+
+    public void OnClick_Control() {
+        ControlCanvas.SetActive(true);
+    }
+
+    public void OnClick_Back() {
+        ControlCanvas.SetActive(false);
+    }
+
     private void Awake() {
         Instance = this;
+        ControlCanvas.SetActive(false);
     }
 }
