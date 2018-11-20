@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour {
 
+    public AudioSource m_audioSource;
+    public AudioSource m_stepAudioSource;
+
     private PhotonView m_photonView;
-    private AudioSource m_audioSource;
     private AudioListener m_audioListener;
     private Player m_player;
 
@@ -18,7 +20,6 @@ public class PlayerAudio : MonoBehaviour {
 
     public float delayRun;
     public float delaySprint;
-
     public float delayBetweenSteps;
 
     public bool canPlay;
@@ -26,7 +27,6 @@ public class PlayerAudio : MonoBehaviour {
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
         m_player = GetComponent<Player>();
-        m_audioSource = GetComponent<AudioSource>();
         m_audioListener = GetComponent<AudioListener>();
 
         moveAudioActive = false;
@@ -100,14 +100,12 @@ public class PlayerAudio : MonoBehaviour {
     private void PlayMove(int id) {
         if (id != m_player.ID)
             return;
-        if (!m_audioSource)
-            m_audioSource = GetComponent<AudioSource>();
 
-        m_audioSource.clip = moveAudio;
-        m_audioSource.loop = true;
-        m_audioSource.pitch = 1.0f;
-        m_audioSource.volume = 0.05f;
-        m_audioSource.Play();
+        m_stepAudioSource.clip = moveAudio;
+        m_stepAudioSource.loop = true;
+        m_stepAudioSource.pitch = 1.0f;
+        m_stepAudioSource.volume = 0.05f;
+        m_stepAudioSource.Play();
 
     }
 
@@ -121,16 +119,14 @@ public class PlayerAudio : MonoBehaviour {
     }
 
     IEnumerator PlayAudio() {
-        if (!m_audioSource)
-            m_audioSource = GetComponent<AudioSource>();
 
-        m_audioSource.clip = moveAudio;
-        m_audioSource.loop = false;
-        m_audioSource.volume = 0.1f;
+        m_stepAudioSource.clip = moveAudio;
+        m_stepAudioSource.loop = false;
+        m_stepAudioSource.volume = 0.1f;
 
         while (canPlay) {
             yield return new WaitForSeconds(delayBetweenSteps);
-            m_audioSource.Play();
+            m_stepAudioSource.Play();
         }
     }
 
@@ -139,11 +135,9 @@ public class PlayerAudio : MonoBehaviour {
         if (id != m_player.ID)
             return;
         canPlay = false;
-        if (!m_audioSource)
-            m_audioSource = GetComponent<AudioSource>();
         StopCoroutine("PlayAudio");
         moveAudioActive = false;
-        m_audioSource.Stop();
+        m_stepAudioSource.Stop();
     }
 
 }
