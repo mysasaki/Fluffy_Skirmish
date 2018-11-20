@@ -40,12 +40,13 @@ public class PlayerAudio : MonoBehaviour {
     }
 
     public void StartMoveAudio() {
-
-        if (m_photonView.isMine) {
+        PlayLocal();
+        m_photonView.RPC("PlayMove", PhotonTargets.All, m_player.ID);
+        /*if (m_photonView.isMine) {
             m_photonView.RPC("PlayLocalMove", PhotonTargets.All, m_player.ID);
         } else {
             m_photonView.RPC("PlayMove", PhotonTargets.All, m_player.ID);
-        }
+        }*/
     }
 
     public void StopMoveAudio() {
@@ -63,6 +64,11 @@ public class PlayerAudio : MonoBehaviour {
         m_audioSource.volume = 0.1f;
         m_audioSource.pitch = pitch;
         m_audioSource.Play();
+    }
+
+    private void PlayLocal() {
+        canPlay = true;
+        StartCoroutine("PlayAudio");
     }
 
     [PunRPC]
@@ -119,7 +125,6 @@ public class PlayerAudio : MonoBehaviour {
     }
 
     IEnumerator PlayAudio() {
-
         m_stepAudioSource.clip = moveAudio;
         m_stepAudioSource.loop = false;
         m_stepAudioSource.volume = 0.1f;
