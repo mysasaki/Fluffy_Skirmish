@@ -63,8 +63,8 @@ public class PlayerNetwork : MonoBehaviour {
     [PunRPC]
     private void RPC_CreatePlayer() {
         
-        float randomZ = Random.Range(30f, 150f);
-        float randomX = Random.Range(30f, 150f);
+        float randomZ = Random.Range(30f, 420f);
+        float randomX = Random.Range(30f, 420f);
 
         GameObject obj = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Player"), new Vector3(randomX, 25, randomZ), Quaternion.identity, 0);
         m_currentPlayer = obj.GetComponent<Player>();

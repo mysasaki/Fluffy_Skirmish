@@ -38,20 +38,20 @@ public class PickupManager : MonoBehaviour {
     }
 
     public void RespawnPickupHealth(int id) {
-        float randomZ = Random.Range(0f, 150f); //TODO: arrumar o range depois
-        float randomX = Random.Range(0f, 150f);
+        float randomZ = Random.Range(30f, 420f); //TODO: arrumar o range depois
+        float randomX = Random.Range(30f, 420f);
         m_photonView.RPC("RPC_RespawnPickupHealth", PhotonTargets.All, id, randomX, randomZ);
     }
 
     public void RespawnPickupAmmo(int id) {
-        float randomZ = Random.Range(0f, 150f);
-        float randomX = Random.Range(0f, 150f);
+        float randomZ = Random.Range(30f, 420f);
+        float randomX = Random.Range(30f, 420f);
         m_photonView.RPC("RPC_RespawnPickupAmmo", PhotonTargets.All, id, randomX, randomZ);
     }
 
     public void RespawnPistol(int id) {
-        float randomZ = Random.Range(0f, 150f);
-        float randomX = Random.Range(0f, 150f);
+        float randomZ = Random.Range(30f, 420f);
+        float randomX = Random.Range(30f, 420f);
         m_photonView.RPC("RPC_RespawnPistol", PhotonTargets.All, id, randomX, randomZ);
     }
     
