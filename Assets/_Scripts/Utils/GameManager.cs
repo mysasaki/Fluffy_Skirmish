@@ -4,10 +4,10 @@ using UnityEngine;
 
 //Vai ficar responsavel pelas coisas locais. Atualizaçao do hud
 //Comunica diretamente com o playermanagement pra fazer sync dos player stats (health, ammo, kill/death)
-public class GameManager : MonoBehaviour { 
+public class GameManager : MonoBehaviour {
 
     public static GameManager Instance = null;
-    
+
     private PlayerUI m_playerUI {
         get { return FindObjectOfType<PlayerUI>(); }
         set { m_playerUI = value; }
@@ -38,13 +38,9 @@ public class GameManager : MonoBehaviour {
         set { m_mapmenu = value; }
     }
 
-    private Timer m_timer;
-    public Timer Timer {
-        get {
-            if (!m_timer)
-                m_timer = GetComponent<Timer>();
-            return m_timer;
-        }
+    private HelperUI m_helperUI {
+        get { return FindObjectOfType<HelperUI>(); }
+        set { m_helperUI = value; }
     }
 
     private PlayerWeapon m_playerWeapon;
@@ -63,7 +59,6 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         GetPlayerComponents();
-        
     }
 
     private void Update() {
@@ -74,6 +69,7 @@ public class GameManager : MonoBehaviour {
             if(m_playerUI)
                 if(m_playerWeapon)
                     m_playerUI.UpdateUI(m_playerWeapon, m_player);
+
     }
 
     private void GetPlayerComponents() {
@@ -152,5 +148,19 @@ public class GameManager : MonoBehaviour {
         return m_mapmenu.m_isActive;
     }
     #endregion
-}
 
+    #region HelperUI
+    public void ShowHelper() {
+        m_helperUI.ShowHelper();
+    }
+
+    public void HideHelper() {
+        m_helperUI.HideHelper();
+    }
+
+    public bool IsHelperActive() {
+        return (m_helperUI.isActiveAndEnabled);
+    }
+
+    #endregion
+}

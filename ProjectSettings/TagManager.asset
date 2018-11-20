@@ -10,6 +10,9 @@ TagManager:
   - Compass
   - Crosshair
   - AimCamera
+  - PickupHealth
+  - Lava
+  - PickupAmmo
   layers:
   - Default
   - TransparentFX
@@ -23,7 +26,7 @@ TagManager:
   - Ragdoll
   - Pickup
   - Terrain
-  - 
+  - Trigger
   - 
   - 
   - 

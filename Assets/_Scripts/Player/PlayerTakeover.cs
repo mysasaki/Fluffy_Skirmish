@@ -31,7 +31,7 @@ public class PlayerTakeover : MonoBehaviour {
         Vector3 origin = transform.position + transform.up;
 
         Collider[] objs;
-        objs = Physics.OverlapSphere(origin, 3.0f, layerMask);
+        objs = Physics.OverlapSphere(origin, 5.0f, layerMask);
 
         foreach (Collider c in objs) {
             if (c.CompareTag("Weapon")) {

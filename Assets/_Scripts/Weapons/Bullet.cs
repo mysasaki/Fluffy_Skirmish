@@ -29,8 +29,11 @@ public class Bullet : MonoBehaviour {
             Instantiate(myParticle, partPosition, transform.rotation);
             Destroy(gameObject);
             Player player = other.GetComponent<Player>();
-            if(!player.IsDead && !player.Respawning)
+            if (!player.IsDead && !player.Respawning) {
+                print("ISDEAD " + player.IsDead);
+                print("RESPAWNING " + player.Respawning);
                 PlayerManagement.Instance.DealDamage(m_owner.ID, player.ID, 20, other.transform);
+            }
         }
     }
 }

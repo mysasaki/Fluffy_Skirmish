@@ -14,7 +14,6 @@ public class PlayerManagement : MonoBehaviour {
 
     private void Awake() {
 
-        print("PLAYER NAMAGEMENT AWAKE " + PhotonNetwork.playerName);
         Instance = this;
         m_photonView = GetComponent<PhotonView>();
     }
@@ -44,7 +43,6 @@ public class PlayerManagement : MonoBehaviour {
     }
 
     public void DealDamage(int id_owner, int id_other, int value, Transform otherTransform) {
-        print("Deal damage called");
         DamageTextController.CreateDamageText(value.ToString(), otherTransform); //popup de texto
         m_photonView.RPC("RPC_DealDamage", PhotonTargets.All, id_owner, id_other, value);
 
@@ -52,6 +50,11 @@ public class PlayerManagement : MonoBehaviour {
             print("Ded");
             m_photonView.RPC("RPC_PlayerDie", PhotonTargets.All, id_owner, id_other, value);
         }*/
+    }
+
+    public void RestoreHealth(int id_player, int value) {
+        print("restore health");
+        m_photonView.RPC("RPC_RestoreHealth", PhotonTargets.All, id_player, value);
     }
 
     public void InstantDeath(int id_player) {
@@ -64,7 +67,6 @@ public class PlayerManagement : MonoBehaviour {
     }
 
     private bool CheckDeath(int id_player) {
-        print("CheckDeath called");
         int index = m_playerStatsList.FindIndex(x => x.ID == id_player);
 
         if (index == -1)
@@ -79,7 +81,6 @@ public class PlayerManagement : MonoBehaviour {
     }
 
     public void RespawnPlayer(int id_player) {
-        print("5 - respawnplayer playermanager");
         if (PhotonNetwork.player.ID != id_player)
             return;
 
@@ -147,17 +148,38 @@ public class PlayerManagement : MonoBehaviour {
     }
 
     [PunRPC]
-    private void RPC_PlayerDie(int id_owner, int id_other) {
-        print("1 - rpc player die");
+    private void RPC_RestoreHealth(int id_player, int value) {
+        print("RPC Restore health " + value);
+        int index = m_playerStatsList.FindIndex(x => x.ID == id_player);
 
-        print("RPC PLAUER DIE. MY ID: " + PhotonNetwork.player.ID);
+        if(index != -1) {
+            PlayerStats playerStats = m_playerStatsList[index];
+
+            if (playerStats.Health + value > 100)
+                playerStats.Health = 100;
+            else
+                playerStats.Health += value;
+        }
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players) {
+            Player player = p.GetComponent<Player>();
+            if(player.ID == id_player) {
+                player.UpdateHealth(m_playerStatsList[index].Health);
+            }
+        }
+    }
+
+    [PunRPC]
+    private void RPC_PlayerDie(int id_owner, int id_other) {
+
         if (!m_killFeed)
             m_killFeed = FindObjectOfType<KillFeed>();
 
         if (!m_scoreLayoutGroup)
             m_scoreLayoutGroup = FindObjectOfType<ScoreLayoutGroup>();
 
-        int index_other = m_playerStatsList.FindIndex(x => x.ID == id_other);
+        int index_other = m_playerStatsList.FindIndex(x => x.ID == id_other); //atualiza o placar
         Kill kill = new Kill();
         if (index_other != -1) {
             PlayerStats other = m_playerStatsList[index_other];
@@ -211,7 +233,6 @@ public class PlayerManagement : MonoBehaviour {
 
     [PunRPC]
     private void RPC_RespawnPlayer(int id, float newX, float newZ) {
-        print("6 - rpc respawn");
         int index = m_playerStatsList.FindIndex(x => x.ID == id);
         if (index != -1) {
             PlayerStats playerStats = m_playerStatsList[index];

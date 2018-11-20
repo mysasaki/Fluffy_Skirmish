@@ -27,7 +27,6 @@ public class Player : MonoBehaviour {
         ragdoll = GetComponentInChildren<Ragdoll>(); //ref do ragdoll
         m_playerAudio = GetComponent<PlayerAudio>();
         canvas = GameObject.Find("Canvas");
-
     }
 
     private void Start() {
@@ -41,8 +40,8 @@ public class Player : MonoBehaviour {
             return;*/
 
         if (IsDead) {
-            print("2- player update");
             IsDead = false;
+            Respawning = true;
             ragdoll.active = true; //ativa o ragdoll             
             //ToggleMesh(false);
             StartCoroutine(StartRespawnPlayer());
@@ -54,7 +53,7 @@ public class Player : MonoBehaviour {
             }
             print("Player " + Name + " diededdened.");
                      
-        }
+        } 
     }
 
     private void ToggleFalse() {
@@ -62,7 +61,6 @@ public class Player : MonoBehaviour {
     }
 
     private IEnumerator StartRespawnPlayer() {
-        print("3 - startRespawnPlayer");
         Invoke("ToggleFalse", 5);
         yield return new WaitForSeconds(RespawnTime);
         ToggleMesh(true);
@@ -72,9 +70,8 @@ public class Player : MonoBehaviour {
     }
 
     private void RespawnPlayer() {
-        print("4 - respawnplayer");
         //ragdoll.active = false; //desativa o ragdoll
-        Respawning = true;
+        
         PlayerManagement.Instance.RespawnPlayer(this.ID);
         
     }
@@ -84,8 +81,9 @@ public class Player : MonoBehaviour {
             if (m_photonView.isMine) {
                 DeathScreen ds = canvas.GetComponent<DeathScreen>();
                 ds.ActivateDeathScreen();
+                m_playerAudio.TakeDamageAudio();
             }
-        }
+        } 
 
         this.Health = health;
     }
@@ -103,18 +101,17 @@ public class Player : MonoBehaviour {
     }
 
     public void ToggleMesh(bool activate) {
-        print("==-=-=-=-=-=- Toggle mesh " + activate);
         Mesh.SetActive(activate);
     }
 
     public void FinishRespawn() {
-        print("7 - finish respawn");
         ToggleMesh(true);
         this.IsDead = false;
         this.Respawning = false;
         this.ragdoll.active = false;
        
     }
+   
 
     [PunRPC]
     private void RPC_UpdatePlayerData(int ID, string name) {
