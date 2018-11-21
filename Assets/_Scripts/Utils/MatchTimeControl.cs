@@ -84,11 +84,19 @@ public class MatchTimeControl : MonoBehaviour {
         }
 
         //Chama o evento se tiver o minimo de players
-        if (PhotonNetwork.playerList.Length >= minimumPlayers && !endMatch) {
+        if (CheckIfAllPlayersAreOn() && !endMatch) {
             if (PhotonNetwork.isMasterClient) {
                 m_photonView.RPC("RPC_StartCountdown", PhotonTargets.All);                
             }
         }
+    }
+
+    private bool CheckIfAllPlayersAreOn() {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        int count = players.Length;
+
+        return (count == PhotonNetwork.room.playerCount);
+        
     }
 
     [PunRPC]
