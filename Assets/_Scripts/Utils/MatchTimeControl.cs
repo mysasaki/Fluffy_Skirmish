@@ -95,7 +95,7 @@ public class MatchTimeControl : MonoBehaviour {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         int count = players.Length;
 
-        return (count == PhotonNetwork.room.playerCount);
+        return (count == PhotonNetwork.room.PlayerCount);
         
     }
 
