@@ -215,8 +215,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 1
+  instantiationId: 1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!136 &136644893659117410
@@ -242,6 +242,6 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1
-  m_Height: 2.0923157
+  m_Height: 2.3390613
   m_Direction: 1
-  m_Center: {x: 0, y: -0.022218227, z: 0}
+  m_Center: {x: 0, y: -0.14559102, z: 0}
