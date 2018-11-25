@@ -14,8 +14,9 @@ public class TerrainManager : MonoBehaviour {
     }
 
     [SerializeField]
+    private float timeToNextClosePB;
+    public float updownTime = 30f;
     public static float timeToNextClose = 70f; //tempo para o primeiro fechamento de setor de uma partida
-    public float timeToNextClosePB;
 
     private GameObject go_aux; //gameObject auxiliar para armazenar setor que irá fechar
 
@@ -31,8 +32,6 @@ public class TerrainManager : MonoBehaviour {
     [SerializeField]
     private MapMenu mapMenu;
 
-    private float updownTime = 30f;
-
     //vectors usados para fazer o lerp de ida e volta
     Vector3 pos, newPos;
     Vector3 pos2, newPos2;
@@ -45,7 +44,7 @@ public class TerrainManager : MonoBehaviour {
 
     // *** FUNCTIONS *** //
     void Start() {
-        timeToNextClosePB = 70f;
+        timeToNextClosePB = timeToNextClose;
 
         if (!PhotonNetwork.isMasterClient)
             return;
@@ -104,6 +103,7 @@ public class TerrainManager : MonoBehaviour {
             return;
 
         timeToNextClose -= Time.deltaTime;
+        //showTimeToNextClose = timeToNextClose;
     }
 
     private void VerifyIfAllPlayersInRoom() {
