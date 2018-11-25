@@ -34,6 +34,9 @@ public class Bullet : MonoBehaviour {
                 print("RESPAWNING " + player.Respawning);
                 PlayerManagement.Instance.DealDamage(m_owner.ID, player.ID, 20, other.transform);
             }
+
+        } else {
+            Destroy(gameObject);
         }
     }
 }
