@@ -36,6 +36,6 @@ public class PlayerShoot : MonoBehaviour {
         Bullet bullet = bulletGameObject.GetComponent<Bullet>();
         bullet.m_owner = GetComponent<Player>();
         Rigidbody bulleRb = bulletGameObject.GetComponent<Rigidbody>();
-        bulleRb.AddForce(bulletGameObject.transform.forward * 200, ForceMode.Impulse);
+        bulleRb.AddForce(bulletGameObject.transform.forward * 250, ForceMode.Impulse);
     }
 }

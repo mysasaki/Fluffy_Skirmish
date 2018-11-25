@@ -84,8 +84,8 @@ public class PlayerManagement : MonoBehaviour {
         if (PhotonNetwork.player.ID != id_player)
             return;
 
-        float randomZ = Random.Range(0f, 150f);
-        float randomX = Random.Range(0f, 150f);
+        float randomZ = Random.Range(30f, 420f);
+        float randomX = Random.Range(30f, 420f);
         m_photonView.RPC("RPC_RespawnPlayer", PhotonTargets.All, id_player, randomX, randomZ);
     }
 

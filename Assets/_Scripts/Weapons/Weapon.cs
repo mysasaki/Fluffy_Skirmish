@@ -28,8 +28,6 @@ public class Weapon : MonoBehaviour {
         public Transform bulletSpawn;
         public float damage = 5.0f;
         public float fireRate = 3.0f;
-        public LayerMask bulletLayers; //layers that bullet will hit
-        public float range = 200.0f;
 
         [Header("-Effects-")]
         public GameObject decal;
@@ -114,20 +112,20 @@ public class Weapon : MonoBehaviour {
         StartCoroutine(LoadNextBullet());
     }
 
-    private void HitEffects(RaycastHit hit) {
-        if (hit.collider.gameObject.isStatic) {
-            if (weaponSettings.decal) {
-                Vector3 hitpoint = hit.point;
-                Quaternion lookRotation = Quaternion.LookRotation(hit.normal);
-                GameObject decal = Instantiate(weaponSettings.decal, hitpoint, lookRotation) as GameObject;
+    //private void HitEffects(RaycastHit hit) {
+    //    if (hit.collider.gameObject.isStatic) {
+    //        if (weaponSettings.decal) {
+    //            Vector3 hitpoint = hit.point;
+    //            Quaternion lookRotation = Quaternion.LookRotation(hit.normal);
+    //            GameObject decal = Instantiate(weaponSettings.decal, hitpoint, lookRotation) as GameObject;
 
-                Transform decalT = decal.transform;
-                Transform hitT = hit.transform;
-                decalT.SetParent(hitT);
-                Destroy(decal, Random.Range(30.0f, 45.0f));
-            }
-        }
-    }
+    //            Transform decalT = decal.transform;
+    //            Transform hitT = hit.transform;
+    //            decalT.SetParent(hitT);
+    //            Destroy(decal, Random.Range(30.0f, 45.0f));
+    //        }
+    //    }
+    //}
 
     //Loads the next bullet in chamber
     private IEnumerator LoadNextBullet() {

@@ -33,8 +33,8 @@ public class Bullet : MonoBehaviour {
                 PlayerManagement.Instance.DealDamage(m_owner.ID, player.ID, 20, other.transform);
             }
 
-        } /*else { boing
+        } else { 
             Destroy(gameObject);
-        }*/
+        }
     }
 }
