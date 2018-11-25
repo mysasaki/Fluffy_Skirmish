@@ -31,8 +31,7 @@ public class TerrainManager : MonoBehaviour {
     [SerializeField]
     private MapMenu mapMenu;
 
-    private float downTime = 30f;
-    private float upTime = 30f;
+    private float updownTime = 30f;
 
     //vectors usados para fazer o lerp de ida e volta
     Vector3 pos, newPos;
@@ -160,7 +159,7 @@ public class TerrainManager : MonoBehaviour {
             pos = new Vector3(go_aux.transform.position.x, go_aux.transform.position.y, go_aux.transform.position.z);
             newPos = new Vector3(go_aux.transform.position.x, -100.0f, go_aux.transform.position.z);
 
-            StartCoroutine(MoveObject(pos, newPos, 30f, go_aux));
+            StartCoroutine(MoveObject(pos, newPos, updownTime, go_aux));
 
             sectorsToBeOpened.Add(go_aux);
 
@@ -168,7 +167,7 @@ public class TerrainManager : MonoBehaviour {
             idsToBeOpened.Add(t.id);
         }
 
-        yield return new WaitForSeconds(30f);
+        yield return new WaitForSeconds(updownTime);
         if (PhotonNetwork.isMasterClient)
             m_photonView.RPC("RPC_EnableSectors", PhotonTargets.All, idsToBeOpened.ToArray());
     }
@@ -182,7 +181,7 @@ public class TerrainManager : MonoBehaviour {
             pos2 = new Vector3(go_aux.transform.position.x, go_aux.transform.position.y, go_aux.transform.position.z);
             newPos2 = new Vector3(go_aux.transform.position.x, 0, go_aux.transform.position.z);
 
-            StartCoroutine(MoveObject(pos2, newPos2, 30f, go_aux));
+            StartCoroutine(MoveObject(pos2, newPos2, updownTime, go_aux));
         }
     }
 
