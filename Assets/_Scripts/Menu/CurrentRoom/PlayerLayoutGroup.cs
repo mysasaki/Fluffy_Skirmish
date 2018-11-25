@@ -41,6 +41,14 @@ public class PlayerLayoutGroup : MonoBehaviour {
         get { return m_stateButton; }
     }
 
+    [SerializeField]
+    private GameObject m_waitLabel;
+    private GameObject waitLabel {
+        get { return m_waitLabel; }
+    }
+
+
+
     private List<PlayerListing> m_playerListings = new List<PlayerListing>();
     private List<PlayerListing> PlayerListings {
         get { return m_playerListings; }
@@ -73,6 +81,7 @@ public class PlayerLayoutGroup : MonoBehaviour {
         if (!PhotonNetwork.isMasterClient) {
             startButton.SetActive(false);
             stateButton.SetActive(false);
+            waitLabel.SetActive(true);
         }
     }
 
@@ -80,6 +89,7 @@ public class PlayerLayoutGroup : MonoBehaviour {
         if (PhotonNetwork.isMasterClient) {
             startButton.SetActive(true);
             stateButton.SetActive(true);
+            waitLabel.SetActive(false);
         }
     }
 

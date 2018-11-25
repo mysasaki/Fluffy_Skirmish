@@ -14,7 +14,7 @@ public class EndgameScoreboard : MonoBehaviour {
         Cursor.visible = true;
 
         m_playerStats = PlayerManagement.Instance.m_playerStatsList;
-        m_playerStats.Sort(SortByScore);
+        m_playerStats.Sort((a, b) => -1 * a.Kills.CompareTo(b.Kills));
 
         foreach (PlayerStats p in m_playerStats) {
             int index = m_scoreListing.FindIndex(x => x.id == p.ID);
@@ -32,7 +32,7 @@ public class EndgameScoreboard : MonoBehaviour {
         obj.transform.SetParent(transform, false);
     }
 
-    private static int SortByScore(PlayerStats p1, PlayerStats p2) {
-        return p1.Kills.CompareTo(p2.Kills);
-    }
+    //private static int SortByScore(PlayerStats p1, PlayerStats p2) {
+    //    return p1.Kills.CompareTo(p2.Kills);
+    //}
 }
