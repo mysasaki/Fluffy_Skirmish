@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour {
     }
 
     private IEnumerator DestroyOnTime() {
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(3);
         Destroy(gameObject);
     }
 
