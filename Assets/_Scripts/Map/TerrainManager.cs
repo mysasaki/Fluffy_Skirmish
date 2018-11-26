@@ -14,8 +14,9 @@ public class TerrainManager : MonoBehaviour {
     }
 
     [SerializeField]
+    private float timeToNextClosePB;
+    public float updownTime = 30f;
     public static float timeToNextClose = 70f; //tempo para o primeiro fechamento de setor de uma partida
-    public float timeToNextClosePB;
 
     private GameObject go_aux; //gameObject auxiliar para armazenar setor que irá fechar
 
@@ -31,9 +32,6 @@ public class TerrainManager : MonoBehaviour {
     [SerializeField]
     private MapMenu mapMenu;
 
-    private float downTime = 30f;
-    private float upTime = 30f;
-
     //vectors usados para fazer o lerp de ida e volta
     Vector3 pos, newPos;
     Vector3 pos2, newPos2;
@@ -46,7 +44,7 @@ public class TerrainManager : MonoBehaviour {
 
     // *** FUNCTIONS *** //
     void Start() {
-        timeToNextClosePB = 70f;
+        timeToNextClosePB = timeToNextClose;
 
         if (!PhotonNetwork.isMasterClient)
             return;
@@ -105,6 +103,7 @@ public class TerrainManager : MonoBehaviour {
             return;
 
         timeToNextClose -= Time.deltaTime;
+        //showTimeToNextClose = timeToNextClose;
     }
 
     private void VerifyIfAllPlayersInRoom() {
@@ -160,7 +159,7 @@ public class TerrainManager : MonoBehaviour {
             pos = new Vector3(go_aux.transform.position.x, go_aux.transform.position.y, go_aux.transform.position.z);
             newPos = new Vector3(go_aux.transform.position.x, -100.0f, go_aux.transform.position.z);
 
-            StartCoroutine(MoveObject(pos, newPos, 30f, go_aux));
+            StartCoroutine(MoveObject(pos, newPos, updownTime, go_aux));
 
             sectorsToBeOpened.Add(go_aux);
 
@@ -168,7 +167,7 @@ public class TerrainManager : MonoBehaviour {
             idsToBeOpened.Add(t.id);
         }
 
-        yield return new WaitForSeconds(30f);
+        yield return new WaitForSeconds(updownTime);
         if (PhotonNetwork.isMasterClient)
             m_photonView.RPC("RPC_EnableSectors", PhotonTargets.All, idsToBeOpened.ToArray());
     }
@@ -182,7 +181,7 @@ public class TerrainManager : MonoBehaviour {
             pos2 = new Vector3(go_aux.transform.position.x, go_aux.transform.position.y, go_aux.transform.position.z);
             newPos2 = new Vector3(go_aux.transform.position.x, 0, go_aux.transform.position.z);
 
-            StartCoroutine(MoveObject(pos2, newPos2, 30f, go_aux));
+            StartCoroutine(MoveObject(pos2, newPos2, updownTime, go_aux));
         }
     }
 
