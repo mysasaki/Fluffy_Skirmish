@@ -47,6 +47,12 @@ public class PlayerLayoutGroup : MonoBehaviour {
         get { return m_waitLabel; }
     }
 
+    [SerializeField]
+    private GameObject m_matchTimeSlider;
+    private GameObject matchTimeSlider {
+        get { return m_matchTimeSlider; }
+    }
+
 
 
     private List<PlayerListing> m_playerListings = new List<PlayerListing>();
@@ -82,6 +88,7 @@ public class PlayerLayoutGroup : MonoBehaviour {
             startButton.SetActive(false);
             stateButton.SetActive(false);
             waitLabel.SetActive(true);
+            matchTimeSlider.SetActive(false);
         }
     }
 
@@ -90,6 +97,7 @@ public class PlayerLayoutGroup : MonoBehaviour {
             startButton.SetActive(true);
             stateButton.SetActive(true);
             waitLabel.SetActive(false);
+            matchTimeSlider.SetActive(true);
         }
     }
 

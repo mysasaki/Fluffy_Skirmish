@@ -46,13 +46,38 @@ public class TerrainManager : MonoBehaviour {
     void Start() {
         timeToNextClosePB = timeToNextClose;
 
-        if (!PhotonNetwork.isMasterClient)
+        if (!PhotonNetwork.isMasterClient) {
+            GameSetting.Instance.Destroy();
             return;
+        }
 
-        //timeToNextClose = timeToNextClosePB;
+        SetGameMatchTime();
+        GameSetting.Instance.Destroy();
+        timeToNextClosePB = timeToNextClose;
+
         m_photonView = GetComponent<PhotonView>();
         MatchTimeControl.OnMinimumPlayersReached += StartMapMovement;
-        //StartCoroutine("Routine");
+    }
+
+    public void SetGameMatchTime() {
+        MatchTime mt = GameSetting.Instance.matchTime;
+
+        switch(mt) {
+            case MatchTime.Short:
+                timeToNextClose = 30;
+                updownTime = 10;
+                break;
+
+            case MatchTime.Medium:
+                timeToNextClose = 50;
+                updownTime = 20;
+                break;
+
+            case MatchTime.Long:
+                timeToNextClose = 70;
+                updownTime = 30;
+                break;
+        }
     }
 
     public void StartMapMovement() {
@@ -261,4 +286,8 @@ public class TerrainManager : MonoBehaviour {
         MatchTimeControl.OnMinimumPlayersReached -= StartMapMovement;
         StopAllCoroutines();
     }
+}
+
+public enum MatchTime {
+    Short, Medium, Long
 }
