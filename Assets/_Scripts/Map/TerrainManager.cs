@@ -44,7 +44,7 @@ public class TerrainManager : MonoBehaviour {
 
     // *** FUNCTIONS *** //
     void Start() {
-        timeToNextClosePB = timeToNextClose;
+        m_photonView = GetComponent<PhotonView>();
 
         if (!PhotonNetwork.isMasterClient) {
             GameSetting.Instance.Destroy();
@@ -54,8 +54,8 @@ public class TerrainManager : MonoBehaviour {
         SetGameMatchTime();
         GameSetting.Instance.Destroy();
         timeToNextClosePB = timeToNextClose;
-
-        m_photonView = GetComponent<PhotonView>();
+        m_photonView.RPC("RPC_SetClientMatchTime", PhotonTargets.Others, timeToNextClose, updownTime);
+        
         MatchTimeControl.OnMinimumPlayersReached += StartMapMovement;
     }
 
@@ -120,7 +120,7 @@ public class TerrainManager : MonoBehaviour {
 
     void Update() {
 
-        if (!flagStart) {
+        if (!flagStart && PhotonNetwork.isMasterClient) {
             VerifyIfAllPlayersInRoom();
         }
 
@@ -208,6 +208,12 @@ public class TerrainManager : MonoBehaviour {
 
             StartCoroutine(MoveObject(pos2, newPos2, updownTime, go_aux));
         }
+    }
+
+    [PunRPC]
+    private void RPC_SetClientMatchTime(float closeTime, float openTime) {
+        this.timeToNextClosePB = closeTime;
+        this.updownTime = openTime;
     }
 
     [PunRPC]

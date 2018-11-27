@@ -43,13 +43,9 @@ public class PlayerManagement : MonoBehaviour {
     }
 
     public void DealDamage(int id_owner, int id_other, int value, Transform otherTransform) {
+        print("del damange");
         DamageTextController.CreateDamageText(value.ToString(), otherTransform); //popup de texto
         m_photonView.RPC("RPC_DealDamage", PhotonTargets.All, id_owner, id_other, value);
-
-        /*if (CheckDeath(id_other)) {
-            print("Ded");
-            m_photonView.RPC("RPC_PlayerDie", PhotonTargets.All, id_owner, id_other, value);
-        }*/
     }
 
     public void RestoreHealth(int id_player, int value) {
@@ -142,7 +138,8 @@ public class PlayerManagement : MonoBehaviour {
                 player.UpdateHealth(m_playerStatsList[index].Health);
 
                 if (CheckDeath(id_other))
-                    m_photonView.RPC("RPC_PlayerDie", PhotonTargets.Others, id_owner, id_other);
+                    RPC_PlayerDie(id_owner, id_other);
+                   // m_photonView.RPC("RPC_PlayerDie", PhotonTargets.Others, id_owner, id_other);
             }
         }
     }
@@ -170,7 +167,7 @@ public class PlayerManagement : MonoBehaviour {
         }
     }
 
-    [PunRPC]
+    //[PunRPC]
     private void RPC_PlayerDie(int id_owner, int id_other) {
 
         if (!m_killFeed)

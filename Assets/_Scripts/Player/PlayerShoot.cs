@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour {
 
     private PhotonView m_photonView;
-    public float bulletSpeed;
+    public float bulletSpeed = 300;
     public GameObject bulletPrefab;
 
     private void Awake() {
