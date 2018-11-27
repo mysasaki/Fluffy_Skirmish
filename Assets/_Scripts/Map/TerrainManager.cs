@@ -208,9 +208,6 @@ public class TerrainManager : MonoBehaviour {
     }
 
     private void ActivateSector() {
-        print("Activate sector " + sectorsToBeOpened.Count);
-        if (m_round < 2)
-            return;
 
         foreach (GameObject go_aux in sectorsToBeOpened) {
             pos2 = new Vector3(go_aux.transform.position.x, go_aux.transform.position.y, go_aux.transform.position.z);

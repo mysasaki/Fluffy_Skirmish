@@ -46,6 +46,15 @@ public class PlayerNetwork : MonoBehaviour {
         PhotonNetwork.ReconnectAndRejoin();
     }
 
+    private void OnMasterClientSwitched(PhotonPlayer newMasterClient) {
+        GameObject ddol = GameObject.FindObjectOfType<DDOL>().gameObject;
+        PhotonNetwork.Destroy(PlayerManagement.Instance.gameObject);
+        PhotonNetwork.Destroy(PlayerNetwork.Instance.gameObject);
+        Destroy(ddol);
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("Menu");
+    }
+
     #region RPC 
     [PunRPC]
     private void RPC_LoadGameOthers() {

@@ -76,6 +76,7 @@ public class Player : MonoBehaviour {
         
     }
 
+
     public void UpdateHealth(int health) {
         if (this.Health > health) { //recebeu dano
             if (m_photonView.isMine) {
