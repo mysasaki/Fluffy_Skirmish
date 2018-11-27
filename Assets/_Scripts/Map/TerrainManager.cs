@@ -42,6 +42,9 @@ public class TerrainManager : MonoBehaviour {
 
     private bool flagStart = false;
 
+    public MatchTimeControl matchTimeControl;
+    private float matchTimeTotal;
+
     // *** FUNCTIONS *** //
     void Start() {
         m_photonView = GetComponent<PhotonView>();
@@ -66,11 +69,13 @@ public class TerrainManager : MonoBehaviour {
             case MatchTime.Short:
                 timeToNextClose = 30;
                 updownTime = 10;
+
                 break;
 
             case MatchTime.Medium:
                 timeToNextClose = 50;
                 updownTime = 20;
+
                 break;
 
             case MatchTime.Long:
@@ -78,6 +83,11 @@ public class TerrainManager : MonoBehaviour {
                 updownTime = 30;
                 break;
         }
+
+        if (!matchTimeControl)
+            GameObject.Find("MatchTimeManager").GetComponent<MatchTimeControl>();
+        matchTimeTotal = timeToNextClose * 9;
+        matchTimeControl.SetMatchTime(matchTimeTotal);
     }
 
     public void StartMapMovement() {
@@ -212,8 +222,14 @@ public class TerrainManager : MonoBehaviour {
 
     [PunRPC]
     private void RPC_SetClientMatchTime(float closeTime, float openTime) {
-        this.timeToNextClosePB = closeTime;
-        this.updownTime = openTime;
+        timeToNextClosePB = closeTime;
+        timeToNextClose = closeTime;
+        updownTime = openTime;
+
+        if (!matchTimeControl)
+            GameObject.Find("MatchTimeManager").GetComponent<MatchTimeControl>();
+        matchTimeTotal = timeToNextClose * 9;
+        matchTimeControl.SetMatchTime(matchTimeTotal);
     }
 
     [PunRPC]

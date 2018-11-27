@@ -99,6 +99,10 @@ public class MatchTimeControl : MonoBehaviour {
         
     }
 
+    public void SetMatchTime(float matchtime) {
+        m_matchTime = matchtime;
+    }
+
     [PunRPC]
     private void RPC_StartCountdown() {
         OnMinimumPlayersReached.Invoke();
