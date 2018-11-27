@@ -42,6 +42,10 @@ public class PlayerNetwork : MonoBehaviour {
         m_photonView.RPC("RPC_LoadedGameScene", PhotonTargets.All, PhotonNetwork.player);
     }
 
+    private void OnDisconnectedFromPhoton() {
+        PhotonNetwork.ReconnectAndRejoin();
+    }
+
     #region RPC 
     [PunRPC]
     private void RPC_LoadGameOthers() {
