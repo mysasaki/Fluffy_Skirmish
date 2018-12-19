@@ -13,6 +13,27 @@ public class PlayerShoot : MonoBehaviour {
         m_photonView = GetComponent<PhotonView>();
     }
 
+    public void ShootPewPew(Vector3 position) {
+        RaycastHit hit;
+        Camera camera = Camera.main;
+        print("pew pew");
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, 200)) {
+
+            if (hit.transform.tag == "Player") {
+                print("hit me with your best shot");            
+                Player player = hit.transform.GetComponent<Player>();
+                Player owner = GetComponent<Player>();
+
+                print("player " + player.ID);
+                print("owner " + owner.ID);
+                if (!player.IsDead && !player.Respawning) {
+                    PlayerManagement.Instance.DealDamage(owner.ID, player.ID, 20, hit.transform);
+                }
+            }
+        }
+
+    }
+
     public void InstantiateBullet(Vector3 position) {
         if (!m_photonView.isMine)
             return;
