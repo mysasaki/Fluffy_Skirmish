@@ -17,6 +17,7 @@ public class PlayerShoot : MonoBehaviour {
         RaycastHit hit;
         Camera camera = Camera.main;
         print("pew pew");
+        //TODO: som de tiro
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, 200)) {
 
             if (hit.transform.tag == "Player") {
@@ -29,6 +30,8 @@ public class PlayerShoot : MonoBehaviour {
                 if (!player.IsDead && !player.Respawning) {
                     PlayerManagement.Instance.DealDamage(owner.ID, player.ID, 20, hit.transform);
                 }
+            } else {
+                //TODO: alguma particula de poeira
             }
         }
 
