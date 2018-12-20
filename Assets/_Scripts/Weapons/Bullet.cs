@@ -17,24 +17,29 @@ public class Bullet : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    public void DestroyBullet() {
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter(Collider other) {
 
-        if (m_owner.ID != PhotonNetwork.player.ID) //apenas o dono da bala vai processar o dano pra que nao ocorra multiplicacao do dano por chamar o rpc multiplas vezes
-            return;
+        Destroy(gameObject);
+        //if (m_owner.ID != PhotonNetwork.player.ID) //apenas o dono da bala vai processar o dano pra que nao ocorra multiplicacao do dano por chamar o rpc multiplas vezes
+        //    return;
 
-        if (other.CompareTag("Player")) {
-            Vector3 partPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2.3f);
-            Instantiate(myParticle, partPosition, transform.rotation);
-            Destroy(gameObject);
-            Player player = other.GetComponent<Player>();
-            if (!player.IsDead && !player.Respawning) {
-                print("ISDEAD " + player.IsDead);
-                print("RESPAWNING " + player.Respawning);
-                PlayerManagement.Instance.DealDamage(m_owner.ID, player.ID, 20, other.transform);
-            }
+        //if (other.CompareTag("Player")) {
+        //    Vector3 partPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2.3f);
+        //    Instantiate(myParticle, partPosition, transform.rotation);
+        //    Destroy(gameObject);
+        //    Player player = other.GetComponent<Player>();
+        //    if (!player.IsDead && !player.Respawning) {
+        //        print("ISDEAD " + player.IsDead);
+        //        print("RESPAWNING " + player.Respawning);
+        //        PlayerManagement.Instance.DealDamage(m_owner.ID, player.ID, 20, other.transform);
+        //    }
 
-        } else { 
-            Destroy(gameObject);
-        }
+        //} else { 
+        //    Destroy(gameObject);
+        //}
     }
 }

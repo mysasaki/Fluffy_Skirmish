@@ -104,7 +104,7 @@ public class Weapon : MonoBehaviour {
             return;
 
         Transform bulletSpawn = weaponSettings.bulletSpawn;
-        //m_playerShoot.InstantiateBullet(bulletSpawn.position);
+        m_playerShoot.InstantiateBullet(bulletSpawn.position);
         m_playerShoot.ShootPewPew(bulletSpawn.position);
         m_weaponAudio.FireAudio();
 

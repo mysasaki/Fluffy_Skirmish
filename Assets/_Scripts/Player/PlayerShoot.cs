@@ -8,6 +8,7 @@ public class PlayerShoot : MonoBehaviour {
     private PhotonView m_photonView;
     public float bulletSpeed = 300;
     public GameObject bulletPrefab;
+    private GameObject bulletInstance;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
@@ -19,6 +20,7 @@ public class PlayerShoot : MonoBehaviour {
         print("pew pew");
         //TODO: som de tiro
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, 200)) {
+            Bullet bullet = bulletInstance.GetComponent<Bullet>();
 
             if (hit.transform.tag == "Player") {
                 print("hit me with your best shot");            
@@ -29,10 +31,13 @@ public class PlayerShoot : MonoBehaviour {
                 print("owner " + owner.ID);
                 if (!player.IsDead && !player.Respawning) {
                     PlayerManagement.Instance.DealDamage(owner.ID, player.ID, 20, hit.transform);
+                                   
                 }
+                bullet.DestroyBullet();
             } else {
                 //TODO: alguma particula de poeira
             }
+
         }
 
     }
@@ -61,5 +66,7 @@ public class PlayerShoot : MonoBehaviour {
         bullet.m_owner = GetComponent<Player>();
         Rigidbody bulleRb = bulletGameObject.GetComponent<Rigidbody>();
         bulleRb.AddForce(bulletGameObject.transform.forward * bulletSpeed, ForceMode.Impulse);
+
+        bulletInstance = bulletGameObject;
     }
 }
