@@ -15,7 +15,7 @@ public class Closure : MonoBehaviour {
     //private enum State { Open, Closed, ToClose };
 
     public void Closed() {
-        //cross.SetActive(false);
+        cross.SetActive(false);
         circle.SetActive(true);
     }
 

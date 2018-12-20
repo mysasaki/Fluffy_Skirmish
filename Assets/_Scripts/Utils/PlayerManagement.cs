@@ -5,9 +5,12 @@ using UnityEngine;
 public class PlayerManagement : MonoBehaviour {
 
     public static PlayerManagement Instance;
+
     private PhotonView m_photonView;
     private KillFeed m_killFeed;
     private ScoreLayoutGroup m_scoreLayoutGroup;
+    private TerrainManager m_terrainManager;
+
     public Ragdoll ragdoll;
 
     public List<PlayerStats> m_playerStatsList = new List<PlayerStats>();
@@ -21,6 +24,7 @@ public class PlayerManagement : MonoBehaviour {
     private void Start() {
         m_killFeed = FindObjectOfType<KillFeed>();
         m_scoreLayoutGroup = FindObjectOfType<ScoreLayoutGroup>();
+        m_terrainManager = FindObjectOfType<TerrainManager>();
 
         DamageTextController.Initialize();
     }
@@ -80,9 +84,33 @@ public class PlayerManagement : MonoBehaviour {
         if (PhotonNetwork.player.ID != id_player)
             return;
 
-        float randomZ = Random.Range(30f, 420f);
-        float randomX = Random.Range(30f, 420f);
-        m_photonView.RPC("RPC_RespawnPlayer", PhotonTargets.All, id_player, randomX, randomZ);
+        Vector2 respawn = CalculateRespawnPosition();
+
+        m_photonView.RPC("RPC_RespawnPlayer", PhotonTargets.All, id_player, respawn.x, respawn.y);
+    }
+
+    public Vector2 CalculateRespawnPosition() {
+        if(!m_terrainManager)
+            m_terrainManager = FindObjectOfType<TerrainManager>();
+
+        List<int> sectors = new List<int>();
+        for (int i = 1; i <= 9; i++) { //inicializa
+            sectors.Add(i);
+        }
+
+        foreach (int id in m_terrainManager.idsToBeClosed) { //remove os terrenos onde nao da pra respawn
+            sectors.Remove(id);
+        }
+
+        int n = Random.Range(0, sectors.Count); //sorteia numero do terreno
+        TerrainID[] terrains = FindObjectsOfType<TerrainID>();
+
+        TerrainID randomTerrain = terrains[n];
+        float randomZ = Random.Range(randomTerrain.minRangeZ, randomTerrain.maxRangeZ);
+        float randomX = Random.Range(randomTerrain.minRangeX, randomTerrain.maxRangeX);
+
+        return new Vector2(randomX, randomZ);
+
     }
 
     [PunRPC]

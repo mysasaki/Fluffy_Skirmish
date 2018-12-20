@@ -21,7 +21,7 @@ public class TerrainManager : MonoBehaviour {
     private GameObject go_aux; //gameObject auxiliar para armazenar setor que irá fechar
 
     [SerializeField]
-    private GameObject[] sectors; //array de setores
+    public GameObject[] sectors; //array de setores
 
     [SerializeField]
     private List<GameObject> sectorToBeClosed; //lista de setores escolhidos na rodada
@@ -37,8 +37,8 @@ public class TerrainManager : MonoBehaviour {
     Vector3 pos2, newPos2;
 
     private PhotonView m_photonView;
-    private List<int> idsToBeClosed = new List<int>();
-    private List<int> idsToBeOpened = new List<int>();
+    public List<int> idsToBeClosed = new List<int>();
+    public List<int> idsToBeOpened = new List<int>();
 
     private bool flagStart = false;
 
