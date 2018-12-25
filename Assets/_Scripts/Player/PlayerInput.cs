@@ -69,7 +69,7 @@ public class PlayerInput : MonoBehaviour {
         if (crosshairPrefab != null) {
             crosshairPrefab = Instantiate(crosshairPrefab);
             m_crosshair = crosshairPrefab.GetComponent<Crosshair>();
-            m_crosshair.ToggleCrosshair(false);
+            m_crosshair.ToggleCrosshair(false); 
         }
     }
 
@@ -173,8 +173,11 @@ public class PlayerInput : MonoBehaviour {
             Vector3 look = pivotTransform.position + (pivotTransform.forward * otherSettings.lookDistance);
             Vector3 direction = look - transform.position;
 
-            if (Input.GetButton(input.fireButton) && m_aiming)
+            if (Input.GetButton(input.fireButton) && m_aiming) {
+                //m_crosshair.PlayRecoil();
                 m_playerWeapon.FireWeapon(); //tpsCamera.transform.position, tpsCamera.transform.forward
+                
+            }
 
             if (Input.GetButton(input.reloadButton))
                 m_playerWeapon.Reload();

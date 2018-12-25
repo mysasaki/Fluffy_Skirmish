@@ -9,12 +9,22 @@ public class PlayerShoot : MonoBehaviour {
     public float bulletSpeed = 300;
     public GameObject bulletPrefab;
     private GameObject bulletInstance;
+    private Crosshair m_crosshair;
 
     private void Awake() {
         m_photonView = GetComponent<PhotonView>();
     }
 
+    private void Start() {
+        m_crosshair = FindObjectOfType<Crosshair>();
+    }
+
     public void ShootPewPew(Vector3 position) {
+
+        if(!m_crosshair)
+            m_crosshair = FindObjectOfType<Crosshair>();
+        m_crosshair.PlayRecoil();
+
         RaycastHit hit;
         Camera camera = Camera.main;
         print("pew pew");
